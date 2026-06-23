@@ -1,0 +1,87 @@
+name: Build and push image
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Podman
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y podman
+
+      - name: Log in to GHCR
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | podman login ${{ env.REGISTRY }} \
+            --username ${{ github.actor }} \
+            --password-stdin
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix=sha-
+            type=semver,pattern={{version}}
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build image
+        run: |
+          IFS=',' read -ra TAGS <<< "${{ steps.meta.outputs.tags }}"
+          TAG_ARGS=""
+          for tag in "${TAGS[@]}"; do
+            TAG_ARGS="$TAG_ARGS --tag $tag"
+          done
+
+          LABEL_ARGS=""
+          IFS=',' read -ra LABELS <<< "${{ steps.meta.outputs.labels }}"
+          for label in "${LABELS[@]}"; do
+            LABEL_ARGS="$LABEL_ARGS --label $label"
+          done
+
+          podman build \
+            --file .dockerfile \
+            $TAG_ARGS \
+            $LABEL_ARGS \
+            .
+
+      - name: Push image
+        if: github.event_name != 'pull_request'
+        run: |
+          IFS=',' read -ra TAGS <<< "${{ steps.meta.outputs.tags }}"
+          for tag in "${TAGS[@]}"; do
+            podman push "$tag"
+          done
+
+      - name: Notify infra repo to deploy
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          repository: ${{ github.repository_owner }}/infra
+          event-type: deploy
+          client-payload: |
+            {
+              "service": "${{ github.event.repository.name }}",
+              "image": "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest",
+              "sha": "${{ github.sha }}"
+            }
