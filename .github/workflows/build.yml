@@ -6,6 +6,7 @@ on:
     tags: ["v*"]
   pull_request:
     branches: [main]
+  workflow_dispatch: # <--- Added this line for manual triggering
 
 env:
   REGISTRY: ghcr.io
