@@ -72,13 +72,13 @@ jobs:
           for tag in "${TAGS[@]}"; do
             podman push "$tag"
           done
-
+          
       - name: Notify infra repo to deploy
-        if: github.ref == 'refs/heads/kpd' && github.event_name != 'pull_request' # <--- Changed this from main to kpd
+        if: github.ref == 'refs/heads/kpd' && github.event_name != 'pull_request'
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.DEPLOY_TOKEN }}
-          repository: ${{ github.repository_owner }}/infra
+          repository: jetkarir/jetkarir-infra
           event-type: deploy
           client-payload: |
             {
