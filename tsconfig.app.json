@@ -4,6 +4,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
+    "rootDir": "./src",  /* <-- Tambahkan baris ini untuk mengunci root folder */
     "types": [
       "node"
     ]

@@ -13,7 +13,10 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), provideClientHydration(withEventReplay()),
     providePrimeNG({
             theme: {
-                preset: Aura
+                preset: Aura,
+                options: {
+                  darkModeSelector: 'none' // <-- Tambahkan baris ini untuk mematikan auto dark mode
+                }
             }
         })
   ]
