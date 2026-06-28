@@ -1,4 +1,8 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideZonelessChangeDetection,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
@@ -10,14 +14,15 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(routes), provideClientHydration(withEventReplay()),
+    provideRouter(routes),
+    provideClientHydration(withEventReplay()),
     providePrimeNG({
-            theme: {
-                preset: Aura,
-                options: {
-                  darkModeSelector: 'none' // <-- Tambahkan baris ini untuk mematikan auto dark mode
-                }
-            }
-        })
-  ]
+      theme: {
+        preset: Aura,
+        options: {
+          darkModeSelector: 'none', // <-- Tambahkan baris ini untuk mematikan auto dark mode
+        },
+      },
+    }),
+  ],
 };
