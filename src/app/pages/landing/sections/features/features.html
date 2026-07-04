@@ -1,0 +1,20 @@
+<section class="lp-features" id="fitur">
+  <div class="lp-container">
+    <div class="lp-section-header">
+      <span class="lp-section-tag">Fitur Unggulan</span>
+      <h2 class="lp-section-title">Semua yang Anda butuhkan<br />dalam satu platform</h2>
+      <p class="lp-section-sub">Dari pencarian hingga penerimaan kerja, JetKarir menemani setiap langkah perjalanan karir Anda.</p>
+    </div>
+    <div class="lp-features__grid">
+      @for (f of features; track f.title) {
+        <div class="lp-feature-card">
+          <div class="lp-feature-card__icon">
+            <i [class]="f.icon"></i>
+          </div>
+          <h3 class="lp-feature-card__title">{{ f.title }}</h3>
+          <p class="lp-feature-card__desc">{{ f.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

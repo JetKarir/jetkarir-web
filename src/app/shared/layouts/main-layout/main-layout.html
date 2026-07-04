@@ -1,0 +1,77 @@
+<div class="main-layout">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar__inner jk-container">
+      <!-- Logo -->
+      <a routerLink="/home" class="navbar__logo">
+        <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+          <path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" fill="#5f8368" />
+          <path d="M14 6L22 10V18L14 22L6 18V10L14 6Z" fill="#fff" opacity="0.3" />
+          <path d="M10 14L13 17L18 11" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span>JetKarir</span>
+      </a>
+
+      <!-- Nav links (desktop) -->
+      <ul class="navbar__links">
+        @for (item of navItems; track item.route) {
+          <li>
+            <a
+              [routerLink]="item.route"
+              routerLinkActive="active"
+              class="navbar__link"
+            >
+              <i [class]="item.icon"></i>
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+
+      <!-- Right actions -->
+      <div class="navbar__actions">
+        <a routerLink="/notifications" class="navbar__icon-btn" title="Notifikasi">
+          <i class="pi pi-bell"></i>
+        </a>
+
+        @if (user()) {
+          <div class="navbar__user">
+            <p-avatar
+              [label]="userInitials()"
+              shape="circle"
+              class="navbar__avatar"
+            />
+            <div class="navbar__user-info">
+              <span class="navbar__user-name">{{ user()?.fullName }}</span>
+              <span class="navbar__user-email">{{ user()?.email }}</span>
+            </div>
+            <button class="navbar__logout" (click)="logout()" title="Keluar">
+              <i class="pi pi-sign-out"></i>
+            </button>
+          </div>
+        } @else {
+          <a routerLink="/auth/login" class="navbar__login-btn">
+            Masuk
+          </a>
+        }
+      </div>
+    </div>
+  </nav>
+
+  <!-- Bottom nav (mobile) -->
+  <nav class="bottom-nav">
+    @for (item of navItems; track item.route) {
+      <a [routerLink]="item.route" routerLinkActive="active" class="bottom-nav__item">
+        <i [class]="item.icon"></i>
+        <span>{{ item.label }}</span>
+      </a>
+    }
+  </nav>
+
+  <!-- Page content -->
+  <main class="main-layout__content">
+    <router-outlet />
+  </main>
+
+  <p-toast />
+</div>

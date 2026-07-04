@@ -1,0 +1,80 @@
+@use '../shared' as *;
+
+.lp-footer {
+  background: #1a1d1f;
+  padding: 3rem 0 0;
+  color: rgba(255, 255, 255, 0.6);
+
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    @media (max-width: 768px) { grid-template-columns: 1fr; }
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+
+    &:hover { text-decoration: none; opacity: 0.85; }
+  }
+
+  &__desc {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  &__links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+
+    @media (max-width: 480px) { grid-template-columns: 1fr 1fr; }
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+
+    a {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: color 0.15s;
+      &:hover { color: #fff; text-decoration: none; }
+    }
+  }
+
+  &__col-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 0.25rem;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 0;
+    font-size: 0.8rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    p { margin: 0; }
+  }
+}

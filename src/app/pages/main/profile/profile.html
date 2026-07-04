@@ -1,0 +1,127 @@
+<div class="profile">
+  <div class="jk-container">
+    @if (loading()) {
+      <div class="profile__loading">
+        <p-skeleton shape="circle" size="6rem" />
+        <p-skeleton height="1.5rem" width="40%" class="mt-3" />
+        <p-skeleton height="1rem" width="60%" class="mt-2" />
+        <p-skeleton height="6rem" class="mt-4" />
+        <p-skeleton height="6rem" class="mt-3" />
+      </div>
+    } @else {
+      <!-- Header card -->
+      <div class="profile__hero">
+        <div class="profile__avatar">{{ initials() }}</div>
+        <div class="profile__info">
+          <h1 class="profile__name">{{ user()?.fullName }}</h1>
+          @if (profile()?.headline) {
+            <p class="profile__headline">{{ profile()!.headline }}</p>
+          }
+          @if (profile()?.city) {
+            <span class="profile__loc">
+              <i class="pi pi-map-marker"></i>
+              {{ profile()!.city }}{{ profile()!.province ? ', ' + profile()!.province : '' }}
+            </span>
+          }
+        </div>
+
+        <!-- Completion -->
+        <div class="profile__completion">
+          <div class="completion-ring">
+            <svg viewBox="0 0 36 36" class="completion-ring__svg">
+              <path
+                class="completion-ring__bg"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
+              <path
+                class="completion-ring__fill"
+                [attr.stroke-dasharray]="completion() + ', 100'"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+              />
+            </svg>
+            <span class="completion-ring__label">{{ completion() }}%</span>
+          </div>
+          <span class="completion-ring__text">Profil lengkap</span>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      @if (profile()?.summary) {
+        <section class="profile__section">
+          <h2 class="profile__section-title">Ringkasan</h2>
+          <p class="profile__text">{{ profile()!.summary }}</p>
+        </section>
+      }
+
+      <!-- Skills -->
+      @if (profile()?.skills?.length) {
+        <section class="profile__section">
+          <h2 class="profile__section-title">Keahlian</h2>
+          <div class="profile__skills">
+            @for (skill of profile()!.skills!; track skill.skillId) {
+              <span class="jk-badge jk-badge--sage">{{ skill.skillName }}</span>
+            }
+          </div>
+        </section>
+      }
+
+      <!-- Experience -->
+      @if (profile()?.experiences?.length) {
+        <section class="profile__section">
+          <h2 class="profile__section-title">Pengalaman Kerja</h2>
+          <div class="profile__exp-list">
+            @for (exp of profile()!.experiences!; track exp.id) {
+              <div class="exp-item">
+                <div class="exp-item__dot"></div>
+                <div class="exp-item__content">
+                  <span class="exp-item__position">{{ exp.position }}</span>
+                  <span class="exp-item__company">{{ exp.companyName }}</span>
+                  <span class="exp-item__period">
+                    {{ exp.startDate | date:'MMM y' }}
+                    –
+                    {{ exp.isCurrent ? 'Sekarang' : (exp.endDate | date:'MMM y') }}
+                  </span>
+                </div>
+              </div>
+            }
+          </div>
+        </section>
+      }
+
+      <!-- Education -->
+      @if (profile()?.educations?.length) {
+        <section class="profile__section">
+          <h2 class="profile__section-title">Pendidikan</h2>
+          <div class="profile__exp-list">
+            @for (edu of profile()!.educations!; track edu.id) {
+              <div class="exp-item">
+                <div class="exp-item__dot"></div>
+                <div class="exp-item__content">
+                  <span class="exp-item__position">{{ edu.institution }}</span>
+                  @if (edu.degree || edu.fieldOfStudy) {
+                    <span class="exp-item__company">
+                      {{ edu.degree }}{{ edu.fieldOfStudy ? ' · ' + edu.fieldOfStudy : '' }}
+                    </span>
+                  }
+                  @if (edu.startYear || edu.endYear) {
+                    <span class="exp-item__period">
+                      {{ edu.startYear }} – {{ edu.endYear ?? 'Sekarang' }}
+                    </span>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        </section>
+      }
+
+      @if (!profile()) {
+        <div class="profile__empty">
+          <i class="pi pi-user-edit profile__empty-icon"></i>
+          <h3>Profil belum dilengkapi</h3>
+          <p>Lengkapi profil Anda untuk meningkatkan peluang diterima.</p>
+        </div>
+      }
+    }
+  </div>
+</div>

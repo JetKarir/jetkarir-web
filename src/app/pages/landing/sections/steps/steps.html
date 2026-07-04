@@ -1,0 +1,17 @@
+<section class="lp-steps">
+  <div class="lp-container">
+    <div class="lp-section-header">
+      <span class="lp-section-tag">Cara Kerja</span>
+      <h2 class="lp-section-title">Mulai karir impian<br />dalam 3 langkah</h2>
+    </div>
+    <div class="lp-steps__grid">
+      @for (s of steps; track s.num) {
+        <div class="lp-step">
+          <div class="lp-step__num">{{ s.num }}</div>
+          <h3 class="lp-step__title">{{ s.title }}</h3>
+          <p class="lp-step__desc">{{ s.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

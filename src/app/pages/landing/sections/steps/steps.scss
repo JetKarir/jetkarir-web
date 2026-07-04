@@ -1,0 +1,51 @@
+@use '../shared' as *;
+
+.lp-steps {
+  padding: 5rem 0;
+  background: #fff;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    position: relative;
+
+    @media (max-width: 768px) { grid-template-columns: 1fr; }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(16.67% + 24px);
+      right: calc(16.67% + 24px);
+      height: 2px;
+      background: linear-gradient(90deg, #5f8368, #dedad2);
+
+      @media (max-width: 768px) { display: none; }
+    }
+  }
+}
+
+.lp-step {
+  text-align: center;
+  position: relative;
+
+  &__num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #5f8368;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__title { font-size: 1.125rem; font-weight: 700; color: #1a1d1f; margin: 0 0 0.625rem; }
+  &__desc { font-size: 0.875rem; color: #6b7280; line-height: 1.6; margin: 0; }
+}
