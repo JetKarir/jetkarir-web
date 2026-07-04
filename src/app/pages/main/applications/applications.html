@@ -1,0 +1,96 @@
+<div class="apps">
+  <div class="jk-container">
+    <div class="apps__header">
+      <h1 class="apps__title">Lamaran Saya</h1>
+      <span class="apps__count">{{ applications().length }} lamaran</span>
+    </div>
+
+    @if (loading()) {
+      <div class="apps__list">
+        @for (s of skeletons; track $index) {
+          <div class="app-item">
+            <p-skeleton shape="circle" size="3rem" />
+            <div class="app-item__body">
+              <p-skeleton height="1.1rem" width="55%" />
+              <p-skeleton height="0.9rem" width="40%" class="mt-2" />
+            </div>
+            <p-skeleton height="1.75rem" width="80px" borderRadius="1rem" />
+          </div>
+        }
+      </div>
+    } @else if (applications().length === 0) {
+      <div class="apps__empty">
+        <i class="pi pi-file-edit apps__empty-icon"></i>
+        <h3>Belum ada lamaran</h3>
+        <p>Mulai melamar pekerjaan impian Anda sekarang!</p>
+      </div>
+    } @else {
+      <div class="apps__list">
+        @for (app of applications(); track app.id) {
+          <div class="app-item" [class.app-item--active]="selected()?.id === app.id">
+            <!-- Logo -->
+            <div class="app-item__logo">
+              @if (app.companyLogoUrl) {
+                <img [src]="app.companyLogoUrl" [alt]="app.companyName" />
+              } @else {
+                {{ app.companyName[0] }}
+              }
+            </div>
+
+            <!-- Info -->
+            <div class="app-item__body" (click)="select(app)">
+              <span class="app-item__job">{{ app.jobTitle }}</span>
+              <span class="app-item__company">{{ app.companyName }}</span>
+              @if (app.city) {
+                <span class="app-item__loc">
+                  <i class="pi pi-map-marker"></i> {{ app.city }}
+                </span>
+              }
+              <span class="app-item__date">
+                Dilamar {{ app.appliedAt | date:'dd MMM yyyy' }}
+              </span>
+            </div>
+
+            <!-- Status -->
+            <div class="app-item__right">
+              <p-tag
+                [value]="statusLabel(app.status)"
+                [severity]="statusSeverity(app.status)"
+              />
+            </div>
+          </div>
+
+          <!-- Timeline expand -->
+          @if (selected()?.id === app.id && app.stages?.length) {
+            <div class="app-timeline">
+              <p-timeline [value]="app.stages!" layout="vertical" align="left">
+                <ng-template #marker let-stage>
+                  <div
+                    class="timeline-marker"
+                    [class.timeline-marker--done]="stage.status === 'COMPLETED'"
+                    [class.timeline-marker--active]="stage.status === 'STARTED'"
+                  >
+                    <i [class]="stageIcon(stage.name)"></i>
+                  </div>
+                </ng-template>
+                <ng-template #content let-stage>
+                  <div class="timeline-content">
+                    <span class="timeline-content__name">{{ stage.name }}</span>
+                    @if (stage.completedAt) {
+                      <span class="timeline-content__date">
+                        {{ stage.completedAt | date:'dd MMM yyyy' }}
+                      </span>
+                    }
+                    @if (stage.decision) {
+                      <span class="timeline-content__decision">{{ stage.decision }}</span>
+                    }
+                  </div>
+                </ng-template>
+              </p-timeline>
+            </div>
+          }
+        }
+      </div>
+    }
+  </div>
+</div>

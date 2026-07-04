@@ -1,0 +1,136 @@
+import { Component, inject, OnInit, signal, computed } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { JobService } from '../../../core/service/main/job/job.service';
+import { JobListItem, JobDetail } from '../../../core/model/interface/job.interface';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { SelectModule } from 'primeng/select';
+import { SkeletonModule } from 'primeng/skeleton';
+import { MessageService } from 'primeng/api';
+import { DialogModule } from 'primeng/dialog';
+import { TagModule } from 'primeng/tag';
+
+@Component({
+  selector: 'app-jobs',
+  imports: [
+    DecimalPipe,
+    FormsModule,
+    InputTextModule,
+    ButtonModule,
+    SelectModule,
+    SkeletonModule,
+    DialogModule,
+    TagModule,
+  ],
+  templateUrl: './jobs.html',
+  styleUrl: './jobs.scss',
+})
+export class JobsPage implements OnInit {
+  jobService = inject(JobService);
+  messageService = inject(MessageService);
+
+  jobs = signal<JobListItem[]>([]);
+  loading = signal(true);
+  total = signal(0);
+  page = signal(1);
+  limit = 12;
+
+  keyword = signal('');
+  searchInput = '';
+  cityFilter = '';
+  workModeFilter = '';
+
+  selectedJobId = signal<string | null>(null);
+  selectedJob = signal<JobDetail | null>(null);
+  loadingDetail = signal(false);
+  showDetail = signal(false);
+
+  workModeOptions = [
+    { label: 'Semua Mode', value: '' },
+    { label: 'Remote', value: 'remote' },
+    { label: 'On-site', value: 'onsite' },
+    { label: 'Hybrid', value: 'hybrid' },
+  ];
+
+  totalPages = computed(() => Math.ceil(this.total() / this.limit));
+
+  ngOnInit() {
+    this.loadJobs();
+  }
+
+  loadJobs() {
+    this.loading.set(true);
+    this.jobService
+      .searchJobs({
+        page: this.page(),
+        limit: this.limit,
+        q: this.keyword() || undefined,
+        city: this.cityFilter || undefined,
+      })
+      .subscribe({
+        next: (res) => {
+          this.jobs.set(res.data ?? []);
+          this.total.set(res.meta?.total ?? 0);
+          this.loading.set(false);
+        },
+        error: () => {
+          this.loading.set(false);
+          this.messageService.add({ severity: 'error', summary: 'Gagal', detail: 'Gagal memuat lowongan.' });
+        },
+      });
+  }
+
+  search() {
+    this.keyword.set(this.searchInput);
+    this.page.set(1);
+    this.loadJobs();
+  }
+
+  onFilterChange() {
+    this.page.set(1);
+    this.loadJobs();
+  }
+
+  goToPage(p: number) {
+    this.page.set(p);
+    this.loadJobs();
+  }
+
+  openDetail(jobId: string) {
+    this.selectedJobId.set(jobId);
+    this.selectedJob.set(null);
+    this.showDetail.set(true);
+    this.loadingDetail.set(true);
+    this.jobService.getJobDetail(jobId).subscribe({
+      next: (res) => {
+        this.selectedJob.set(res.data);
+        this.loadingDetail.set(false);
+      },
+      error: () => this.loadingDetail.set(false),
+    });
+  }
+
+  closeDetail() {
+    this.showDetail.set(false);
+    this.selectedJobId.set(null);
+    this.selectedJob.set(null);
+  }
+
+  applyJob() {
+    const jobId = this.selectedJobId();
+    if (!jobId) return;
+    this.jobService.applyJob(jobId, { sourceCode: 'MANUAL', consentAiProcessing: true }).subscribe({
+      next: () => {
+        this.messageService.add({ severity: 'success', summary: 'Berhasil', detail: 'Lamaran berhasil dikirim!' });
+        this.closeDetail();
+      },
+      error: (err) => {
+        const msg = err?.error?.message ?? 'Gagal melamar. Silakan coba lagi.';
+        this.messageService.add({ severity: 'error', summary: 'Gagal', detail: msg });
+      },
+    });
+  }
+
+  skeletons = Array(12).fill(0);
+}

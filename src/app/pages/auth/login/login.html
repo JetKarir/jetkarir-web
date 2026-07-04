@@ -1,0 +1,75 @@
+<p-toast />
+
+<div class="login">
+  <div class="login__header">
+    <h1 class="login__title">Selamat Datang</h1>
+    <p class="login__subtitle">Masuk ke akun JetKarir Anda</p>
+  </div>
+
+  @if (errorMessage()) {
+    <div class="login__error">
+      <i class="pi pi-exclamation-circle"></i>
+      {{ errorMessage() }}
+    </div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="login__form" novalidate>
+    <!-- Email -->
+    <div class="form-field">
+      <label for="email" class="form-label">Email</label>
+      <input
+        pInputText
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="nama@email.com"
+        class="form-input"
+        autocomplete="email"
+        fluid
+      />
+      @if (emailCtrl.invalid && emailCtrl.touched) {
+        <span class="form-error">
+          @if (emailCtrl.errors?.['required']) { Email wajib diisi. }
+          @else if (emailCtrl.errors?.['email']) { Format email tidak valid. }
+        </span>
+      }
+    </div>
+
+    <!-- Password -->
+    <div class="form-field">
+      <div class="form-label-row">
+        <label for="password" class="form-label">Password</label>
+        <a href="#" class="form-link">Lupa password?</a>
+      </div>
+      <p-password
+        inputId="password"
+        formControlName="password"
+        placeholder="Masukkan password"
+        [feedback]="false"
+        [toggleMask]="true"
+        fluid
+        autocomplete="current-password"
+      />
+      @if (passwordCtrl.invalid && passwordCtrl.touched) {
+        <span class="form-error">
+          @if (passwordCtrl.errors?.['required']) { Password wajib diisi. }
+          @else if (passwordCtrl.errors?.['minlength']) { Password minimal 6 karakter. }
+        </span>
+      }
+    </div>
+
+    <!-- Submit — fluid makes it full width (PrimeNG v21) -->
+    <p-button
+      type="submit"
+      label="Masuk"
+      [loading]="loading()"
+      [disabled]="loading()"
+      fluid
+    />
+  </form>
+
+  <p class="login__footer">
+    Belum punya akun?
+    <a routerLink="/auth/register" class="form-link">Daftar sekarang</a>
+  </p>
+</div>

@@ -1,0 +1,234 @@
+.profile {
+  padding: 2rem 0;
+}
+
+/* ── Hero ── */
+.profile__hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: var(--jk-surface);
+  border: 1px solid var(--jk-border);
+  border-radius: var(--jk-radius-xl);
+  box-shadow: var(--jk-shadow-sm);
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.profile__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--jk-sage-dark);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.profile__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile__name {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--jk-text-primary);
+  margin: 0;
+}
+
+.profile__headline {
+  font-size: 0.925rem;
+  color: var(--jk-text-secondary);
+  margin: 0;
+}
+
+.profile__loc {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  color: var(--jk-text-muted);
+
+  i { font-size: 0.75rem; }
+}
+
+/* ── Completion Ring ── */
+.profile__completion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.completion-ring {
+  position: relative;
+  width: 64px;
+  height: 64px;
+
+  &__svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  &__bg {
+    fill: none;
+    stroke: var(--jk-border);
+    stroke-width: 3.5;
+  }
+
+  &__fill {
+    fill: none;
+    stroke: var(--jk-sage-dark);
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.5s ease;
+  }
+
+  &__label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--jk-text-primary);
+  }
+
+  &__text {
+    font-size: 0.7rem;
+    color: var(--jk-text-muted);
+    white-space: nowrap;
+  }
+}
+
+/* ── Sections ── */
+.profile__section {
+  padding: 1.5rem;
+  background: var(--jk-surface);
+  border: 1px solid var(--jk-border);
+  border-radius: var(--jk-radius-xl);
+  box-shadow: var(--jk-shadow-sm);
+  margin-bottom: 1rem;
+}
+
+.profile__section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--jk-text-primary);
+  margin: 0 0 1rem;
+}
+
+.profile__text {
+  font-size: 0.9rem;
+  color: var(--jk-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.profile__skills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ── Experience / Education ── */
+.profile__exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.exp-item {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+  padding-bottom: 1.25rem;
+
+  &:last-child { padding-bottom: 0; }
+
+  &:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 16px;
+    bottom: 0;
+    width: 2px;
+    background: var(--jk-border);
+  }
+
+  &__dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--jk-sage-dark);
+    flex-shrink: 0;
+    margin-top: 3px;
+    border: 2px solid var(--jk-surface);
+    box-shadow: 0 0 0 2px var(--jk-sage-dark);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__position {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--jk-text-primary);
+  }
+
+  &__company {
+    font-size: 0.825rem;
+    color: var(--jk-text-secondary);
+  }
+
+  &__period {
+    font-size: 0.775rem;
+    color: var(--jk-text-muted);
+  }
+}
+
+/* ── Loading / Empty ── */
+.profile__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.profile__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem;
+  text-align: center;
+  color: var(--jk-text-muted);
+  gap: 0.5rem;
+
+  h3 { margin: 0; font-size: 1.1rem; color: var(--jk-text-primary); }
+  p { margin: 0; font-size: 0.9rem; }
+}
+
+.profile__empty-icon {
+  font-size: 3rem;
+  color: var(--jk-border);
+}

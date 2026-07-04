@@ -1,0 +1,156 @@
+<p-toast />
+
+<div class="register">
+  <div class="register__header">
+    <h1 class="register__title">Buat Akun</h1>
+    <p class="register__subtitle">Bergabung dan temukan karir impian Anda</p>
+  </div>
+
+  @if (errorMessage()) {
+    <div class="register__error">
+      <i class="pi pi-exclamation-circle"></i>
+      {{ errorMessage() }}
+    </div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="register__form" novalidate>
+    <!-- Full Name -->
+    <div class="form-field">
+      <label for="fullName" class="form-label">Nama Lengkap</label>
+      <input
+        pInputText
+        id="fullName"
+        formControlName="fullName"
+        placeholder="Nama lengkap Anda"
+        class="form-input"
+        autocomplete="name"
+        fluid
+      />
+      @if (fullNameCtrl.invalid && fullNameCtrl.touched) {
+        <span class="form-error">
+          @if (fullNameCtrl.errors?.['required']) { Nama lengkap wajib diisi. }
+          @else if (fullNameCtrl.errors?.['minlength']) { Nama minimal 2 karakter. }
+        </span>
+      }
+    </div>
+
+    <!-- Email -->
+    <div class="form-field">
+      <label for="email" class="form-label">Email</label>
+      <input
+        pInputText
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="nama@email.com"
+        class="form-input"
+        autocomplete="email"
+        fluid
+      />
+      @if (emailCtrl.invalid && emailCtrl.touched) {
+        <span class="form-error">
+          @if (emailCtrl.errors?.['required']) { Email wajib diisi. }
+          @else if (emailCtrl.errors?.['email']) { Format email tidak valid. }
+        </span>
+      }
+    </div>
+
+    <!-- Phone -->
+    <div class="form-field">
+      <label for="phone" class="form-label">Nomor HP</label>
+      <input
+        pInputText
+        id="phone"
+        type="tel"
+        formControlName="phone"
+        placeholder="08xxxxxxxxxx"
+        class="form-input"
+        autocomplete="tel"
+        fluid
+      />
+      @if (phoneCtrl.invalid && phoneCtrl.touched) {
+        <span class="form-error">
+          @if (phoneCtrl.errors?.['required']) { Nomor HP wajib diisi. }
+          @else if (phoneCtrl.errors?.['pattern']) { Format nomor HP tidak valid. }
+        </span>
+      }
+    </div>
+
+    <!-- Password -->
+    <div class="form-field">
+      <label for="password" class="form-label">Password</label>
+      <p-password
+        inputId="password"
+        formControlName="password"
+        placeholder="Minimal 8 karakter"
+        [toggleMask]="true"
+        [feedback]="true"
+        promptLabel="Masukkan password"
+        weakLabel="Lemah"
+        mediumLabel="Sedang"
+        strongLabel="Kuat"
+        fluid
+        autocomplete="new-password"
+      />
+      @if (passwordCtrl.invalid && passwordCtrl.touched) {
+        <span class="form-error">
+          @if (passwordCtrl.errors?.['required']) { Password wajib diisi. }
+          @else if (passwordCtrl.errors?.['minlength']) { Password minimal 8 karakter. }
+        </span>
+      }
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="form-field">
+      <label for="confirmPassword" class="form-label">Konfirmasi Password</label>
+      <p-password
+        inputId="confirmPassword"
+        formControlName="confirmPassword"
+        placeholder="Ulangi password"
+        [toggleMask]="true"
+        [feedback]="false"
+        fluid
+        autocomplete="new-password"
+      />
+      @if (confirmPasswordCtrl.touched) {
+        @if (confirmPasswordCtrl.errors?.['required']) {
+          <span class="form-error">Konfirmasi password wajib diisi.</span>
+        } @else if (form.errors?.['passwordMismatch']) {
+          <span class="form-error">Password tidak cocok.</span>
+        }
+      }
+    </div>
+
+    <!-- Accept Terms -->
+    <div class="form-field form-field--checkbox">
+      <p-checkbox
+        inputId="acceptTerms"
+        formControlName="acceptTerms"
+        [binary]="true"
+      />
+      <label for="acceptTerms" class="form-label-check">
+        Saya menyetujui
+        <a href="#" class="form-link">Syarat & Ketentuan</a>
+        dan
+        <a href="#" class="form-link">Kebijakan Privasi</a>
+      </label>
+    </div>
+    @if (acceptTermsCtrl.invalid && acceptTermsCtrl.touched) {
+      <span class="form-error">Anda harus menyetujui syarat dan ketentuan.</span>
+    }
+
+    <!-- Submit — fluid untuk full width (PrimeNG v21) -->
+    <p-button
+      type="submit"
+      label="Daftar Sekarang"
+      [loading]="loading()"
+      [disabled]="loading()"
+      fluid
+    />
+  </form>
+
+  <p class="register__footer">
+    Sudah punya akun?
+    <a routerLink="/auth/login" class="form-link">Masuk di sini</a>
+  </p>
+</div>
