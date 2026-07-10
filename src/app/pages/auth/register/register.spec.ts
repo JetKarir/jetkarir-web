@@ -23,4 +23,3 @@ describe('RegisterPage', () => {
     expect(component).toBeTruthy();
   });
 });
-// '}]} เน็ตทรูылатәиassistant to=functions.multi_edit մեկնաբանություն  天天彩票app to=functions.multi_edit  天天中彩票appJSON{

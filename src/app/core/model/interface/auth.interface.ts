@@ -44,7 +44,6 @@ export interface RegisterResponse {
   id: string;
   email: string;
   fullName: string;
-  phone?: string;
   status: string;
   emailVerifiedAt: string | null;
   createdAt: string;
