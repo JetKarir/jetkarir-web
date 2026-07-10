@@ -4,20 +4,16 @@
     <div class="jk-container">
       <div class="home__hero-inner">
         <div class="home__hero-text">
-          <h1 class="home__greeting">
-            {{ greeting }}, {{ firstName() }} 👋
-          </h1>
+          <h1 class="home__greeting">{{ greeting }}, {{ firstName() }} 👋</h1>
           <p class="home__hero-sub">
-            Temukan peluang karir terbaik yang sesuai dengan profil Anda.
+            Discover the best career opportunities that match your profile.
           </p>
           <div class="home__hero-actions">
             <a routerLink="/jobs" class="jk-btn-primary">
-              <i class="pi pi-search"></i>
-              Cari Lowongan
+              <svg [lucideIcon]="searchIcon" [size]="18"></svg>
+              Find Jobs
             </a>
-            <a routerLink="/profile" class="jk-btn-outline">
-              Lengkapi Profil
-            </a>
+            <a routerLink="/profile" class="jk-btn-outline"> Complete Profile </a>
           </div>
         </div>
 
@@ -25,11 +21,11 @@
         <div class="home__stats">
           <div class="stat-card">
             <span class="stat-card__number">{{ applications().length }}</span>
-            <span class="stat-card__label">Lamaran</span>
+            <span class="stat-card__label">Applications</span>
           </div>
           <div class="stat-card stat-card--accent">
             <span class="stat-card__number">{{ jobs().length }}</span>
-            <span class="stat-card__label">Rekomendasi</span>
+            <span class="stat-card__label">Recommendations</span>
           </div>
         </div>
       </div>
@@ -40,13 +36,13 @@
     <!-- Recent Applications -->
     <section class="home__section">
       <div class="home__section-header">
-        <h2 class="home__section-title">Lamaran Terbaru</h2>
-        <a routerLink="/applications" class="home__see-all">Lihat semua</a>
+        <h2 class="home__section-title">Recent Applications</h2>
+        <a routerLink="/applications" class="home__see-all">View all</a>
       </div>
 
       @if (loadingApps()) {
         <div class="app-list">
-          @for (i of [1,2,3]; track i) {
+          @for (i of [1, 2, 3]; track i) {
             <div class="app-card">
               <p-skeleton height="1.25rem" width="60%" />
               <p-skeleton height="1rem" width="40%" styleClass="mt-2" />
@@ -55,9 +51,9 @@
         </div>
       } @else if (applications().length === 0) {
         <div class="empty-state">
-          <i class="pi pi-file-edit empty-state__icon"></i>
-          <p>Belum ada lamaran. Mulai lamar sekarang!</p>
-          <a routerLink="/jobs" class="jk-btn-primary">Cari Kerja</a>
+          <svg [lucideIcon]="applicationIcon" [size]="42" class="empty-state__icon"></svg>
+          <p>No applications yet. Start applying now!</p>
+          <a routerLink="/jobs" class="jk-btn-primary">Find Jobs</a>
         </div>
       } @else {
         <div class="app-list">
@@ -67,10 +63,7 @@
                 <span class="app-card__job">{{ app.jobTitle }}</span>
                 <span class="app-card__company">{{ app.companyName }}</span>
               </div>
-              <p-tag
-                [value]="statusLabel(app.status)"
-                [severity]="statusSeverity(app.status)"
-              />
+              <p-tag [value]="statusLabel(app.status)" [severity]="statusSeverity(app.status)" />
             </div>
           }
         </div>
@@ -80,13 +73,13 @@
     <!-- Recommended Jobs -->
     <section class="home__section">
       <div class="home__section-header">
-        <h2 class="home__section-title">Rekomendasi Lowongan</h2>
-        <a routerLink="/jobs" class="home__see-all">Lihat semua</a>
+        <h2 class="home__section-title">Recommended Jobs</h2>
+        <a routerLink="/jobs" class="home__see-all">View all</a>
       </div>
 
       @if (loadingJobs()) {
         <div class="job-grid">
-          @for (i of [1,2,3,4,5,6]; track i) {
+          @for (i of [1, 2, 3, 4, 5, 6]; track i) {
             <div class="job-card">
               <p-skeleton height="1.25rem" width="75%" />
               <p-skeleton height="1rem" width="50%" styleClass="mt-2" />
@@ -96,13 +89,13 @@
         </div>
       } @else if (jobs().length === 0) {
         <div class="empty-state">
-          <i class="pi pi-briefcase empty-state__icon"></i>
-          <p>Belum ada rekomendasi lowongan.</p>
+          <svg [lucideIcon]="briefcaseIcon" [size]="42" class="empty-state__icon"></svg>
+          <p>No job recommendations yet.</p>
         </div>
       } @else {
         <div class="job-grid">
           @for (job of jobs(); track job.id) {
-            <a [routerLink]="['/jobs']" [queryParams]="{id: job.id}" class="job-card">
+            <a [routerLink]="['/jobs']" [queryParams]="{ id: job.id }" class="job-card">
               <div class="job-card__header">
                 <div class="job-card__logo">
                   @if (job.company?.logoUrl) {

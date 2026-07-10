@@ -10,10 +10,24 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
 import { SkeletonModule } from 'primeng/skeleton';
+import {
+  LucideDynamicIcon,
+  LucideSearch,
+  LucideFilePenLine,
+  LucideBriefcase,
+} from '@lucide/angular';
 
 @Component({
   selector: 'app-home',
-  imports: [DecimalPipe, RouterLink, ButtonModule, CardModule, TagModule, SkeletonModule],
+  imports: [
+    DecimalPipe,
+    RouterLink,
+    ButtonModule,
+    CardModule,
+    TagModule,
+    SkeletonModule,
+    LucideDynamicIcon,
+  ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -23,19 +37,23 @@ export class HomePage implements OnInit {
   candidateService = inject(CandidateService);
 
   user = this.authService.currentUser;
-  firstName = computed(() => this.user()?.fullName?.split(' ')[0] ?? 'Pengguna');
+  firstName = computed(() => this.user()?.fullName?.split(' ')[0] ?? 'User');
 
   jobs = signal<JobListItem[]>([]);
   applications = signal<Application[]>([]);
   loadingJobs = signal(true);
   loadingApps = signal(true);
 
+  searchIcon = LucideSearch;
+  applicationIcon = LucideFilePenLine;
+  briefcaseIcon = LucideBriefcase;
+
   get greeting() {
     const hour = new Date().getHours();
-    if (hour < 12) return 'Selamat Pagi';
-    if (hour < 15) return 'Selamat Siang';
-    if (hour < 18) return 'Selamat Sore';
-    return 'Selamat Malam';
+    if (hour < 12) return 'Good Morning';
+    if (hour < 15) return 'Good Afternoon';
+    if (hour < 18) return 'Good Evening';
+    return 'Good Night';
   }
 
   ngOnInit() {
@@ -73,15 +91,15 @@ export class HomePage implements OnInit {
 
   statusLabel(status: string) {
     const map: Record<string, string> = {
-      APPLIED: 'Dilamar',
-      PROCESSING: 'Diproses',
-      SCREENING: 'Seleksi',
-      ASSESSMENT: 'Tes',
+      APPLIED: 'Applied',
+      PROCESSING: 'Processing',
+      SCREENING: 'Screening',
+      ASSESSMENT: 'Assessment',
       INTERVIEW: 'Interview',
-      OFFERED: 'Ditawarkan',
-      HIRED: 'Diterima',
-      REJECTED: 'Ditolak',
-      WITHDRAWN: 'Ditarik',
+      OFFERED: 'Offered',
+      HIRED: 'Hired',
+      REJECTED: 'Rejected',
+      WITHDRAWN: 'Withdrawn',
     };
     return map[status] ?? status;
   }

@@ -1,31 +1,39 @@
 import { Component } from '@angular/core';
+import {
+  LucideDynamicIcon,
+  LucideBolt,
+  LucideSendHorizontal,
+  LucideChartColumn,
+  LucideShieldCheck,
+} from '@lucide/angular';
 
 @Component({
   selector: 'app-lp-features',
+  imports: [LucideDynamicIcon],
   templateUrl: './features.html',
   styleUrl: './features.scss',
 })
 export class LpFeaturesComponent {
   features = [
     {
-      icon: 'pi pi-bolt',
-      title: 'AI Matching Cerdas',
-      desc: 'Algoritma AI kami mencocokkan profil Anda dengan lowongan yang paling relevan secara real-time.',
+      icon: LucideBolt,
+      title: 'Smart AI Matching',
+      desc: 'Our AI algorithm matches your profile with the most relevant job opportunities in real time.',
     },
     {
-      icon: 'pi pi-send',
+      icon: LucideSendHorizontal,
       title: 'Auto Apply',
-      desc: 'Lamar puluhan pekerjaan sekaligus dengan satu klik. Hemat waktu, perbesar peluang.',
+      desc: 'Apply to multiple jobs with one click. Save time and increase your chances.',
     },
     {
-      icon: 'pi pi-chart-line',
-      title: 'Pantau Progres',
-      desc: 'Lacak status semua lamaran dalam satu dashboard. Tidak ada yang terlewat.',
+      icon: LucideChartColumn,
+      title: 'Track Progress',
+      desc: 'Track all your application statuses in one dashboard. Never miss an update.',
     },
     {
-      icon: 'pi pi-shield',
-      title: 'Data Aman',
-      desc: 'Profil dan data pribadi Anda dienkripsi dan hanya dibagikan atas izin Anda.',
+      icon: LucideShieldCheck,
+      title: 'Secure Data',
+      desc: 'Your profile and personal data are encrypted and only shared with your permission.',
     },
   ];
 }

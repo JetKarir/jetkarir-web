@@ -10,6 +10,15 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { MessageService } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
 import { TagModule } from 'primeng/tag';
+import {
+  LucideDynamicIcon,
+  LucideSearch,
+  LucideBriefcase,
+  LucideMapPin,
+  LucideChevronLeft,
+  LucideChevronRight,
+  LucideSend,
+} from '@lucide/angular';
 
 @Component({
   selector: 'app-jobs',
@@ -22,6 +31,7 @@ import { TagModule } from 'primeng/tag';
     SkeletonModule,
     DialogModule,
     TagModule,
+    LucideDynamicIcon,
   ],
   templateUrl: './jobs.html',
   styleUrl: './jobs.scss',
@@ -47,11 +57,18 @@ export class JobsPage implements OnInit {
   showDetail = signal(false);
 
   workModeOptions = [
-    { label: 'Semua Mode', value: '' },
+    { label: 'All Modes', value: '' },
     { label: 'Remote', value: 'remote' },
     { label: 'On-site', value: 'onsite' },
     { label: 'Hybrid', value: 'hybrid' },
   ];
+
+  searchIcon = LucideSearch;
+  briefcaseIcon = LucideBriefcase;
+  mapPinIcon = LucideMapPin;
+  chevronLeftIcon = LucideChevronLeft;
+  chevronRightIcon = LucideChevronRight;
+  sendIcon = LucideSend;
 
   totalPages = computed(() => Math.ceil(this.total() / this.limit));
 
@@ -76,7 +93,11 @@ export class JobsPage implements OnInit {
         },
         error: () => {
           this.loading.set(false);
-          this.messageService.add({ severity: 'error', summary: 'Gagal', detail: 'Gagal memuat lowongan.' });
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Failed',
+            detail: 'Failed to load jobs.',
+          });
         },
       });
   }
@@ -122,12 +143,16 @@ export class JobsPage implements OnInit {
     if (!jobId) return;
     this.jobService.applyJob(jobId, { sourceCode: 'MANUAL', consentAiProcessing: true }).subscribe({
       next: () => {
-        this.messageService.add({ severity: 'success', summary: 'Berhasil', detail: 'Lamaran berhasil dikirim!' });
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Application submitted successfully!',
+        });
         this.closeDetail();
       },
       error: (err) => {
-        const msg = err?.error?.message ?? 'Gagal melamar. Silakan coba lagi.';
-        this.messageService.add({ severity: 'error', summary: 'Gagal', detail: msg });
+        const msg = err?.error?.message ?? 'Failed to apply. Please try again.';
+        this.messageService.add({ severity: 'error', summary: 'Failed', detail: msg });
       },
     });
   }

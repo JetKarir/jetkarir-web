@@ -8,7 +8,6 @@ import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ToastModule } from 'primeng/toast';
-import { LucideDynamicIcon, LucideCircleAlert } from '@lucide/angular';
 
 function passwordMatchValidator(control: AbstractControl) {
   const password = control.get('password');
@@ -27,15 +26,12 @@ function passwordMatchValidator(control: AbstractControl) {
     ButtonModule,
     CheckboxModule,
     ToastModule,
-    LucideDynamicIcon,
   ],
   providers: [MessageService],
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
 export class RegisterPage {
-  protected readonly alertIcon = LucideCircleAlert;
-
   fb = inject(FormBuilder);
   router = inject(Router);
   authService = inject(AuthService);

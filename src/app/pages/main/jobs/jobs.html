@@ -3,22 +3,20 @@
   <div class="jobs__search-bar">
     <div class="jk-container jobs__search-inner">
       <div class="jobs__search-field">
-        <i class="pi pi-search jobs__search-icon"></i>
+        <svg [lucideIcon]="searchIcon" [size]="18" class="jobs__search-icon"></svg>
         <input
           pInputText
           type="search"
           [(ngModel)]="searchInput"
-          placeholder="Cari posisi, perusahaan, atau kata kunci..."
+          placeholder="Search positions, companies, or keywords..."
           class="jobs__search-input"
           (keyup.enter)="search()"
         />
       </div>
-      <p-button
-        label="Cari"
-        icon="pi pi-search"
-        (onClick)="search()"
-        class="jobs__search-btn"
-      />
+      <button type="button" class="jobs__search-btn jk-btn-primary" (click)="search()">
+        <svg [lucideIcon]="searchIcon" [size]="18"></svg>
+        Search
+      </button>
     </div>
   </div>
 
@@ -30,19 +28,19 @@
         [(ngModel)]="workModeFilter"
         optionLabel="label"
         optionValue="value"
-        placeholder="Mode Kerja"
+        placeholder="Work Mode"
         (onChange)="onFilterChange()"
         class="jobs__filter-select"
       />
       <input
         pInputText
         [(ngModel)]="cityFilter"
-        placeholder="Kota..."
+        placeholder="City..."
         class="jobs__city-input"
         (keyup.enter)="onFilterChange()"
       />
       @if (total()) {
-        <span class="jobs__count">{{ total() | number }} lowongan ditemukan</span>
+        <span class="jobs__count">{{ total() | number }} jobs found</span>
       }
     </div>
 
@@ -60,9 +58,9 @@
       </div>
     } @else if (jobs().length === 0) {
       <div class="jobs__empty">
-        <i class="pi pi-briefcase jobs__empty-icon"></i>
-        <h3>Tidak ada lowongan ditemukan</h3>
-        <p>Coba ubah kata kunci atau filter pencarian Anda.</p>
+        <svg [lucideIcon]="briefcaseIcon" [size]="44" class="jobs__empty-icon"></svg>
+        <h3>No jobs found</h3>
+        <p>Try changing your search keyword or filters.</p>
       </div>
     } @else {
       <div class="jobs__grid">
@@ -81,7 +79,7 @@
                 <span class="job-card__company">{{ job.company?.name ?? job.companyName }}</span>
                 @if (job.city) {
                   <span class="job-card__location">
-                    <i class="pi pi-map-marker"></i>
+                    <svg [lucideIcon]="mapPinIcon" [size]="15"></svg>
                     {{ job.city }}{{ job.province ? ', ' + job.province : '' }}
                   </span>
                 }
@@ -109,19 +107,23 @@
       <!-- Pagination -->
       @if (totalPages() > 1) {
         <div class="jobs__pagination">
-          <p-button
-            icon="pi pi-chevron-left"
+          <button
+            type="button"
+            class="jobs__page-btn"
             [disabled]="page() === 1"
-            (onClick)="goToPage(page() - 1)"
-            class="p-button-text"
-          />
-          <span class="jobs__page-info">Halaman {{ page() }} dari {{ totalPages() }}</span>
-          <p-button
-            icon="pi pi-chevron-right"
+            (click)="goToPage(page() - 1)"
+          >
+            <svg [lucideIcon]="chevronLeftIcon" [size]="18"></svg>
+          </button>
+          <span class="jobs__page-info">Page {{ page() }} of {{ totalPages() }}</span>
+          <button
+            type="button"
+            class="jobs__page-btn"
             [disabled]="page() === totalPages()"
-            (onClick)="goToPage(page() + 1)"
-            class="p-button-text"
-          />
+            (click)="goToPage(page() + 1)"
+          >
+            <svg [lucideIcon]="chevronRightIcon" [size]="18"></svg>
+          </button>
         </div>
       }
     }
@@ -136,7 +138,7 @@
   [dismissableMask]="true"
   [draggable]="false"
   [resizable]="false"
-  header="Detail Lowongan"
+  header="Job Details"
   class="jobs__detail-dialog"
 >
   @if (loadingDetail()) {
@@ -160,7 +162,7 @@
           <p class="job-detail__company">{{ job.company?.name ?? job.companyName }}</p>
           @if (job.city) {
             <p class="job-detail__location">
-              <i class="pi pi-map-marker"></i>
+              <svg [lucideIcon]="mapPinIcon" [size]="16"></svg>
               {{ job.city }}{{ job.province ? ', ' + job.province : '' }}
             </p>
           }
@@ -184,39 +186,37 @@
 
       @if (job.description) {
         <div class="job-detail__section">
-          <h4>Deskripsi Pekerjaan</h4>
+          <h4>Job Description</h4>
           <p class="job-detail__text">{{ job.description }}</p>
         </div>
       }
 
       @if (job.requirements) {
         <div class="job-detail__section">
-          <h4>Persyaratan</h4>
+          <h4>Requirements</h4>
           <p class="job-detail__text">{{ job.requirements }}</p>
         </div>
       }
 
       @if (job.responsibilities) {
         <div class="job-detail__section">
-          <h4>Tanggung Jawab</h4>
+          <h4>Responsibilities</h4>
           <p class="job-detail__text">{{ job.responsibilities }}</p>
         </div>
       }
 
       @if (job.benefits) {
         <div class="job-detail__section">
-          <h4>Benefit</h4>
+          <h4>Benefits</h4>
           <p class="job-detail__text">{{ job.benefits }}</p>
         </div>
       }
 
       <div class="job-detail__actions">
-        <p-button
-          label="Lamar Sekarang"
-          icon="pi pi-send"
-          (onClick)="applyJob()"
-          class="job-detail__apply-btn"
-        />
+        <button type="button" class="job-detail__apply-btn jk-btn-primary" (click)="applyJob()">
+          <svg [lucideIcon]="sendIcon" [size]="18"></svg>
+          Apply Now
+        </button>
       </div>
     </div>
   }

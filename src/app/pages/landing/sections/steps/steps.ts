@@ -7,8 +7,20 @@ import { Component } from '@angular/core';
 })
 export class LpStepsComponent {
   steps = [
-    { num: '01', title: 'Buat Profil', desc: 'Lengkapi profil dalam 5 menit dan biarkan AI mengoptimalkan tampilan Anda.' },
-    { num: '02', title: 'Temukan Kerja', desc: 'Jelajahi ribuan lowongan atau biarkan rekomendasi AI bekerja untuk Anda.' },
-    { num: '03', title: 'Lamar & Pantau', desc: 'Lamar dengan mudah dan pantau progres lamaran secara real-time.' },
+    {
+      num: '01',
+      title: 'Create Profile',
+      desc: 'Complete your profile in 5 minutes and let AI optimize how you appear.',
+    },
+    {
+      num: '02',
+      title: 'Find Jobs',
+      desc: 'Explore thousands of openings or let AI recommendations work for you.',
+    },
+    {
+      num: '03',
+      title: 'Apply & Track',
+      desc: 'Apply easily and track your application progress in real time.',
+    },
   ];
 }

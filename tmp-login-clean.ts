@@ -8,7 +8,6 @@ import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ToastModule } from 'primeng/toast';
-import { LucideDynamicIcon, LucideCircleAlert } from '@lucide/angular';
 
 @Component({
   selector: 'app-login',
@@ -20,15 +19,12 @@ import { LucideDynamicIcon, LucideCircleAlert } from '@lucide/angular';
     ButtonModule,
     CheckboxModule,
     ToastModule,
-    LucideDynamicIcon,
   ],
   providers: [MessageService],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
 export class LoginPage {
-  protected readonly alertIcon = LucideCircleAlert;
-
   fb = inject(FormBuilder);
   router = inject(Router);
   authService = inject(AuthService);

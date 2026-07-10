@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class LpStatsComponent {
   stats = [
-    { value: '50K+', label: 'Lowongan Aktif' },
-    { value: '200K+', label: 'Kandidat Terdaftar' },
-    { value: '8K+', label: 'Perusahaan Mitra' },
-    { value: '92%', label: 'Tingkat Kepuasan' },
+    { value: '50K+', label: 'Active Jobs' },
+    { value: '200K+', label: 'Registered Candidates' },
+    { value: '8K+', label: 'Partner Companies' },
+    { value: '92%', label: 'Satisfaction Rate' },
   ];
 }

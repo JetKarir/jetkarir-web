@@ -1,156 +1,145 @@
 <p-toast />
 
-<div class="register">
-  <div class="register__header">
-    <h1 class="register__title">Buat Akun</h1>
-    <p class="register__subtitle">Bergabung dan temukan karir impian Anda</p>
+<div class="register auth-panel auth-panel--register">
+  <div class="register__header auth-panel__header">
+    <h1 class="register__title auth-panel__title">Create your account</h1>
+    <p class="register__subtitle auth-panel__subtitle">
+      Build your profile, discover top opportunities, and track every application in one place.
+    </p>
   </div>
 
   @if (errorMessage()) {
-    <div class="register__error">
-      <i class="pi pi-exclamation-circle"></i>
+    <div class="register__error auth-panel__alert">
+      <svg [lucideIcon]="alertIcon" [size]="18"></svg>
       {{ errorMessage() }}
     </div>
   }
 
-  <form [formGroup]="form" (ngSubmit)="submit()" class="register__form" novalidate>
-    <!-- Full Name -->
-    <div class="form-field">
-      <label for="fullName" class="form-label">Nama Lengkap</label>
+  <form [formGroup]="form" (ngSubmit)="submit()" class="register__form auth-panel__form" novalidate>
+    <div class="form-field auth-panel__field">
+      <label for="fullName" class="form-label auth-panel__label">Full Name</label>
       <input
         pInputText
         id="fullName"
         formControlName="fullName"
-        placeholder="Nama lengkap Anda"
-        class="form-input"
+        placeholder="Your full name"
+        class="form-input auth-panel__input"
         autocomplete="name"
         fluid
       />
       @if (fullNameCtrl.invalid && fullNameCtrl.touched) {
-        <span class="form-error">
-          @if (fullNameCtrl.errors?.['required']) { Nama lengkap wajib diisi. }
-          @else if (fullNameCtrl.errors?.['minlength']) { Nama minimal 2 karakter. }
+        <span class="form-error auth-panel__error-text">
+          @if (fullNameCtrl.errors?.['required']) {
+            Full name is required.
+          } @else if (fullNameCtrl.errors?.['minlength']) {
+            Full name must be at least 3 characters.
+          } @else if (fullNameCtrl.errors?.['maxlength']) {
+            Full name must be at most 150 characters.
+          }
         </span>
       }
     </div>
 
-    <!-- Email -->
-    <div class="form-field">
-      <label for="email" class="form-label">Email</label>
+    <div class="form-field auth-panel__field">
+      <label for="email" class="form-label auth-panel__label">Email</label>
       <input
         pInputText
         id="email"
         type="email"
         formControlName="email"
-        placeholder="nama@email.com"
-        class="form-input"
+        placeholder="name@email.com"
+        class="form-input auth-panel__input"
         autocomplete="email"
         fluid
       />
       @if (emailCtrl.invalid && emailCtrl.touched) {
-        <span class="form-error">
-          @if (emailCtrl.errors?.['required']) { Email wajib diisi. }
-          @else if (emailCtrl.errors?.['email']) { Format email tidak valid. }
+        <span class="form-error auth-panel__error-text">
+          @if (emailCtrl.errors?.['required']) {
+            Email is required.
+          } @else if (emailCtrl.errors?.['email']) {
+            Invalid email format.
+          }
         </span>
       }
     </div>
 
-    <!-- Phone -->
-    <div class="form-field">
-      <label for="phone" class="form-label">Nomor HP</label>
-      <input
-        pInputText
-        id="phone"
-        type="tel"
-        formControlName="phone"
-        placeholder="08xxxxxxxxxx"
-        class="form-input"
-        autocomplete="tel"
-        fluid
-      />
-      @if (phoneCtrl.invalid && phoneCtrl.touched) {
-        <span class="form-error">
-          @if (phoneCtrl.errors?.['required']) { Nomor HP wajib diisi. }
-          @else if (phoneCtrl.errors?.['pattern']) { Format nomor HP tidak valid. }
-        </span>
-      }
-    </div>
-
-    <!-- Password -->
-    <div class="form-field">
-      <label for="password" class="form-label">Password</label>
-      <p-password
-        inputId="password"
-        formControlName="password"
-        placeholder="Minimal 8 karakter"
-        [toggleMask]="true"
-        [feedback]="true"
-        promptLabel="Masukkan password"
-        weakLabel="Lemah"
-        mediumLabel="Sedang"
-        strongLabel="Kuat"
-        fluid
-        autocomplete="new-password"
-      />
-      @if (passwordCtrl.invalid && passwordCtrl.touched) {
-        <span class="form-error">
-          @if (passwordCtrl.errors?.['required']) { Password wajib diisi. }
-          @else if (passwordCtrl.errors?.['minlength']) { Password minimal 8 karakter. }
-        </span>
-      }
-    </div>
-
-    <!-- Confirm Password -->
-    <div class="form-field">
-      <label for="confirmPassword" class="form-label">Konfirmasi Password</label>
-      <p-password
-        inputId="confirmPassword"
-        formControlName="confirmPassword"
-        placeholder="Ulangi password"
-        [toggleMask]="true"
-        [feedback]="false"
-        fluid
-        autocomplete="new-password"
-      />
-      @if (confirmPasswordCtrl.touched) {
-        @if (confirmPasswordCtrl.errors?.['required']) {
-          <span class="form-error">Konfirmasi password wajib diisi.</span>
-        } @else if (form.errors?.['passwordMismatch']) {
-          <span class="form-error">Password tidak cocok.</span>
+    <div class="auth-panel__grid auth-panel__grid--2">
+      <div class="form-field auth-panel__field">
+        <label for="password" class="form-label auth-panel__label">Password</label>
+        <p-password
+          inputId="password"
+          formControlName="password"
+          placeholder="Minimum 8 characters"
+          [toggleMask]="true"
+          [feedback]="true"
+          promptLabel="Enter a password"
+          weakLabel="Weak"
+          mediumLabel="Medium"
+          strongLabel="Strong"
+          fluid
+          autocomplete="new-password"
+        />
+        @if (passwordCtrl.invalid && passwordCtrl.touched) {
+          <span class="form-error auth-panel__error-text">
+            @if (passwordCtrl.errors?.['required']) {
+              Password is required.
+            } @else if (passwordCtrl.errors?.['minlength']) {
+              Password must be at least 8 characters.
+            }
+          </span>
         }
-      }
+      </div>
+
+      <div class="form-field auth-panel__field">
+        <label for="confirmPassword" class="form-label auth-panel__label">Confirm Password</label>
+        <p-password
+          inputId="confirmPassword"
+          formControlName="confirmPassword"
+          placeholder="Repeat your password"
+          [toggleMask]="true"
+          [feedback]="false"
+          fluid
+          autocomplete="new-password"
+        />
+        @if (confirmPasswordCtrl.touched) {
+          @if (confirmPasswordCtrl.errors?.['required']) {
+            <span class="form-error auth-panel__error-text"
+              >Password confirmation is required.</span
+            >
+          } @else if (form.errors?.['passwordMismatch']) {
+            <span class="form-error auth-panel__error-text">Passwords do not match.</span>
+          }
+        }
+      </div>
     </div>
 
-    <!-- Accept Terms -->
-    <div class="form-field form-field--checkbox">
-      <p-checkbox
-        inputId="acceptTerms"
-        formControlName="acceptTerms"
-        [binary]="true"
-      />
-      <label for="acceptTerms" class="form-label-check">
-        Saya menyetujui
-        <a href="#" class="form-link">Syarat & Ketentuan</a>
-        dan
-        <a href="#" class="form-link">Kebijakan Privasi</a>
+    <div class="form-field form-field--checkbox auth-panel__checkbox-row">
+      <p-checkbox inputId="acceptTerms" formControlName="acceptTerms" [binary]="true" />
+      <label for="acceptTerms" class="form-label-check auth-panel__check-label">
+        I agree to the
+        <a href="#" class="form-link auth-panel__text-link">Terms & Conditions</a>
+        and
+        <a href="#" class="form-link auth-panel__text-link">Privacy Policy</a>
       </label>
     </div>
     @if (acceptTermsCtrl.invalid && acceptTermsCtrl.touched) {
-      <span class="form-error">Anda harus menyetujui syarat dan ketentuan.</span>
+      <span class="form-error auth-panel__error-text"
+        >You must accept the terms and conditions.</span
+      >
     }
 
-    <!-- Submit — fluid untuk full width (PrimeNG v21) -->
     <p-button
       type="submit"
-      label="Daftar Sekarang"
+      label="Create Account"
       [loading]="loading()"
       [disabled]="loading()"
+      styleClass="auth-panel__submit auth-panel__action"
       fluid
     />
   </form>
 
-  <p class="register__footer">
-    Sudah punya akun?
-    <a routerLink="/auth/login" class="form-link">Masuk di sini</a>
+  <p class="register__footer auth-panel__footer">
+    Already have an account?
+    <a routerLink="/auth/login" class="form-link auth-panel__text-link">Sign in here</a>
   </p>
 </div>

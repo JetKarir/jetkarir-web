@@ -8,12 +8,13 @@ import { ApiResponse } from '../../model/interface/api-response.interface';
 import {
   LoginRequest,
   LoginResponse,
+  GoogleLoginRequest,
   RegisterRequest,
   RegisterResponse,
   AuthUser,
 } from '../../model/interface/auth.interface';
 
-const BASE = `${environment.API_URL}api/v1`;
+const BASE = `${environment.API_URL}api`;
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -29,28 +30,41 @@ export class AuthService {
     return raw ? JSON.parse(raw) : null;
   }
 
+  private handleAuthSuccess(res: ApiResponse<LoginResponse>) {
+    if (res.success && isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('jk_access_token', res.data.accessToken);
+      localStorage.setItem('jk_refresh_token', res.data.refreshToken);
+      localStorage.setItem('jk_user', JSON.stringify(res.data.user));
+      this.currentUser.set(res.data.user);
+    }
+  }
+
   get isLoggedIn(): boolean {
     if (!isPlatformBrowser(this.platformId)) return false;
     return !!localStorage.getItem('jk_access_token');
   }
 
   login(body: LoginRequest) {
-    return this.http.post<ApiResponse<LoginResponse>>(`${BASE}/auth/login`, body).pipe(
-      tap((res) => {
-        if (res.success && isPlatformBrowser(this.platformId)) {
-          localStorage.setItem('jk_access_token', res.data.accessToken);
-          localStorage.setItem('jk_refresh_token', res.data.refreshToken);
-          localStorage.setItem('jk_user', JSON.stringify(res.data.user));
-          this.currentUser.set(res.data.user);
-        }
-      }),
-      catchError((err) => throwError(() => err))
-    );
+    return this.http
+      .post<ApiResponse<LoginResponse>>(`${environment.API_URL}api/auth/login`, body)
+      .pipe(
+        tap((res) => this.handleAuthSuccess(res)),
+        catchError((err) => throwError(() => err)),
+      );
+  }
+
+  loginWithGoogle(body: GoogleLoginRequest) {
+    return this.http
+      .post<ApiResponse<LoginResponse>>(`${environment.API_URL}api/auth/google`, body)
+      .pipe(
+        tap((res) => this.handleAuthSuccess(res)),
+        catchError((err) => throwError(() => err)),
+      );
   }
 
   register(body: RegisterRequest) {
     return this.http
-      .post<ApiResponse<RegisterResponse>>(`${BASE}/auth/register`, body)
+      .post<ApiResponse<RegisterResponse>>(`${environment.API_URL}api/auth/register`, body)
       .pipe(catchError((err) => throwError(() => err)));
   }
 
@@ -74,7 +88,7 @@ export class AuthService {
             localStorage.setItem('jk_user', JSON.stringify(res.data));
           }
         }
-      })
+      }),
     );
   }
 }

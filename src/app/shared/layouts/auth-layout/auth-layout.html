@@ -3,22 +3,26 @@
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
       <path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" fill="#5f8368" />
       <path d="M14 6L22 10V18L14 22L6 18V10L14 6Z" fill="#fff" opacity="0.3" />
-      <path d="M10 14L13 17L18 11" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <path
+        d="M10 14L13 17L18 11"
+        stroke="#fff"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
     </svg>
     <span>JetKarir</span>
   </a>
-  <p class="auth-layout__tagline">Platform rekrutmen berbasis AI</p>
+  <p class="auth-layout__tagline">AI-powered recruitment platform</p>
 
   <div class="auth-layout__card">
     <router-outlet />
   </div>
 
   <a routerLink="/" class="auth-layout__back">
-    <i class="pi pi-arrow-left"></i>
-    Kembali ke halaman utama
+    <svg [lucideIcon]="backIcon" [size]="16"></svg>
+    <span>Back to homepage</span>
   </a>
 
-  <p class="auth-layout__footer">
-    &copy; 2026 JetKarir. Hak cipta dilindungi.
-  </p>
+  <p class="auth-layout__footer">&copy; 2026 JetKarir. All rights reserved.</p>
 </div>

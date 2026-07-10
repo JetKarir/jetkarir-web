@@ -3,9 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 import { ApiResponse } from '../../../model/interface/api-response.interface';
-import { Application, NotificationItem, CandidateProfile } from '../../../model/interface/application.interface';
+import {
+  Application,
+  NotificationItem,
+  CandidateProfile,
+} from '../../../model/interface/application.interface';
 
-const BASE = `${environment.API_URL}api/v1`;
+const BASE = `${environment.API_URL}api`;
 
 @Injectable({ providedIn: 'root' })
 export class CandidateService {
@@ -49,9 +53,9 @@ export class CandidateService {
 
   getProfileCompletion() {
     return this.http
-      .get<ApiResponse<{ percentage: number; missingFields: string[] }>>(
-        `${BASE}/candidate/profile/completion`
-      )
+      .get<
+        ApiResponse<{ percentage: number; missingFields: string[] }>
+      >(`${BASE}/candidate/profile/completion`)
       .pipe(catchError((err) => throwError(() => err)));
   }
 }

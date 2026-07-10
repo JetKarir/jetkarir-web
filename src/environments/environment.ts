@@ -1,3 +1,3 @@
 export const environment = {
-  API_URL: 'http://api.jetkarir.com/',
+  API_URL: 'https://dev.api.jetkarir.com/',
 };
