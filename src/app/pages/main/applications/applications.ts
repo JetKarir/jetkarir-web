@@ -5,10 +5,23 @@ import { Application } from '../../../core/model/interface/application.interface
 import { TagModule } from 'primeng/tag';
 import { SkeletonModule } from 'primeng/skeleton';
 import { TimelineModule } from 'primeng/timeline';
+import {
+  LucideDynamicIcon,
+  LucideFilePenLine,
+  LucideMapPin,
+  LucideSend,
+  LucideFileCheck,
+  LucidePencil,
+  LucideMessagesSquare,
+  LucideStar,
+  LucideCircleCheckBig,
+  LucideCircleX,
+  LucideCircle,
+} from '@lucide/angular';
 
 @Component({
   selector: 'app-applications',
-  imports: [DatePipe, TagModule, SkeletonModule, TimelineModule],
+  imports: [DatePipe, TagModule, SkeletonModule, TimelineModule, LucideDynamicIcon],
   templateUrl: './applications.html',
   styleUrl: './applications.scss',
 })
@@ -50,31 +63,34 @@ export class ApplicationsPage implements OnInit {
 
   statusLabel(status: string) {
     const map: Record<string, string> = {
-      APPLIED: 'Dilamar',
-      PROCESSING: 'Diproses',
-      SCREENING: 'Seleksi Berkas',
-      ASSESSMENT: 'Tes',
+      APPLIED: 'Applied',
+      PROCESSING: 'Processing',
+      SCREENING: 'Document Screening',
+      ASSESSMENT: 'Assessment',
       INTERVIEW: 'Interview',
-      OFFERED: 'Penawaran',
-      HIRED: 'Diterima',
-      REJECTED: 'Ditolak',
-      WITHDRAWN: 'Ditarik',
+      OFFERED: 'Offered',
+      HIRED: 'Hired',
+      REJECTED: 'Rejected',
+      WITHDRAWN: 'Withdrawn',
     };
     return map[status] ?? status;
   }
 
+  emptyApplicationIcon = LucideFilePenLine;
+  mapPinIcon = LucideMapPin;
+
   stageIcon(stageName: string) {
-    const map: Record<string, string> = {
-      APPLIED: 'pi pi-send',
-      SCREENING: 'pi pi-file-check',
-      ASSESSMENT: 'pi pi-pencil',
-      INTERVIEW: 'pi pi-comments',
-      OFFERED: 'pi pi-star',
-      HIRED: 'pi pi-check-circle',
-      REJECTED: 'pi pi-times-circle',
+    const map = {
+      APPLIED: LucideSend,
+      SCREENING: LucideFileCheck,
+      ASSESSMENT: LucidePencil,
+      INTERVIEW: LucideMessagesSquare,
+      OFFERED: LucideStar,
+      HIRED: LucideCircleCheckBig,
+      REJECTED: LucideCircleX,
     };
-    const key = stageName.toUpperCase();
-    return map[key] ?? 'pi pi-circle';
+    const key = stageName.toUpperCase() as keyof typeof map;
+    return map[key] ?? LucideCircle;
   }
 
   skeletons = Array(4).fill(0);

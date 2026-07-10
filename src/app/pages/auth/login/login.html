@@ -1,75 +1,114 @@
 <p-toast />
 
-<div class="login">
-  <div class="login__header">
-    <h1 class="login__title">Selamat Datang</h1>
-    <p class="login__subtitle">Masuk ke akun JetKarir Anda</p>
+<div class="login auth-panel">
+  <div class="login__header auth-panel__header">
+    <h1 class="login__title auth-panel__title">Sign in</h1>
+    <p class="login__subtitle auth-panel__subtitle">
+      Access your JetKarir account and continue your career journey.
+    </p>
   </div>
 
   @if (errorMessage()) {
-    <div class="login__error">
-      <i class="pi pi-exclamation-circle"></i>
+    <div class="login__error auth-panel__alert">
+      <svg [lucideIcon]="alertIcon" [size]="18"></svg>
       {{ errorMessage() }}
     </div>
   }
 
-  <form [formGroup]="form" (ngSubmit)="submit()" class="login__form" novalidate>
-    <!-- Email -->
-    <div class="form-field">
-      <label for="email" class="form-label">Email</label>
+  <form [formGroup]="form" (ngSubmit)="submit()" class="login__form auth-panel__form" novalidate>
+    <div class="form-field auth-panel__field">
+      <label for="email" class="form-label auth-panel__label">Email</label>
       <input
         pInputText
         id="email"
         type="email"
         formControlName="email"
-        placeholder="nama@email.com"
-        class="form-input"
+        placeholder="name@email.com"
+        class="form-input auth-panel__input"
         autocomplete="email"
         fluid
       />
       @if (emailCtrl.invalid && emailCtrl.touched) {
-        <span class="form-error">
-          @if (emailCtrl.errors?.['required']) { Email wajib diisi. }
-          @else if (emailCtrl.errors?.['email']) { Format email tidak valid. }
+        <span class="form-error auth-panel__error-text">
+          @if (emailCtrl.errors?.['required']) {
+            Email is required.
+          } @else if (emailCtrl.errors?.['email']) {
+            Invalid email format.
+          }
         </span>
       }
     </div>
 
-    <!-- Password -->
-    <div class="form-field">
-      <div class="form-label-row">
-        <label for="password" class="form-label">Password</label>
-        <a href="#" class="form-link">Lupa password?</a>
+    <div class="form-field auth-panel__field">
+      <div class="form-label-row auth-panel__label-row">
+        <label for="password" class="form-label auth-panel__label">Password</label>
+        <a href="#" class="form-link auth-panel__text-link">Forgot password?</a>
       </div>
       <p-password
         inputId="password"
         formControlName="password"
-        placeholder="Masukkan password"
+        placeholder="Enter your password"
         [feedback]="false"
         [toggleMask]="true"
         fluid
         autocomplete="current-password"
       />
       @if (passwordCtrl.invalid && passwordCtrl.touched) {
-        <span class="form-error">
-          @if (passwordCtrl.errors?.['required']) { Password wajib diisi. }
-          @else if (passwordCtrl.errors?.['minlength']) { Password minimal 6 karakter. }
+        <span class="form-error auth-panel__error-text">
+          @if (passwordCtrl.errors?.['required']) {
+            Password is required.
+          } @else if (passwordCtrl.errors?.['minlength']) {
+            Password must be at least 6 characters.
+          }
         </span>
       }
     </div>
 
-    <!-- Submit — fluid makes it full width (PrimeNG v21) -->
     <p-button
       type="submit"
-      label="Masuk"
+      label="Sign In"
       [loading]="loading()"
       [disabled]="loading()"
+      styleClass="auth-panel__submit auth-panel__action"
       fluid
     />
+
+    <div class="auth-panel__divider">
+      <span>or continue with</span>
+    </div>
+
+    <button
+      type="button"
+      class="login__social-btn auth-panel__social-btn auth-panel__action"
+      [disabled]="loading()"
+      (click)="loginWithGoogle()"
+    >
+      <span class="login__social-icon auth-panel__social-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path
+            fill="#EA4335"
+            d="M12 10.2v3.9h5.4c-.2 1.3-.8 2.4-1.7 3.1l3 2.3c1.8-1.6 2.8-4.1 2.8-7 0-.7-.1-1.5-.2-2.2H12z"
+          />
+          <path
+            fill="#34A853"
+            d="M12 21c2.4 0 4.5-.8 6-2.2l-3-2.3c-.8.6-1.8 1-3 1-2.3 0-4.2-1.5-4.9-3.6l-3.1 2.4C5.4 18.9 8.4 21 12 21z"
+          />
+          <path
+            fill="#4A90E2"
+            d="M7.1 13.9c-.2-.6-.3-1.2-.3-1.9s.1-1.3.3-1.9L4 7.7C3.4 8.9 3 10.4 3 12s.4 3.1 1 4.3l3.1-2.4z"
+          />
+          <path
+            fill="#FBBC05"
+            d="M12 6.5c1.3 0 2.5.5 3.4 1.3l2.6-2.6C16.5 3.8 14.4 3 12 3 8.4 3 5.4 5.1 4 7.7l3.1 2.4C7.8 8 9.7 6.5 12 6.5z"
+          />
+        </svg>
+      </span>
+      <span>Sign in with Google</span>
+    </button>
   </form>
 
-  <p class="login__footer">
-    Belum punya akun?
-    <a routerLink="/auth/register" class="form-link">Daftar sekarang</a>
+  <p class="login__footer auth-panel__footer">
+    Don’t have an account?
+    <a routerLink="/auth/register" class="form-link auth-panel__text-link">Sign up now</a>
   </p>
 </div>

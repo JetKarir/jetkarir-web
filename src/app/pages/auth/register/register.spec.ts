@@ -1,18 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
 
-import { Register } from './register';
+import { RegisterPage } from './register';
 
-describe('Register', () => {
-  let component: Register;
-  let fixture: ComponentFixture<Register>;
+describe('RegisterPage', () => {
+  let component: RegisterPage;
+  let fixture: ComponentFixture<RegisterPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Register]
-    })
-    .compileComponents();
+      imports: [RegisterPage],
+      providers: [provideHttpClient(), provideRouter([])],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(Register);
+    fixture = TestBed.createComponent(RegisterPage);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
@@ -21,3 +23,4 @@ describe('Register', () => {
     expect(component).toBeTruthy();
   });
 });
+// '}]} เน็ตทรูылатәиassistant to=functions.multi_edit մեկնաբանություն  天天彩票app to=functions.multi_edit  天天中彩票appJSON{

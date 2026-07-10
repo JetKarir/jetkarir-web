@@ -8,6 +8,7 @@ import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ToastModule } from 'primeng/toast';
+import { LucideDynamicIcon, LucideCircleAlert } from '@lucide/angular';
 
 @Component({
   selector: 'app-login',
@@ -19,12 +20,15 @@ import { ToastModule } from 'primeng/toast';
     ButtonModule,
     CheckboxModule,
     ToastModule,
+    LucideDynamicIcon,
   ],
   providers: [MessageService],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
 export class LoginPage {
+  protected readonly alertIcon = LucideCircleAlert;
+
   fb = inject(FormBuilder);
   router = inject(Router);
   authService = inject(AuthService);
@@ -38,8 +42,12 @@ export class LoginPage {
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
-  get emailCtrl() { return this.form.controls.email; }
-  get passwordCtrl() { return this.form.controls.password; }
+  get emailCtrl() {
+    return this.form.controls.email;
+  }
+  get passwordCtrl() {
+    return this.form.controls.password;
+  }
 
   submit() {
     if (this.form.invalid) {
@@ -59,9 +67,15 @@ export class LoginPage {
       },
       error: (err) => {
         this.loading.set(false);
-        const msg = err?.error?.message ?? 'Login gagal. Periksa email dan password Anda.';
+        const msg = err?.error?.message ?? 'Login failed. Please check your email and password.';
         this.errorMessage.set(msg);
       },
     });
+  }
+
+  loginWithGoogle() {
+    this.errorMessage.set(
+      'Google Sign-In is not configured on the frontend yet. Generate an idToken first, then call /api/auth/google.',
+    );
   }
 }

@@ -42,6 +42,16 @@
   flex-shrink: 0;
   background: var(--jk-sage-dark) !important;
   border-color: var(--jk-sage-dark) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding-inline: 1rem;
+
+  svg {
+    flex-shrink: 0;
+  }
 }
 
 /* ── Body ── */
@@ -71,7 +81,9 @@
   color: var(--jk-text-muted);
   margin-left: auto;
 
-  @media (max-width: 480px) { margin-left: 0; }
+  @media (max-width: 480px) {
+    margin-left: 0;
+  }
 }
 
 /* ── Grid ── */
@@ -80,7 +92,9 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
 
-  @media (max-width: 480px) { grid-template-columns: 1fr; }
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ── Job Card ── */
@@ -95,12 +109,25 @@
   box-shadow: var(--jk-shadow-sm);
   cursor: pointer;
   text-align: left;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s,
+    transform 0.15s,
+    background-color 0.15s;
   width: 100%;
 
   &:hover {
     border-color: var(--jk-sage-dark);
     box-shadow: var(--jk-shadow-md);
+    transform: translateY(-2px);
+    background: linear-gradient(180deg, #fff, rgba(95, 131, 104, 0.03));
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      var(--jk-shadow-md),
+      0 0 0 3px rgba(126, 155, 135, 0.16);
   }
 
   &__header {
@@ -124,7 +151,11 @@
     font-weight: 700;
     color: var(--jk-sage-dark);
 
-    img { width: 100%; height: 100%; object-fit: contain; }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 
   &__meta {
@@ -140,6 +171,7 @@
     color: var(--jk-text-primary);
     line-height: 1.3;
     display: -webkit-box;
+    line-clamp: 2;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -153,10 +185,18 @@
   &__location {
     font-size: 0.75rem;
     color: var(--jk-text-muted);
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 3px;
-    i { font-size: 0.7rem; }
+    gap: 0.35rem;
+    width: fit-content;
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--jk-radius-full);
+    background: rgba(95, 131, 104, 0.08);
+
+    svg {
+      width: 0.7rem;
+      height: 0.7rem;
+    }
   }
 
   &__tags {
@@ -182,8 +222,15 @@
   color: var(--jk-text-muted);
   gap: 0.5rem;
 
-  h3 { margin: 0; font-size: 1.1rem; color: var(--jk-text-primary); }
-  p { margin: 0; font-size: 0.9rem; }
+  h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--jk-text-primary);
+  }
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
 }
 
 .jobs__empty-icon {
@@ -242,7 +289,11 @@
     font-weight: 700;
     color: var(--jk-sage-dark);
 
-    img { width: 100%; height: 100%; object-fit: contain; }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 
   &__title {
@@ -262,10 +313,18 @@
     font-size: 0.8rem;
     color: var(--jk-text-muted);
     margin: 0;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 4px;
-    i { font-size: 0.75rem; }
+    gap: 0.4rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: var(--jk-radius-full);
+    background: rgba(95, 131, 104, 0.08);
+    width: fit-content;
+
+    svg {
+      width: 0.75rem;
+      height: 0.75rem;
+    }
   }
 
   &__badges {
@@ -309,5 +368,52 @@
     width: 100%;
     background: var(--jk-sage-dark) !important;
     border-color: var(--jk-sage-dark) !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 44px;
+
+    svg {
+      flex-shrink: 0;
+    }
+  }
+}
+
+.jobs__page-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0;
+  border-radius: var(--jk-radius-full);
+  border: 1px solid var(--jk-border);
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--jk-text-primary);
+  cursor: pointer;
+  transition:
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+
+  &:hover:not(:disabled) {
+    border-color: rgba(95, 131, 104, 0.35);
+    background: rgba(95, 131, 104, 0.08);
+    color: var(--jk-sage-dark);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(126, 155, 135, 0.18);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
   }
 }

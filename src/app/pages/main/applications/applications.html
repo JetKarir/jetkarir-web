@@ -1,8 +1,8 @@
 <div class="apps">
   <div class="jk-container">
     <div class="apps__header">
-      <h1 class="apps__title">Lamaran Saya</h1>
-      <span class="apps__count">{{ applications().length }} lamaran</span>
+      <h1 class="apps__title">My Applications</h1>
+      <span class="apps__count">{{ applications().length }} applications</span>
     </div>
 
     @if (loading()) {
@@ -20,9 +20,9 @@
       </div>
     } @else if (applications().length === 0) {
       <div class="apps__empty">
-        <i class="pi pi-file-edit apps__empty-icon"></i>
-        <h3>Belum ada lamaran</h3>
-        <p>Mulai melamar pekerjaan impian Anda sekarang!</p>
+        <svg [lucideIcon]="emptyApplicationIcon" [size]="44" class="apps__empty-icon"></svg>
+        <h3>No applications yet</h3>
+        <p>Start applying for your dream job now!</p>
       </div>
     } @else {
       <div class="apps__list">
@@ -43,20 +43,18 @@
               <span class="app-item__company">{{ app.companyName }}</span>
               @if (app.city) {
                 <span class="app-item__loc">
-                  <i class="pi pi-map-marker"></i> {{ app.city }}
+                  <svg [lucideIcon]="mapPinIcon" [size]="15"></svg>
+                  {{ app.city }}
                 </span>
               }
               <span class="app-item__date">
-                Dilamar {{ app.appliedAt | date:'dd MMM yyyy' }}
+                Applied on {{ app.appliedAt | date: 'dd MMM yyyy' }}
               </span>
             </div>
 
             <!-- Status -->
             <div class="app-item__right">
-              <p-tag
-                [value]="statusLabel(app.status)"
-                [severity]="statusSeverity(app.status)"
-              />
+              <p-tag [value]="statusLabel(app.status)" [severity]="statusSeverity(app.status)" />
             </div>
           </div>
 
@@ -70,7 +68,7 @@
                     [class.timeline-marker--done]="stage.status === 'COMPLETED'"
                     [class.timeline-marker--active]="stage.status === 'STARTED'"
                   >
-                    <i [class]="stageIcon(stage.name)"></i>
+                    <svg [lucideIcon]="stageIcon(stage.name)" [size]="16"></svg>
                   </div>
                 </ng-template>
                 <ng-template #content let-stage>
@@ -78,7 +76,7 @@
                     <span class="timeline-content__name">{{ stage.name }}</span>
                     @if (stage.completedAt) {
                       <span class="timeline-content__date">
-                        {{ stage.completedAt | date:'dd MMM yyyy' }}
+                        {{ stage.completedAt | date: 'dd MMM yyyy' }}
                       </span>
                     }
                     @if (stage.decision) {

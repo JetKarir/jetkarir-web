@@ -4,10 +4,21 @@ import { CandidateService } from '../../../core/service/main/candidate/candidate
 import { NotificationItem } from '../../../core/model/interface/application.interface';
 import { ButtonModule } from 'primeng/button';
 import { SkeletonModule } from 'primeng/skeleton';
+import {
+  LucideDynamicIcon,
+  LucideCircleCheckBig,
+  LucideFileCheck,
+  LucideMessagesSquare,
+  LucideStar,
+  LucideCircleX,
+  LucideInfo,
+  LucideBell,
+  LucideBellOff,
+} from '@lucide/angular';
 
 @Component({
   selector: 'app-notifications',
-  imports: [DatePipe, ButtonModule, SkeletonModule],
+  imports: [DatePipe, ButtonModule, SkeletonModule, LucideDynamicIcon],
   templateUrl: './notifications.html',
   styleUrl: './notifications.scss',
 })
@@ -33,7 +44,7 @@ export class NotificationsPage implements OnInit {
     this.candidateService.markNotificationRead(id).subscribe({
       next: () => {
         this.notifications.update((list) =>
-          list.map((n) => (n.id === id ? { ...n, isRead: true } : n))
+          list.map((n) => (n.id === id ? { ...n, isRead: true } : n)),
         );
       },
     });
@@ -47,15 +58,18 @@ export class NotificationsPage implements OnInit {
     });
   }
 
+  markAllReadIcon = LucideCircleCheckBig;
+  emptyBellIcon = LucideBellOff;
+
   typeIcon(type: string) {
-    const map: Record<string, string> = {
-      APPLICATION_UPDATE: 'pi pi-file-check',
-      INTERVIEW_INVITATION: 'pi pi-comments',
-      OFFER: 'pi pi-star',
-      REJECTION: 'pi pi-times-circle',
-      SYSTEM: 'pi pi-info-circle',
+    const map = {
+      APPLICATION_UPDATE: LucideFileCheck,
+      INTERVIEW_INVITATION: LucideMessagesSquare,
+      OFFER: LucideStar,
+      REJECTION: LucideCircleX,
+      SYSTEM: LucideInfo,
     };
-    return map[type] ?? 'pi pi-bell';
+    return map[type as keyof typeof map] ?? LucideBell;
   }
 
   skeletons = Array(5).fill(0);

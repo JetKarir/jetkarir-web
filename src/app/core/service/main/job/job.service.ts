@@ -6,7 +6,7 @@ import { ApiResponse } from '../../../model/interface/api-response.interface';
 import { JobListItem, JobDetail, JobSearchParams } from '../../../model/interface/job.interface';
 import { ApplyRequest } from '../../../model/interface/application.interface';
 
-const BASE = `${environment.API_URL}api/v1`;
+const BASE = `${environment.API_URL}api`;
 
 @Injectable({ providedIn: 'root' })
 export class JobService {
@@ -31,13 +31,11 @@ export class JobService {
     }
     if (params.employmentTypeIds?.length) {
       params.employmentTypeIds.forEach(
-        (id) => (httpParams = httpParams.append('employmentTypeIds', id))
+        (id) => (httpParams = httpParams.append('employmentTypeIds', id)),
       );
     }
     if (params.careerLevelIds?.length) {
-      params.careerLevelIds.forEach(
-        (id) => (httpParams = httpParams.append('careerLevelIds', id))
-      );
+      params.careerLevelIds.forEach((id) => (httpParams = httpParams.append('careerLevelIds', id)));
     }
 
     return this.http

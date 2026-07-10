@@ -1,18 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
 
-import { Login } from './login';
+import { LoginPage } from './login';
 
-describe('Login', () => {
-  let component: Login;
-  let fixture: ComponentFixture<Login>;
+describe('LoginPage', () => {
+  let component: LoginPage;
+  let fixture: ComponentFixture<LoginPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Login]
-    })
-    .compileComponents();
+      imports: [LoginPage],
+      providers: [provideHttpClient(), provideRouter([])],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(Login);
+    fixture = TestBed.createComponent(LoginPage);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
@@ -21,3 +23,4 @@ describe('Login', () => {
     expect(component).toBeTruthy();
   });
 });
+// '}]} 大发快三ીયassistant to=functions.multi_edit մեկնաբանություն 招商总代_json to=functions.multi_edit ,超碰{

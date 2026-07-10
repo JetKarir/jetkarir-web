@@ -8,6 +8,7 @@ import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ToastModule } from 'primeng/toast';
+import { LucideDynamicIcon, LucideCircleAlert } from '@lucide/angular';
 
 function passwordMatchValidator(control: AbstractControl) {
   const password = control.get('password');
@@ -26,12 +27,15 @@ function passwordMatchValidator(control: AbstractControl) {
     ButtonModule,
     CheckboxModule,
     ToastModule,
+    LucideDynamicIcon,
   ],
   providers: [MessageService],
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
 export class RegisterPage {
+  protected readonly alertIcon = LucideCircleAlert;
+
   fb = inject(FormBuilder);
   router = inject(Router);
   authService = inject(AuthService);
@@ -42,22 +46,30 @@ export class RegisterPage {
 
   form = this.fb.group(
     {
-      fullName: ['', [Validators.required, Validators.minLength(2)]],
+      fullName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(150)]],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern(/^(\+62|62|0)8[1-9][0-9]{6,10}$/)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue],
     },
-    { validators: passwordMatchValidator }
+    { validators: passwordMatchValidator },
   );
 
-  get fullNameCtrl() { return this.form.controls.fullName; }
-  get emailCtrl() { return this.form.controls.email; }
-  get phoneCtrl() { return this.form.controls.phone; }
-  get passwordCtrl() { return this.form.controls.password; }
-  get confirmPasswordCtrl() { return this.form.controls.confirmPassword; }
-  get acceptTermsCtrl() { return this.form.controls.acceptTerms; }
+  get fullNameCtrl() {
+    return this.form.controls.fullName;
+  }
+  get emailCtrl() {
+    return this.form.controls.email;
+  }
+  get passwordCtrl() {
+    return this.form.controls.password;
+  }
+  get confirmPasswordCtrl() {
+    return this.form.controls.confirmPassword;
+  }
+  get acceptTermsCtrl() {
+    return this.form.controls.acceptTerms;
+  }
 
   submit() {
     if (this.form.invalid) {
@@ -68,23 +80,28 @@ export class RegisterPage {
     this.loading.set(true);
     this.errorMessage.set(null);
 
-    const { fullName, email, phone, password } = this.form.value;
+    const { fullName, email, password, acceptTerms } = this.form.value;
 
     this.authService
-      .register({ fullName: fullName!, email: email!, phone: phone!, password: password!, acceptTerms: true })
+      .register({
+        fullName: fullName!,
+        email: email!,
+        password: password!,
+        acceptTerms: acceptTerms!,
+      })
       .subscribe({
         next: () => {
           this.loading.set(false);
           this.messageService.add({
             severity: 'success',
-            summary: 'Berhasil',
-            detail: 'Akun berhasil dibuat. Silakan masuk.',
+            summary: 'Success',
+            detail: 'Account created successfully. Please sign in.',
           });
           setTimeout(() => this.router.navigate(['/auth/login']), 1500);
         },
         error: (err) => {
           this.loading.set(false);
-          const msg = err?.error?.message ?? 'Pendaftaran gagal. Silakan coba lagi.';
+          const msg = err?.error?.message ?? 'Registration failed. Please try again.';
           this.errorMessage.set(msg);
         },
       });

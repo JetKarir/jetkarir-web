@@ -19,7 +19,6 @@
           }
           @if (profile()?.city) {
             <span class="profile__loc">
-              <i class="pi pi-map-marker"></i>
               {{ profile()!.city }}{{ profile()!.province ? ', ' + profile()!.province : '' }}
             </span>
           }
@@ -48,7 +47,7 @@
       <!-- Summary -->
       @if (profile()?.summary) {
         <section class="profile__section">
-          <h2 class="profile__section-title">Ringkasan</h2>
+          <h2 class="profile__section-title">Summary</h2>
           <p class="profile__text">{{ profile()!.summary }}</p>
         </section>
       }
@@ -56,7 +55,7 @@
       <!-- Skills -->
       @if (profile()?.skills?.length) {
         <section class="profile__section">
-          <h2 class="profile__section-title">Keahlian</h2>
+          <h2 class="profile__section-title">Skills</h2>
           <div class="profile__skills">
             @for (skill of profile()!.skills!; track skill.skillId) {
               <span class="jk-badge jk-badge--sage">{{ skill.skillName }}</span>
@@ -68,7 +67,7 @@
       <!-- Experience -->
       @if (profile()?.experiences?.length) {
         <section class="profile__section">
-          <h2 class="profile__section-title">Pengalaman Kerja</h2>
+          <h2 class="profile__section-title">Work Experience</h2>
           <div class="profile__exp-list">
             @for (exp of profile()!.experiences!; track exp.id) {
               <div class="exp-item">
@@ -77,9 +76,9 @@
                   <span class="exp-item__position">{{ exp.position }}</span>
                   <span class="exp-item__company">{{ exp.companyName }}</span>
                   <span class="exp-item__period">
-                    {{ exp.startDate | date:'MMM y' }}
+                    {{ exp.startDate | date: 'MMM y' }}
                     –
-                    {{ exp.isCurrent ? 'Sekarang' : (exp.endDate | date:'MMM y') }}
+                    {{ exp.isCurrent ? 'Present' : (exp.endDate | date: 'MMM y') }}
                   </span>
                 </div>
               </div>
@@ -91,7 +90,7 @@
       <!-- Education -->
       @if (profile()?.educations?.length) {
         <section class="profile__section">
-          <h2 class="profile__section-title">Pendidikan</h2>
+          <h2 class="profile__section-title">Education</h2>
           <div class="profile__exp-list">
             @for (edu of profile()!.educations!; track edu.id) {
               <div class="exp-item">
@@ -105,7 +104,7 @@
                   }
                   @if (edu.startYear || edu.endYear) {
                     <span class="exp-item__period">
-                      {{ edu.startYear }} – {{ edu.endYear ?? 'Sekarang' }}
+                      {{ edu.startYear }} – {{ edu.endYear ?? 'Present' }}
                     </span>
                   }
                 </div>
@@ -117,9 +116,8 @@
 
       @if (!profile()) {
         <div class="profile__empty">
-          <i class="pi pi-user-edit profile__empty-icon"></i>
-          <h3>Profil belum dilengkapi</h3>
-          <p>Lengkapi profil Anda untuk meningkatkan peluang diterima.</p>
+          <h3>Profile is incomplete</h3>
+          <p>Complete your profile to improve your chances of getting hired.</p>
         </div>
       }
     }

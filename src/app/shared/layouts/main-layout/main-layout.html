@@ -7,7 +7,13 @@
         <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
           <path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" fill="#5f8368" />
           <path d="M14 6L22 10V18L14 22L6 18V10L14 6Z" fill="#fff" opacity="0.3" />
-          <path d="M10 14L13 17L18 11" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path
+            d="M10 14L13 17L18 11"
+            stroke="#fff"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
         </svg>
         <span>JetKarir</span>
       </a>
@@ -16,12 +22,8 @@
       <ul class="navbar__links">
         @for (item of navItems; track item.route) {
           <li>
-            <a
-              [routerLink]="item.route"
-              routerLinkActive="active"
-              class="navbar__link"
-            >
-              <i [class]="item.icon"></i>
+            <a [routerLink]="item.route" routerLinkActive="active" class="navbar__link">
+              <svg [lucideIcon]="item.icon" [size]="18"></svg>
               {{ item.label }}
             </a>
           </li>
@@ -30,29 +32,23 @@
 
       <!-- Right actions -->
       <div class="navbar__actions">
-        <a routerLink="/notifications" class="navbar__icon-btn" title="Notifikasi">
-          <i class="pi pi-bell"></i>
+        <a routerLink="/notifications" class="navbar__icon-btn" title="Notifications">
+          <svg [lucideIcon]="notificationIcon" [size]="18"></svg>
         </a>
 
         @if (user()) {
           <div class="navbar__user">
-            <p-avatar
-              [label]="userInitials()"
-              shape="circle"
-              class="navbar__avatar"
-            />
+            <p-avatar [label]="userInitials()" shape="circle" class="navbar__avatar" />
             <div class="navbar__user-info">
               <span class="navbar__user-name">{{ user()?.fullName }}</span>
               <span class="navbar__user-email">{{ user()?.email }}</span>
             </div>
-            <button class="navbar__logout" (click)="logout()" title="Keluar">
-              <i class="pi pi-sign-out"></i>
+            <button class="navbar__logout" (click)="logout()" title="Sign Out">
+              <svg [lucideIcon]="logoutIcon" [size]="18"></svg>
             </button>
           </div>
         } @else {
-          <a routerLink="/auth/login" class="navbar__login-btn">
-            Masuk
-          </a>
+          <a routerLink="/auth/login" class="navbar__login-btn"> Sign In </a>
         }
       </div>
     </div>
@@ -62,7 +58,7 @@
   <nav class="bottom-nav">
     @for (item of navItems; track item.route) {
       <a [routerLink]="item.route" routerLinkActive="active" class="bottom-nav__item">
-        <i [class]="item.icon"></i>
+        <svg [lucideIcon]="item.icon" [size]="18"></svg>
         <span>{{ item.label }}</span>
       </a>
     }
