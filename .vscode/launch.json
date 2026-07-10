@@ -6,21 +6,21 @@
       "type": "msedge",
       "request": "launch",
       "preLaunchTask": "npm: start",
-      "url": "http://localhost:4205/",
+      "url": "http://localhost:4205/"
     },
     {
       "name": "ng test (Edge)",
       "type": "msedge",
       "request": "launch",
-      "url": "http://localhost:9876/debug.html",
+      "preLaunchTask": "npm: test",
+      "url": "http://localhost:9876/debug.html"
     }
   ],
-  // Trik VS Code: Tambahkan properti compound ini di luar configurations
   "compounds": [
     {
       "name": "ng serve (Edge)",
       "configurations": ["ng serve (Edge)"],
-      "stopAll": true // Ini yang bertugas melakukan Ctrl+C otomatis saat browser ditutup
+      "stopAll": true
     }
   ]
 }

@@ -8,7 +8,8 @@
     "build": "ng build",
     "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "set \"CHROME_BIN=C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe\" && ng test --watch=false --browsers=ChromeHeadless",
+    "test:watch": "set \"CHROME_BIN=C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe\" && ng test",
     "serve:ssr:jetkarir-web": "node dist/jetkarir-web/server/server.mjs"
   },
   "prettier": {

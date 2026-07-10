@@ -24,4 +24,3 @@ describe('App', () => {
     expect(compiled.querySelector('router-outlet')).not.toBeNull();
   });
 });
-// '}]}】【：】【“】【assistant to=functions.multi_edit კომენტary  ปมถวายสัตย์ฯ to=functions.multi_edit  天天送钱彩票াটা{
