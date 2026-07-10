@@ -18,14 +18,22 @@
         </div>
 
         <!-- Stats cards -->
-        <div class="home__stats">
+        <div class="home__stats home__stats--4">
           <div class="stat-card">
-            <span class="stat-card__number">{{ applications().length }}</span>
-            <span class="stat-card__label">Applications</span>
+            <span class="stat-card__number">{{ appliedCount() }}</span>
+            <span class="stat-card__label">Applied</span>
           </div>
           <div class="stat-card stat-card--accent">
-            <span class="stat-card__number">{{ jobs().length }}</span>
-            <span class="stat-card__label">Recommendations</span>
+            <span class="stat-card__number">{{ savedCount() }}</span>
+            <span class="stat-card__label">Saved</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number">{{ inProgressCount() }}</span>
+            <span class="stat-card__label">In Progress</span>
+          </div>
+          <div class="stat-card stat-card--accent">
+            <span class="stat-card__number">{{ acceptedCount() }}</span>
+            <span class="stat-card__label">Accepted</span>
           </div>
         </div>
       </div>

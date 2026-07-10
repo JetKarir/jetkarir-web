@@ -48,6 +48,22 @@ export class HomePage implements OnInit {
   applicationIcon = LucideFilePenLine;
   briefcaseIcon = LucideBriefcase;
 
+  appliedCount = computed(
+    () => this.applications().filter((application) => application.status === 'APPLIED').length,
+  );
+  savedCount = computed(() => Math.min(this.jobs().length, 3));
+  inProgressCount = computed(
+    () =>
+      this.applications().filter((application) =>
+        ['PROCESSING', 'SCREENING', 'ASSESSMENT', 'INTERVIEW'].includes(application.status),
+      ).length,
+  );
+  acceptedCount = computed(
+    () =>
+      this.applications().filter((application) => ['OFFERED', 'HIRED'].includes(application.status))
+        .length,
+  );
+
   get greeting() {
     const hour = new Date().getHours();
     if (hour < 12) return 'Good Morning';

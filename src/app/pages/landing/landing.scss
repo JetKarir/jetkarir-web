@@ -1,6 +1,19 @@
 .landing {
   min-height: 100vh;
-  background: #faf9f6;
-  color: #292d2f;
-  font-family: 'Inter', -apple-system, sans-serif;
+  position: relative;
+  color: var(--jk-text-primary);
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 12% 22%, rgba(214, 0, 28, 0.14), transparent 0 22%),
+      radial-gradient(circle at 88% 10%, rgba(17, 70, 143, 0.2), transparent 0 24%);
+    opacity: 0.85;
+    z-index: -1;
+  }
 }

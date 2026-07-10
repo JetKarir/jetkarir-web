@@ -1,39 +1,44 @@
 @use '../shared' as *;
 
 .lp-companies {
-  padding: 2.5rem 0;
-  border-top: 1px solid #dedad2;
-  border-bottom: 1px solid #dedad2;
-  background: #fff;
+  padding: 2.25rem 0;
 
   &__label {
     text-align: center;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: #9ca3af;
-    margin-bottom: 1.25rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--jk-text-muted);
+    margin-bottom: 1.4rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
   }
 
   &__logos {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
     flex-wrap: wrap;
   }
 
   &__logo {
-    font-size: 0.925rem;
+    padding: 0.72rem 1rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--jk-shadow-sm);
+    color: var(--jk-cloud);
+    font-size: 0.84rem;
     font-weight: 700;
-    color: #c4bfb5;
-    padding: 0.375rem 1rem;
-    border: 1px solid #dedad2;
-    border-radius: 8px;
-    letter-spacing: 0.02em;
-    transition: color 0.2s;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition:
+      transform 0.18s ease,
+      border-color 0.18s ease;
 
-    &:hover { color: #5f8368; border-color: #5f8368; }
+    &:hover {
+      transform: translateY(-2px);
+      border-color: rgba(218, 18, 18, 0.25);
+    }
   }
 }
