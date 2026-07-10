@@ -20,18 +20,19 @@
           Start Free Now
           <svg [lucideIcon]="arrowRightIcon" [size]="18"></svg>
         </a>
-        <a routerLink="/auth/login" class="lp-btn lp-btn--outline lp-btn--lg">
-          Already have an account? Sign in
-        </a>
       </div>
       <div class="lp-hero__trust">
         <span>Trusted by</span>
         <strong>200,000+</strong>
-        <span>job seekers in Indonesia</span>
+        <span>job seekers worldwide</span>
       </div>
     </div>
     <div class="lp-hero__visual">
-      <div class="lp-card-preview">
+      <div class="lp-float lp-float--1">
+        <svg [lucideIcon]="checkCircleIcon" [size]="16"></svg>
+        Application received!
+      </div>
+      <div class="lp-card-preview jk-shimmer">
         <div class="lp-card-preview__header">
           <div class="lp-card-preview__avatar">RA</div>
           <div>
@@ -60,14 +61,10 @@
           <p>AI is analyzing your profile...</p>
         </div>
       </div>
-      <svg [lucideIcon]="checkCircleIcon" [size]="16"></svg>
-      Application received!
-    </div>
-    <div class="lp-float lp-float--2">
-      <svg [lucideIcon]="bellIcon" [size]="16"></svg>
-      Interview tomorrow at 10:00
-
-      <div class="lp-float lp-float--2">Interview tomorrow at 10:00</div>
+      <div class="lp-float lp-float--2">
+        <svg [lucideIcon]="bellIcon" [size]="16"></svg>
+        Interview tomorrow at 10:00
+      </div>
     </div>
   </div>
 </section>

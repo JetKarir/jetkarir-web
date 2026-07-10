@@ -1,51 +1,54 @@
 @use '../shared' as *;
 
 .lp-steps {
-  padding: 5rem 0;
-  background: #fff;
+  padding: 3.5rem 0;
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    position: relative;
+    gap: 1.25rem;
 
-    @media (max-width: 768px) { grid-template-columns: 1fr; }
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 28px;
-      left: calc(16.67% + 24px);
-      right: calc(16.67% + 24px);
-      height: 2px;
-      background: linear-gradient(90deg, #5f8368, #dedad2);
-
-      @media (max-width: 768px) { display: none; }
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
     }
   }
 }
 
 .lp-step {
-  text-align: center;
   position: relative;
+  padding: 1.45rem 1.2rem;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: var(--jk-shadow-sm);
+  backdrop-filter: blur(18px);
 
   &__num {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: #5f8368;
-    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--jk-racing-red), #ff5858);
+    color: white;
     font-size: 1rem;
     font-weight: 800;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1.25rem;
-    position: relative;
-    z-index: 1;
+    margin: 0 0 1.25rem;
+    box-shadow: var(--jk-shadow-sm);
   }
 
-  &__title { font-size: 1.125rem; font-weight: 700; color: #1a1d1f; margin: 0 0 0.625rem; }
-  &__desc { font-size: 0.875rem; color: #6b7280; line-height: 1.6; margin: 0; }
+  &__title {
+    font-size: 1.05rem;
+    color: white;
+    margin: 0 0 0.625rem;
+    text-transform: uppercase;
+  }
+
+  &__desc {
+    font-size: 0.9rem;
+    color: var(--jk-text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
 }
