@@ -1,0 +1,43 @@
+/* Stitch design tokens — imported by each section component */
+$lp-primary: #021541;
+$lp-on-primary: #ffffff;
+$lp-secondary: #785900;
+$lp-secondary-container: #fdc003;
+$lp-on-secondary-container: #6c5000;
+$lp-background: #f8f9ff;
+$lp-surface: #f8f9ff;
+$lp-surface-container: #e5eeff;
+$lp-on-surface: #0b1c30;
+$lp-on-surface-variant: #45464f;
+$lp-outline-variant: #c5c6d0;
+$lp-on-primary-container: #8393c5;
+$lp-secondary-fixed: #ffdf9e;
+
+.lp-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.lp-section-header {
+  margin-bottom: 2.5rem;
+}
+
+.lp-section-title {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2rem);
+  font-weight: 600;
+  color: $lp-primary;
+  margin: 0 0 0.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.lp-section-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.125rem;
+  color: $lp-on-surface-variant;
+  line-height: 1.75;
+  max-width: 40rem;
+  margin: 0;
+}

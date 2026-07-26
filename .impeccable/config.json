@@ -1,0 +1,28 @@
+{
+  "detector": {
+    "ignoreRules": [
+      "codex-grid-background"
+    ],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "plus jakarta sans",
+        "createdAt": "2026-07-26T11:53:51.722Z",
+        "reason": "Existing dark-theme design for auth/main pages, predates landing redesign"
+      },
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-07-26T11:53:51.798Z",
+        "reason": "Specified directly in Stitch design reference provided by user"
+      },
+      {
+        "rule": "overused-font",
+        "value": "space grotesk",
+        "createdAt": "2026-07-26T11:54:15.997Z",
+        "reason": "Existing dark-theme design for auth/main pages, predates landing redesign"
+      }
+    ]
+  }
+}

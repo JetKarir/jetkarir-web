@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../../core/service/auth/auth-service';
+import { RegisterService } from '../../../core/services/auth/register/register-service';
 import { MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
@@ -38,7 +38,7 @@ export class RegisterPage {
 
   fb = inject(FormBuilder);
   router = inject(Router);
-  authService = inject(AuthService);
+  registerService = inject(RegisterService);
   messageService = inject(MessageService);
 
   loading = signal(false);
@@ -82,7 +82,7 @@ export class RegisterPage {
 
     const { fullName, email, password, acceptTerms } = this.form.value;
 
-    this.authService
+    this.registerService
       .register({
         fullName: fullName!,
         email: email!,

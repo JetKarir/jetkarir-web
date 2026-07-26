@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../../core/service/auth/auth-service';
+import { LoginService } from '../../../core/services/auth/login/login-service';
 import { MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
@@ -31,7 +31,7 @@ export class LoginPage {
 
   fb = inject(FormBuilder);
   router = inject(Router);
-  authService = inject(AuthService);
+  loginService = inject(LoginService);
   messageService = inject(MessageService);
 
   loading = signal(false);
@@ -60,7 +60,7 @@ export class LoginPage {
 
     const { email, password } = this.form.value;
 
-    this.authService.login({ email: email!, password: password! }).subscribe({
+    this.loginService.login({ email: email!, password: password! }).subscribe({
       next: () => {
         this.loading.set(false);
         this.router.navigate(['/home']);

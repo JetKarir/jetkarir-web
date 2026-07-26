@@ -125,7 +125,7 @@
                   <span class="jk-badge">{{ job.employmentType }}</span>
                 }
               </div>
-              @if (job.salaryMin || job.salaryMax) {
+              @if (job.isSalaryVisible && (job.salaryMin || job.salaryMax)) {
                 <span class="job-card__salary">
                   Rp {{ job.salaryMin | number }} – {{ job.salaryMax | number }}
                 </span>

@@ -1,0 +1,54 @@
+<!-- Engineered for Candidates -->
+<section class="lp-candidates">
+  <div class="lp-container">
+    <div class="lp-section-header">
+      <h2 class="lp-section-title">Engineered for Candidates</h2>
+      <p class="lp-section-sub">
+        Your career is a trajectory. We provide the fuel and navigation to reach your peak potential
+        faster than ever.
+      </p>
+    </div>
+    <div class="lp-candidates__grid">
+      @for (f of candidateFeatures; track f.title) {
+        <div class="lp-feature-card lp-feature-card--candidate">
+          <div class="lp-feature-card__icon">
+            <span
+              class="material-symbols-outlined"
+              style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24"
+              aria-hidden="true"
+            >{{ f.icon }}</span>
+          </div>
+          <h3 class="lp-feature-card__title">{{ f.title }}</h3>
+          <p class="lp-feature-card__desc">{{ f.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Velocity for Enterprises -->
+<section class="lp-enterprise">
+  <div class="lp-container">
+    <div class="lp-section-header">
+      <h2 class="lp-section-title">Velocity for Enterprises</h2>
+      <p class="lp-section-sub">
+        Hiring is no longer a bottleneck. Transform your recruitment into a competitive advantage.
+      </p>
+    </div>
+    <div class="lp-enterprise__grid">
+      @for (f of enterpriseFeatures; track f.title) {
+        <div class="lp-feature-card lp-feature-card--enterprise">
+          <div class="lp-feature-card__icon lp-feature-card__icon--secondary">
+            <span
+              class="material-symbols-outlined"
+              style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24"
+              aria-hidden="true"
+            >{{ f.icon }}</span>
+          </div>
+          <h3 class="lp-feature-card__title">{{ f.title }}</h3>
+          <p class="lp-feature-card__desc">{{ f.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

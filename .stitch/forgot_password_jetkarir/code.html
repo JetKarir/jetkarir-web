@@ -1,0 +1,194 @@
+<!DOCTYPE html><html lang="en" class="light" style="width: 1280px; height: 740px; overflow: hidden; position: relative;"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#5b4300",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#8393c5",
+                        "outline": "#757680",
+                        "inverse-primary": "#b5c5f9",
+                        "secondary": "#785900",
+                        "primary-container": "#1a2b56",
+                        "outline-variant": "#c5c6d0",
+                        "tertiary-fixed": "#dee1ff",
+                        "on-tertiary-fixed": "#001159",
+                        "surface": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "tertiary-fixed-dim": "#bac3ff",
+                        "surface-dim": "#cbdbf5",
+                        "on-background": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "primary-fixed": "#dae1ff",
+                        "secondary-container": "#fdc003",
+                        "background": "#f8f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#261a00",
+                        "primary": "#021541",
+                        "inverse-surface": "#213145",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-bright": "#f8f9ff",
+                        "on-surface-variant": "#45464f",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary-fixed": "#051944",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container-low": "#eff4ff",
+                        "tertiary": "#000f51",
+                        "secondary-fixed": "#ffdf9e",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "secondary-fixed-dim": "#fabd00",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#354572",
+                        "tertiary-container": "#001e84",
+                        "on-tertiary-fixed-variant": "#0031c4",
+                        "surface-tint": "#4d5d8b",
+                        "on-tertiary-container": "#758cff",
+                        "on-secondary-container": "#6c5000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "4rem",
+                        "margin-mobile": "16px",
+                        "container-max": "1280px",
+                        "md": "1.5rem",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "lg": "2.5rem",
+                        "xs": "0.5rem",
+                        "sm": "1rem"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Hanken Grotesk"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    }catch(_e){}</script></head><body class="min-h-screen flex flex-col font-body-md text-on-surface" style="background-color: rgb(248, 249, 255) !important;">
+
+    <!-- Main Content Canvas -->
+    <main class="flex-grow flex items-center justify-center px-margin-mobile md:px-lg py-xl">
+        
+        <!-- Center Auth Card -->
+        <div class="kinetic-card w-full max-w-[480px] bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant relative">
+            <!-- Top Color Accent -->
+            <div class="h-1.5 w-full bg-primary"></div>
+
+            <div class="p-md md:p-lg flex flex-col gap-md">
+                
+                <!-- Branding & Title Section -->
+                <header class="flex flex-col gap-xs mb-sm">
+                    <span class="font-headline-md text-headline-md font-extrabold text-primary tracking-tight">JetKarir</span>
+                    <h1 class="font-headline-lg text-headline-lg text-primary">Forgot Password</h1>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Enter your email to receive a password reset link.</p>
+                </header>
+
+                <!-- Reset Form -->
+                <form id="resetForm" class="flex flex-col gap-md" onsubmit="event.preventDefault(); handleReset();">
+                    
+                    <!-- Email Input Group -->
+                    <div class="flex flex-col gap-base">
+                        <label for="email" class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Email Address</label>
+                        <div class="relative group input-focus-halo rounded-lg">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-[20px]" data-icon="mail">mail</span>
+                            </div>
+                            <input type="email" id="email" required="" placeholder="you@example.com" class="block w-full pl-10 pr-3 py-3 border border-outline-variant bg-surface rounded-lg font-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary transition-all">
+                        </div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <button type="submit" class="w-full bg-primary text-on-primary py-4 rounded-lg font-headline-sm text-headline-sm hover:bg-primary-container transition-all active:scale-[0.98] duration-150 shadow-sm">
+                        SEND RESET LINK
+                    </button>
+                </form>
+
+                <!-- Navigation Links -->
+                <footer class="mt-md flex flex-col gap-sm border-t border-outline-variant pt-md">
+                    <a href="{{DATA:SCREEN:SCREEN:15}}" class="flex items-center gap-2 text-primary font-body-md text-body-md hover:translate-x-[-4px] transition-transform duration-200">
+                        <span class="material-symbols-outlined text-[18px]" data-icon="arrow_back">arrow_back</span>
+                        Back to Sign In
+                    </a>
+                    
+                    
+                </footer>
+            </div>
+        </div>
+    </main>
+
+    <!-- Global Page Footer -->
+    <footer class="w-full py-8 px-gutter border-t border-outline-variant flex flex-col items-center gap-4 justify-center">
+<nav class="flex gap-6 justify-center w-full">
+<a href="#" class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors">Help Center</a>
+<a href="#" class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors">Terms</a>
+<a href="#" class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors">Privacy</a>
+</nav>
+<div class="text-on-surface-variant font-body-sm text-body-sm text-center w-full">
+            © 2024 JetKarir. All rights reserved.
+        </div></footer>
+
+    <script class="">
+        /**
+         * Handle form submission micro-interaction
+         */
+        function handleReset() {
+            const btn = document.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            
+            // Visual feedback loop
+            btn.disabled = true;
+            btn.innerHTML = `
+                <div class="flex items-center justify-center gap-3">
+                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    SENDING...
+                </div>
+            `;
+
+            setTimeout(() => {
+                btn.classList.replace('bg-primary', 'bg-secondary-container');
+                btn.classList.replace('text-on-primary', 'text-on-secondary-container');
+                btn.innerHTML = `
+                    <div class="flex items-center justify-center gap-3">
+                        <span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                        LINK SENT
+                    </div>
+                `;
+                
+                // Add a toast notification simulation
+                const toast = document.createElement('div');
+                toast.className = 'fixed bottom-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-lg py-sm rounded-full shadow-lg font-body-sm flex items-center gap-3 animate-bounce';
+                toast.innerHTML = `<span class="material-symbols</script>
+
+</body></html>

@@ -33,7 +33,7 @@
               @if (app.companyLogoUrl) {
                 <img [src]="app.companyLogoUrl" [alt]="app.companyName" />
               } @else {
-                {{ app.companyName[0] }}
+                {{ app.companyName.charAt(0) || '?' }}
               }
             </div>
 
