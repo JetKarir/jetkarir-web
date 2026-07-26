@@ -10,6 +10,6 @@ export class LpStatsComponent {
     { value: '50K+', label: 'Published Jobs' },
     { value: '200K+', label: 'Registered User' },
     { value: '8K+', label: 'Partner Companies' },
-    { value: '92%', label: 'Satisfaction Rate' },
+    { value: '92%', label: 'Conversion Rate' },
   ];
 }
