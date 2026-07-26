@@ -1,0 +1,64 @@
+@use '../shared' as *;
+
+.lp-footer {
+  background: $lp-primary;
+  padding: 4rem 0;
+  color: $lp-on-primary-container;
+
+  &__brand {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  &__logo {
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  &__desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    color: $lp-on-primary-container;
+    line-height: 1.7;
+    max-width: 36rem;
+    margin: 0 auto 1.5rem;
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  &__link {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: $lp-on-primary-container;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #ffffff;
+    }
+  }
+
+  &__sep {
+    color: rgba(131, 147, 197, 0.5);
+  }
+
+  &__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+    text-align: center;
+
+    p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      color: $lp-on-primary-container;
+      margin: 0;
+    }
+  }
+}
