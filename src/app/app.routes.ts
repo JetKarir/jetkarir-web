@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { authGuard, publicGuard } from './core/guard/auth.guard';
+import { authGuard, publicGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   /* ── Landing (with landing navbar) ── */
@@ -11,7 +11,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./pages/landing/landing').then((m) => m.LandingPage),
+        loadComponent: () => import('./pages/landing/home/landing').then((m) => m.LandingPage),
       },
     ],
   },

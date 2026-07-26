@@ -1,11 +1,11 @@
 import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '../../../core/service/auth/auth-service';
-import { JobService } from '../../../core/service/main/job/job.service';
-import { CandidateService } from '../../../core/service/main/candidate/candidate.service';
-import { JobListItem } from '../../../core/model/interface/job.interface';
-import { Application } from '../../../core/model/interface/application.interface';
+import { AuthService } from '../../../core/services/auth/auth-service';
+import { JobService } from '../../../core/services/main/job/job.service';
+import { CandidateService } from '../../../core/services/main/candidate/candidate.service';
+import { JobListItem } from '../../../core/models/interface/job.interface';
+import { Application } from '../../../core/models/interface/application.interface';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';

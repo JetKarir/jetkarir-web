@@ -1,6 +1,6 @@
 import { Component, inject, computed } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { AuthService } from '../../../core/service/auth/auth-service';
+import { AuthService } from '../../../core/services/auth/auth-service';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
 import { BadgeModule } from 'primeng/badge';

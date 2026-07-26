@@ -1,8 +1,8 @@
 import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { JobService } from '../../../core/service/main/job/job.service';
-import { JobListItem, JobDetail } from '../../../core/model/interface/job.interface';
+import { JobService } from '../../../core/services/main/job/job.service';
+import { JobListItem, JobDetail } from '../../../core/models/interface/job.interface';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { SelectModule } from 'primeng/select';
@@ -49,19 +49,16 @@ export class JobsPage implements OnInit {
   keyword = signal('');
   searchInput = '';
   cityFilter = '';
-  workModeFilter = '';
+  workModeFilterId: number | null = null;
+
+  workModeOptions: { label: string; value: number | null }[] = [
+    { label: 'All Modes', value: null },
+  ];
 
   selectedJobId = signal<string | null>(null);
   selectedJob = signal<JobDetail | null>(null);
   loadingDetail = signal(false);
   showDetail = signal(false);
-
-  workModeOptions = [
-    { label: 'All Modes', value: '' },
-    { label: 'Remote', value: 'remote' },
-    { label: 'On-site', value: 'onsite' },
-    { label: 'Hybrid', value: 'hybrid' },
-  ];
 
   searchIcon = LucideSearch;
   briefcaseIcon = LucideBriefcase;
@@ -74,6 +71,14 @@ export class JobsPage implements OnInit {
 
   ngOnInit() {
     this.loadJobs();
+    this.jobService.getMasterData('work-modes').subscribe({
+      next: (res) => {
+        this.workModeOptions = [
+          { label: 'All Modes', value: null },
+          ...res.data.map((item) => ({ label: item.name, value: item.id })),
+        ];
+      },
+    });
   }
 
   loadJobs() {
@@ -84,6 +89,7 @@ export class JobsPage implements OnInit {
         limit: this.limit,
         q: this.keyword() || undefined,
         city: this.cityFilter || undefined,
+        workModeIds: this.workModeFilterId !== null ? [this.workModeFilterId] : undefined,
       })
       .subscribe({
         next: (res) => {

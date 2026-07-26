@@ -1,0 +1,273 @@
+<!DOCTYPE html><html lang="en" style=""><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;900&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#4d5d8b",
+                    "tertiary-fixed-dim": "#bac3ff",
+                    "surface": "#f8f9ff",
+                    "tertiary": "#000f51",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#dee1ff",
+                    "primary": "#021541",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#ffdf9e",
+                    "on-secondary-container": "#6c5000",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-tertiary-container": "#758cff",
+                    "tertiary-container": "#001e84",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#45464f",
+                    "background": "#f8f9ff",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#c5c6d0",
+                    "on-primary-fixed": "#051944",
+                    "on-background": "#0b1c30",
+                    "outline": "#757680",
+                    "on-tertiary-fixed": "#001159",
+                    "secondary-container": "#fdc003",
+                    "on-secondary-fixed-variant": "#5b4300",
+                    "inverse-primary": "#b5c5f9",
+                    "secondary-fixed-dim": "#fabd00",
+                    "surface-variant": "#d3e4fe",
+                    "on-primary-container": "#8393c5",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed": "#dae1ff",
+                    "on-primary-fixed-variant": "#354572",
+                    "on-secondary-fixed": "#261a00",
+                    "primary-container": "#1a2b56",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container": "#e5eeff",
+                    "primary-fixed-dim": "#b5c5f9",
+                    "surface-dim": "#cbdbf5",
+                    "surface-bright": "#f8f9ff",
+                    "on-surface": "#0b1c30",
+                    "on-tertiary-fixed-variant": "#0031c4",
+                    "inverse-surface": "#213145",
+                    "surface-container-high": "#dce9ff",
+                    "secondary": "#785900",
+                    "inverse-on-surface": "#eaf1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "1.5rem",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "sm": "1rem",
+                    "container-max": "1280px",
+                    "lg": "2.5rem",
+                    "xs": "0.5rem",
+                    "xl": "4rem",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-sm": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-md": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "body-sm": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "headline-lg-mobile": [
+                            "Hanken Grotesk"
+                    ],
+                    "display-lg": [
+                            "Hanken Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "headline-sm": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-md": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "28px",
+                            {
+                                    "lineHeight": "36px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    }catch(_e){}</script></head><body class="bg-surface text-on-surface font-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-gutter py-sm">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">JetKarir</span>
+<div class="hidden md:flex items-center gap-md ml-lg"><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Home</a><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Jobs</a><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">People</a><a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Companies</a><a class="text-primary font-bold border-b-2 border-secondary font-body-md text-body-md" href="#">About</a></div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="px-md py-xs text-on-surface font-label-md hover:bg-surface-container-low transition-all active:scale-95 duration-200">Login</button>
+<button class="px-md py-xs bg-primary text-on-primary rounded-lg font-label-md hover:bg-primary-container transition-all active:scale-95 duration-200">Register</button>
+</div>
+</div>
+</nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="px-margin-mobile md:px-xl max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-lg pt-32 pb-24"><div class="flex flex-col items-center text-center w-full space-y-md">
+    <div class="h-16 md:h-24 flex items-center justify-center mb-md">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuACEm9gaemSRLQafD6VleowAAv2a1zsk3BQLbu8VcuOv9H3lOnqAbCh2vZeTkTGB-ALlBK4gdD6JgoDHUfYmCjarkV4tKOyZDVls_bhhX9TEmaMYoLIKCFn9fkKCJxMuwh5pOkdyLFGWGXjD8idZDrYPHD-VtKqf66RB0T0OErowmYBiP1pK-9asx1ZiRUx30JCzoHqVQ0Vl3y1yHnI5BAgwtjzteI2AAF_sAucYFQOzjgU3HxbvDaObMM1rmWrlvrHP5s" alt="JetKarir Logo" class="h-16 md:h-24 w-auto object-contain">
+    </div>
+    <h1 class="font-headline-lg text-headline-lg text-primary">About JetKarir</h1>
+    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">JetKarir is a platform that builds the future by maximizing every individual's potential to reach their career peak through AI innovation and global connectivity.</p>
+</div></section>
+
+        <!-- Our Vision Section -->
+        <section class="py-xl bg-surface-container-lowest">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-xl text-center space-y-md gap-xl">
+                <h2 class="font-headline-lg text-headline-lg text-primary">Our Vision</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
+                    We envision a world where talent seamlessly meets opportunity without friction. By leveraging advanced kinetic AI, we bridge the gap between human potential and enterprise needs, ensuring that every professional can navigate their career trajectory with clarity and purpose.
+                </p>
+            </div>
+        </section>
+
+        <!-- Core Values Section -->
+        <section class="py-xl px-margin-mobile md:px-xl max-w-container-max mx-auto">
+            <div class="text-center space-y-sm mb-lg">
+                <h2 class="font-headline-lg text-headline-lg text-primary">Core Values</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant">The pillars that drive our kinetic motion.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <!-- Value Card 1 -->
+                <div class="bg-surface-container-lowest rounded-xl p-md elevation-1 elevation-2 transition-all duration-300 flex flex-col items-start space-y-sm">
+                    <div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary mb-xs">
+                        <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">speed</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-primary">Velocity</h3>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Speed in matching talent with enterprise roles, minimizing downtime and maximizing output.</p>
+                </div>
+
+                <!-- Value Card 2 -->
+                <div class="bg-surface-container-lowest rounded-xl p-md elevation-1 elevation-2 transition-all duration-300 flex flex-col items-start space-y-sm">
+                    <div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary mb-xs">
+                        <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">verified_user</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-primary">Trust</h3>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Unwavering commitment to data privacy, ethical AI practices, and institutional reliability.</p>
+                </div>
+
+                <!-- Value Card 3 -->
+                <div class="bg-surface-container-lowest rounded-xl p-md elevation-1 elevation-2 transition-all duration-300 flex flex-col items-start space-y-sm">
+                    <div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary mb-xs">
+                        <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">trending_up</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-primary">Growth</h3>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Driving long-term career success and enteprise expansion through strategic alignment.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Team Section -->
+        <section class="py-xl bg-surface-container-lowest border-y border-outline-variant/30">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-xl text-center space-y-md"><div class="space-y-md max-w-3xl mx-auto"><h2 class="font-headline-lg text-headline-lg text-primary">Who Are We?</h2><div class="w-24 h-1 bg-secondary mx-auto rounded-full"></div><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Founded in 2021, JetKarir was born from a vision to remove friction in global hiring. We've grown from a small tech team into a global force of 150+ experts, driven by the belief that AI should empower, not just automate. Today, we bridge the gap between world-class talent and enterprise opportunities through kinetic innovation.</p></div></div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-xl px-margin-mobile md:px-xl max-w-container-max mx-auto text-center">
+            <div class="bg-primary rounded-2xl p-xl flex flex-col items-center space-y-md relative overflow-hidden shadow-lg" style="background-color: rgb(253, 198, 29);">
+                <!-- Abstract decorative shapes -->
+                <div class="absolute -top-24 -left-24 w-64 h-64 bg-secondary opacity-10 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-24 -right-24 w-64 h-64 bg-tertiary-fixed opacity-10 rounded-full blur-3xl"></div>
+                
+                <h2 class="font-display-lg text-display-lg relative z-10 text-on-surface">Join the Movement</h2>
+                <p class="font-body-lg text-body-lg max-w-xl relative z-10 text-on-surface">
+                    Accelerate your career trajectory or scale your enterprise with our kinetic AI platform.
+                </p>
+                <button class="mt-sm font-label-md text-label-md bg-secondary-fixed px-lg py-sm rounded-full hover:bg-secondary hover:text-on-secondary transition-all duration-300 scale-95 active:opacity-80 relative z-10 font-bold tracking-wider text-on-primary" style="background-color: rgb(2, 21, 65);">
+                    Get Started
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary dark:bg-on-primary-fixed py-xl">
+<div class="max-w-container-max mx-auto px-gutter"><div class="grid grid-cols-1 gap-lg mb-md"><div class="space-y-md text-center"><span class="font-headline-sm text-headline-sm font-bold text-secondary-fixed">JetKarir</span><p class="font-body-sm text-on-primary-container dark:text-on-primary-fixed-variant">Empowering global careers through velocity and trust. The future of work is automated, intelligent, and human-centric.</p><div class="flex flex-wrap justify-center items-center gap-sm mt-md"><a class="text-on-primary-container dark:text-on-primary-fixed-variant hover:text-on-primary transition-colors font-body-sm text-body-sm font-bold" href="#">About Us</a><span class="text-on-primary-container/50">•</span><a class="text-on-primary-container dark:text-on-primary-fixed-variant hover:text-on-primary transition-colors font-body-sm text-body-sm font-bold" href="#">Privacy Policy</a><span class="text-on-primary-container/50">•</span><a class="text-on-primary-container dark:text-on-primary-fixed-variant hover:text-on-primary transition-colors font-body-sm text-body-sm font-bold" href="#">Terms of Service</a><span class="text-on-primary-container/50">•</span><a class="text-on-primary-container dark:text-on-primary-fixed-variant hover:text-on-primary transition-colors font-body-sm text-body-sm font-bold" href="#">Help Center</a></div></div></div><div class="border-t border-white/10 text-center pt-md"><p class="font-body-sm text-body-sm text-on-primary-container dark:text-on-primary-fixed-variant">© 2024 JetKarir AI. Empowering global careers through velocity and trust.</p></div></div>
+</footer>
+
+</body></html>

@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { CandidateService } from '../../../core/service/main/candidate/candidate.service';
-import { NotificationItem } from '../../../core/model/interface/application.interface';
+import { CandidateService } from '../../../core/services/main/candidate/candidate.service';
+import { NotificationItem } from '../../../core/models/interface/application.interface';
 import { ButtonModule } from 'primeng/button';
 import { SkeletonModule } from 'primeng/skeleton';
 import {

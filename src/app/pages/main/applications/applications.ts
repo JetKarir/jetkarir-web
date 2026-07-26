@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { CandidateService } from '../../../core/service/main/candidate/candidate.service';
-import { Application } from '../../../core/model/interface/application.interface';
+import { CandidateService } from '../../../core/services/main/candidate/candidate.service';
+import { Application } from '../../../core/models/interface/application.interface';
 import { TagModule } from 'primeng/tag';
 import { SkeletonModule } from 'primeng/skeleton';
 import { TimelineModule } from 'primeng/timeline';

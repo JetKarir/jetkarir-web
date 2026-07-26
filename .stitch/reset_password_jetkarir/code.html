@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en" style=""><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#ffffff",
+                      "surface-variant": "#d3e4fe",
+                      "secondary-fixed-dim": "#fabd00",
+                      "on-tertiary-fixed": "#001159",
+                      "surface-container-high": "#dce9ff",
+                      "secondary-container": "#fdc003",
+                      "on-primary-fixed-variant": "#354572",
+                      "on-secondary-container": "#6c5000",
+                      "on-secondary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "tertiary-container": "#001e84",
+                      "surface-container": "#e5eeff",
+                      "primary-fixed": "#dae1ff",
+                      "surface": "#f8f9ff",
+                      "on-background": "#0b1c30",
+                      "surface-bright": "#f8f9ff",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed": "#051944",
+                      "error-container": "#ffdad6",
+                      "outline-variant": "#c5c6d0",
+                      "on-tertiary-container": "#758cff",
+                      "primary-fixed-dim": "#b5c5f9",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed-variant": "#0031c4",
+                      "surface-tint": "#4d5d8b",
+                      "on-surface-variant": "#45464f",
+                      "surface-container-low": "#eff4ff",
+                      "primary": "#021541",
+                      "on-secondary-fixed-variant": "#5b4300",
+                      "tertiary-fixed-dim": "#bac3ff",
+                      "secondary-fixed": "#ffdf9e",
+                      "on-secondary-fixed": "#261a00",
+                      "background": "#f8f9ff",
+                      "on-primary-container": "#8393c5",
+                      "on-error": "#ffffff",
+                      "secondary": "#785900",
+                      "tertiary": "#000f51",
+                      "surface-dim": "#cbdbf5",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface": "#0b1c30",
+                      "surface-container-highest": "#d3e4fe",
+                      "primary-container": "#1a2b56",
+                      "outline": "#757680",
+                      "inverse-primary": "#b5c5f9",
+                      "tertiary-fixed": "#dee1ff",
+                      "inverse-surface": "#213145"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "1rem",
+                      "base": "4px",
+                      "container-max": "1280px",
+                      "xs": "0.5rem",
+                      "xl": "4rem",
+                      "md": "1.5rem",
+                      "lg": "2.5rem",
+                      "gutter": "24px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Hanken Grotesk"],
+                      "label-md": ["Inter"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Hanken Grotesk"],
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "headline-sm": ["Hanken Grotesk"],
+                      "body-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          }
+        }
+    }catch(_e){}</script></head><body class="bg-surface min-h-screen flex flex-col font-body-md text-on-surface">
+
+    <main class="flex-grow flex items-center justify-center p-margin-mobile md:p-lg">
+        <div class="kinetic-card w-full max-w-[480px] bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant relative">
+            <div class="h-1.5 w-full bg-primary"></div>
+
+            <div class="p-md md:p-lg flex flex-col gap-md">
+                
+                <header class="flex flex-col gap-xs mb-sm text-left">
+                    <span class="font-headline-md text-headline-md font-extrabold text-primary tracking-tight">JetKarir</span>
+                    <h1 class="font-headline-lg text-headline-lg text-primary">Reset Password</h1>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Enter your new password below to secure your account.</p>
+                </header>
+
+                <form id="resetForm" class="flex flex-col gap-md" onsubmit="event.preventDefault();">
+                    
+                    <div class="flex flex-col gap-base">
+                        <label for="new_password" class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">New Password</label>
+                        <div class="relative group input-focus-halo rounded-lg">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-[20px]">lock</span>
+                            </div>
+                            <input type="password" id="new_password" required="" placeholder="••••••••" class="block w-full pl-10 pr-3 py-3 border border-outline-variant bg-surface rounded-lg font-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary transition-all">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-base">
+                        <label for="confirm_password" class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Confirm New Password</label>
+                        <div class="relative group input-focus-halo rounded-lg">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-[20px]">lock_reset</span>
+                            </div>
+                            <input type="password" id="confirm_password" required="" placeholder="••••••••" class="block w-full pl-10 pr-3 py-3 border border-outline-variant bg-surface rounded-lg font-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary transition-all">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-primary text-on-primary py-4 rounded-lg font-headline-sm text-headline-sm hover:bg-primary-container transition-all active:scale-[0.98] duration-150 shadow-sm">
+                        UPDATE PASSWORD
+                    </button>
+                </form>
+
+                <footer class="mt-md flex flex-col gap-sm border-t border-outline-variant pt-md">
+                    <a href="#" class="flex items-center gap-2 text-primary font-body-md text-body-md hover:translate-x-[-4px] transition-transform duration-200"><span class="material-symbols-outlined text-[18px]">arrow_back</span>Back to Sign In</a>
+                </footer>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-8 px-gutter border-t border-outline-variant flex flex-col items-center gap-4 justify-center">
+<nav class="flex gap-6 justify-center w-full"><a href="#" class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors">Help Center</a><a href="#" class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors">Terms</a><a href="#" class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors">Privacy</a></nav>
+<div class="text-on-surface-variant font-body-sm text-body-sm text-center w-full">
+            © 2024 JetKarir. All rights reserved.
+        </div></footer></body></html>

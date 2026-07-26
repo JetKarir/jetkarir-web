@@ -1,8 +1,8 @@
 import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { AuthService } from '../../../core/service/auth/auth-service';
-import { CandidateService } from '../../../core/service/main/candidate/candidate.service';
-import { CandidateProfile } from '../../../core/model/interface/application.interface';
+import { AuthService } from '../../../core/services/auth/auth-service';
+import { CandidateService } from '../../../core/services/main/candidate/candidate.service';
+import { CandidateProfile } from '../../../core/models/interface/application.interface';
 import { SkeletonModule } from 'primeng/skeleton';
 import { TagModule } from 'primeng/tag';
 
@@ -23,7 +23,12 @@ export class ProfilePage implements OnInit {
 
   initials = computed(() => {
     const name = this.user()?.fullName ?? '';
-    return name.split(' ').map((w) => w[0]).slice(0, 2).join('').toUpperCase();
+    return name
+      .split(' ')
+      .map((w) => w[0])
+      .slice(0, 2)
+      .join('')
+      .toUpperCase();
   });
 
   ngOnInit() {

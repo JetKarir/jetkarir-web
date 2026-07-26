@@ -1,0 +1,77 @@
+@use '../shared' as *;
+
+.lp-candidates {
+  background: #ffffff;
+  padding: 4rem 0;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.lp-enterprise {
+  background: $lp-surface-container;
+  padding: 4rem 0;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.lp-feature-card {
+  padding: 1.5rem;
+  border-radius: 16px;
+
+  &--candidate {
+    background: $lp-surface;
+    border: 1px solid rgba($lp-outline-variant, 0.3);
+  }
+
+  &--enterprise {
+    background: #ffffff;
+    border: 1px solid rgba($lp-outline-variant, 0.3);
+    box-shadow: 0 1px 4px rgba(2, 21, 65, 0.06);
+  }
+
+  &__icon {
+    margin-bottom: 1.25rem;
+
+    .material-symbols-outlined {
+      font-size: 40px;
+      color: $lp-primary;
+      display: block;
+    }
+
+    &--secondary .material-symbols-outlined {
+      color: $lp-secondary;
+    }
+  }
+
+  &__title {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $lp-primary;
+    margin: 0 0 0.5rem;
+  }
+
+  &__desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    color: $lp-on-surface-variant;
+    line-height: 1.7;
+    margin: 0;
+  }
+}
