@@ -1,0 +1,42 @@
+.auth-footer {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid rgba(197, 198, 208, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+  background: #f8f9ff;
+
+  &__nav {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__dot {
+    color: #45464f;
+    font-size: 0.75rem;
+  }
+
+  &__link {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #45464f;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #021541;
+    }
+  }
+
+  &__copy {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: #45464f;
+    text-align: center;
+    margin: 0;
+  }
+}

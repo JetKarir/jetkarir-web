@@ -16,6 +16,19 @@ export const routes: Routes = [
     ],
   },
 
+  /* ── Public landing pages (no auth guard) ── */
+  {
+    path: '',
+    loadComponent: () =>
+      import('./shared/layouts/landing-layout/landing-layout').then((m) => m.LandingLayout),
+    children: [
+      {
+        path: 'about',
+        loadComponent: () => import('./pages/landing/about/about').then((m) => m.AboutPage),
+      },
+    ],
+  },
+
   /* ── Auth (centered card, no navbar) ── */
   {
     path: 'auth',

@@ -1,34 +1,30 @@
 import { Component, inject, signal } from '@angular/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import {
+  fluentErrorCircle,
+  fluentMail,
+  fluentLockClosed,
+  fluentEye,
+  fluentEyeOff,
+  fluentArrowLeft,
+} from '@ng-icons/fluent-ui';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from '../../../core/services/auth/login/login-service';
 import { MessageService } from 'primeng/api';
-import { InputTextModule } from 'primeng/inputtext';
-import { PasswordModule } from 'primeng/password';
-import { ButtonModule } from 'primeng/button';
-import { CheckboxModule } from 'primeng/checkbox';
 import { ToastModule } from 'primeng/toast';
-import { LucideDynamicIcon, LucideCircleAlert } from '@lucide/angular';
 
 @Component({
   selector: 'app-login',
-  imports: [
-    ReactiveFormsModule,
-    RouterLink,
-    InputTextModule,
-    PasswordModule,
-    ButtonModule,
-    CheckboxModule,
-    ToastModule,
-    LucideDynamicIcon,
+  imports: [ReactiveFormsModule, RouterLink, ToastModule, NgIcon],
+  providers: [
+    MessageService,
+    provideIcons({ fluentErrorCircle, fluentMail, fluentLockClosed, fluentEye, fluentEyeOff, fluentArrowLeft }),
   ],
-  providers: [MessageService],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
 export class LoginPage {
-  protected readonly alertIcon = LucideCircleAlert;
-
   fb = inject(FormBuilder);
   router = inject(Router);
   loginService = inject(LoginService);
@@ -36,6 +32,7 @@ export class LoginPage {
 
   loading = signal(false);
   errorMessage = signal<string | null>(null);
+  showPassword = signal(false);
 
   form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],

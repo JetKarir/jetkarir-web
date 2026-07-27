@@ -2,24 +2,41 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ng serve (Edge)",
+      "name": "start:dev (edge)",
       "type": "msedge",
       "request": "launch",
-      "preLaunchTask": "npm: start",
-      "url": "http://localhost:4205/"
+      "url": "http://localhost:4205/",
+      "preLaunchTask": "npm: start"
     },
     {
-      "name": "ng test (Edge)",
+      "name": "start:prod (edge)",
       "type": "msedge",
       "request": "launch",
-      "preLaunchTask": "npm: test",
-      "url": "http://localhost:9876/debug.html"
+      "url": "http://localhost:4205/",
+      "preLaunchTask": "npm: start:prod"
+    },
+    {
+      "name": "test:dev (edge)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:9876/debug.html",
+      "preLaunchTask": "npm: test:watch"
     }
   ],
   "compounds": [
     {
-      "name": "ng serve (Edge)",
-      "configurations": ["ng serve (Edge)"],
+      "name": "start:dev (edge)",
+      "configurations": ["start:dev (edge)"],
+      "stopAll": true
+    },
+    {
+      "name": "start:prod (edge)",
+      "configurations": ["start:prod (edge)"],
+      "stopAll": true
+    },
+    {
+      "name": "test:dev (edge)",
+      "configurations": ["test:dev (edge)"],
       "stopAll": true
     }
   ]

@@ -1,6 +1,15 @@
 import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import {
+  fluentSearch,
+  fluentBriefcase,
+  fluentLocation,
+  fluentChevronLeft,
+  fluentChevronRight,
+  fluentSend,
+} from '@ng-icons/fluent-ui';
 import { JobService } from '../../../core/services/main/job/job.service';
 import { JobListItem, JobDetail } from '../../../core/models/interface/job.interface';
 import { InputTextModule } from 'primeng/inputtext';
@@ -10,15 +19,6 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { MessageService } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
 import { TagModule } from 'primeng/tag';
-import {
-  LucideDynamicIcon,
-  LucideSearch,
-  LucideBriefcase,
-  LucideMapPin,
-  LucideChevronLeft,
-  LucideChevronRight,
-  LucideSend,
-} from '@lucide/angular';
 
 @Component({
   selector: 'app-jobs',
@@ -31,8 +31,9 @@ import {
     SkeletonModule,
     DialogModule,
     TagModule,
-    LucideDynamicIcon,
+    NgIcon,
   ],
+  providers: [provideIcons({ fluentSearch, fluentBriefcase, fluentLocation, fluentChevronLeft, fluentChevronRight, fluentSend })],
   templateUrl: './jobs.html',
   styleUrl: './jobs.scss',
 })
@@ -60,12 +61,12 @@ export class JobsPage implements OnInit {
   loadingDetail = signal(false);
   showDetail = signal(false);
 
-  searchIcon = LucideSearch;
-  briefcaseIcon = LucideBriefcase;
-  mapPinIcon = LucideMapPin;
-  chevronLeftIcon = LucideChevronLeft;
-  chevronRightIcon = LucideChevronRight;
-  sendIcon = LucideSend;
+  searchIcon = 'fluentSearch';
+  briefcaseIcon = 'fluentBriefcase';
+  mapPinIcon = 'fluentLocation';
+  chevronLeftIcon = 'fluentChevronLeft';
+  chevronRightIcon = 'fluentChevronRight';
+  sendIcon = 'fluentSend';
 
   totalPages = computed(() => Math.ceil(this.total() / this.limit));
 

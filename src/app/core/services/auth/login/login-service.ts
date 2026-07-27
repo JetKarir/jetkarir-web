@@ -1,9 +1,13 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap, catchError, throwError } from 'rxjs';
-import { environment } from '../../../../../environments/environment';
+import { environment } from '../../../../../environments/environment.development';
 import { ApiResponse } from '../../../models/interface/api-response.interface';
-import { LoginRequest, LoginResponse, GoogleLoginRequest } from '../../../models/interface/auth.interface';
+import {
+  LoginRequest,
+  LoginResponse,
+  GoogleLoginRequest,
+} from '../../../models/interface/auth.interface';
 import { AuthService } from '../auth-service';
 
 @Injectable({ providedIn: 'root' })

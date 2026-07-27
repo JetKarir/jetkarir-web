@@ -8,8 +8,8 @@
   top: var(--jk-nav-height);
   z-index: 50;
   padding: 1rem 0;
-  background: rgba(4, 21, 98, 0.32);
-  backdrop-filter: blur(18px);
+  background: rgba(248, 249, 255, 0.92);
+  backdrop-filter: blur(8px);
 }
 
 .jobs__search-inner {
@@ -18,10 +18,9 @@
   align-items: center;
   padding: 0.9rem;
   border-radius: 22px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #ffffff;
+  border: 1px solid rgba(197, 198, 208, 0.4);
   box-shadow: var(--jk-shadow-sm);
-  backdrop-filter: blur(16px);
 }
 
 .jobs__search-field {
@@ -34,7 +33,7 @@
   left: 0.875rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--jk-text-muted);
+  color: #757680;
 }
 
 .jobs__search-input {
@@ -43,8 +42,8 @@
 }
 
 .jobs__search-btn {
-  background: linear-gradient(135deg, var(--jk-racing-red), #ff4652) !important;
-  border-color: rgba(255, 255, 255, 0.14) !important;
+  background: #021541 !important;
+  border-color: #021541 !important;
 }
 
 /* ── Body ── */
@@ -71,7 +70,7 @@
 
 .jobs__count,
 .jobs__page-info {
-  color: var(--jk-text-muted);
+  color: #757680;
 }
 
 /* ── Grid ── */
@@ -87,8 +86,8 @@
   flex-direction: column;
   gap: 0.85rem;
   padding: 1.05rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #ffffff;
+  border: 1px solid rgba(197, 198, 208, 0.4);
   border-radius: 20px;
   box-shadow: var(--jk-shadow-sm);
   transition:
@@ -100,7 +99,7 @@
   &:hover {
     transform: translateY(-4px);
     box-shadow: var(--jk-shadow-md);
-    border-color: rgba(214, 0, 28, 0.22);
+    border-color: rgba(2, 21, 65, 0.15);
   }
 
   &__header {
@@ -114,18 +113,19 @@
     width: 44px;
     height: 44px;
     border-radius: 16px;
-    background: linear-gradient(135deg, rgba(17, 70, 143, 0.8), rgba(214, 0, 28, 0.62));
+    background: #e5eeff;
+    border: 1px solid rgba(197, 198, 208, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: #021541;
     font-weight: 700;
     overflow: hidden;
   }
 
   &__title,
   .job-detail__title {
-    color: white;
+    color: #021541;
     font-weight: 700;
   }
 
@@ -133,18 +133,18 @@
   .job-detail__company,
   .job-detail__text,
   .jobs__empty p {
-    color: var(--jk-text-secondary);
+    color: #45464f;
   }
 
   &__location,
   .job-detail__location {
-    color: var(--jk-text-muted);
-    background: rgba(255, 255, 255, 0.06);
+    color: #757680;
+    background: #f8f9ff;
   }
 
   &__salary,
   .job-detail__salary {
-    color: #ffd5d5;
+    color: #785900;
     font-weight: 700;
   }
 }
@@ -157,13 +157,13 @@
   gap: 0.65rem;
   padding: 2.5rem 1rem;
   border-radius: 28px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border: 1px solid rgba(197, 198, 208, 0.35);
 }
 
 .jobs__empty h3,
 .job-detail__section h4 {
-  color: white;
+  color: #021541;
 }
 
 /* ── Pagination ── */
@@ -199,9 +199,9 @@
   &__logo {
     width: 52px;
     height: 52px;
-    border-radius: var(--jk-radius-md);
-    background: var(--jk-section-bg);
-    border: 1px solid var(--jk-border);
+    border-radius: 16px;
+    background: #e5eeff;
+    border: 1px solid rgba(197, 198, 208, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -209,7 +209,7 @@
     overflow: hidden;
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--jk-sage-dark);
+    color: #021541;
 
     img {
       width: 100%;
@@ -221,26 +221,27 @@
   &__title {
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--jk-text-primary);
+    color: #021541;
     margin: 0 0 0.25rem;
   }
 
   &__company {
     font-size: 0.9rem;
-    color: var(--jk-text-secondary);
+    color: #45464f;
     margin: 0 0 0.2rem;
   }
 
   &__location {
     font-size: 0.8rem;
-    color: var(--jk-text-muted);
+    color: #757680;
     margin: 0;
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
     padding: 0.3rem 0.65rem;
-    border-radius: var(--jk-radius-full);
-    background: rgba(95, 131, 104, 0.08);
+    border-radius: 9999px;
+    background: #f8f9ff;
+    border: 1px solid rgba(197, 198, 208, 0.3);
     width: fit-content;
 
     svg {
@@ -258,7 +259,7 @@
   &__salary {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--jk-sage-dark);
+    color: #785900;
     margin: 0;
   }
 
@@ -266,7 +267,7 @@
     h4 {
       font-size: 0.875rem;
       font-weight: 600;
-      color: var(--jk-text-primary);
+      color: #021541;
       margin: 0 0 0.5rem;
       text-transform: uppercase;
       letter-spacing: 0.04em;
@@ -275,7 +276,7 @@
 
   &__text {
     font-size: 0.875rem;
-    color: var(--jk-text-secondary);
+    color: #45464f;
     line-height: 1.6;
     margin: 0;
     white-space: pre-line;
@@ -283,13 +284,13 @@
 
   &__actions {
     padding-top: 0.5rem;
-    border-top: 1px solid var(--jk-border);
+    border-top: 1px solid rgba(197, 198, 208, 0.4);
   }
 
   &__apply-btn {
     width: 100%;
-    background: var(--jk-sage-dark) !important;
-    border-color: var(--jk-sage-dark) !important;
+    background: #021541 !important;
+    border-color: #021541 !important;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -310,32 +311,30 @@
   min-width: 2.5rem;
   min-height: 2.5rem;
   padding: 0;
-  border-radius: var(--jk-radius-full);
-  border: 1px solid var(--jk-border);
-  background: rgba(255, 255, 255, 0.8);
-  color: var(--jk-text-primary);
+  border-radius: 9999px;
+  border: 1px solid rgba(197, 198, 208, 0.4);
+  background: #ffffff;
+  color: #021541;
   cursor: pointer;
   transition:
     background-color 0.18s ease,
     border-color 0.18s ease,
-    color 0.18s ease,
     box-shadow 0.18s ease,
     transform 0.18s ease;
 
   &:hover:not(:disabled) {
-    border-color: rgba(95, 131, 104, 0.35);
-    background: rgba(95, 131, 104, 0.08);
-    color: var(--jk-sage-dark);
+    border-color: rgba(2, 21, 65, 0.2);
+    background: #e5eeff;
     transform: translateY(-1px);
   }
 
   &:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(126, 155, 135, 0.18);
+    box-shadow: 0 0 0 3px rgba(2, 21, 65, 0.12);
   }
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.6;
+    opacity: 0.5;
   }
 }

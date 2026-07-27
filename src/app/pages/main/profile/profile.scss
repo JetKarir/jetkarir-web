@@ -6,10 +6,9 @@
 .profile__hero,
 .profile__section,
 .profile__empty {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: var(--jk-shadow-md);
-  backdrop-filter: blur(20px);
+  background: #ffffff;
+  border: 1px solid rgba(197, 198, 208, 0.35);
+  box-shadow: var(--jk-shadow-sm);
 }
 
 .profile__hero {
@@ -32,7 +31,7 @@
   width: 84px;
   height: 84px;
   border-radius: 24px;
-  background: linear-gradient(135deg, var(--jk-racing-red), #ff4652);
+  background: linear-gradient(135deg, #021541, #1a2b56);
   color: white;
   display: flex;
   align-items: center;
@@ -53,7 +52,7 @@
 .profile__section-title,
 .exp-item__position,
 .profile__empty h3 {
-  color: white;
+  color: #021541;
 }
 
 .profile__headline,
@@ -62,7 +61,7 @@
 .exp-item__company,
 .exp-item__period,
 .profile__empty p {
-  color: var(--jk-text-secondary);
+  color: #45464f;
 }
 
 .profile__skills {
@@ -93,12 +92,12 @@
 
   &__bg {
     fill: none;
-    stroke: rgba(255, 255, 255, 0.12);
+    stroke: rgba(197, 198, 208, 0.5);
   }
 
   &__fill {
     fill: none;
-    stroke: var(--jk-racing-red);
+    stroke: #021541;
     stroke-width: 3.5;
     stroke-linecap: round;
     transition: stroke-dasharray 0.5s ease;
@@ -106,7 +105,7 @@
 
   &__label,
   &__text {
-    color: white;
+    color: #021541;
   }
 }
 
@@ -118,16 +117,16 @@
 }
 
 .completion-ring__bg {
-  stroke: rgba(255, 255, 255, 0.12);
+  stroke: rgba(197, 198, 208, 0.5);
 }
 
 .completion-ring__fill {
-  stroke: var(--jk-racing-red);
+  stroke: #021541;
 }
 
 .completion-ring__label,
 .completion-ring__text {
-  color: white;
+  color: #021541;
 }
 
 /* ── Experience / Education ── */
@@ -154,18 +153,18 @@
     top: 16px;
     bottom: 0;
     width: 2px;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(197, 198, 208, 0.5);
   }
 
   &__dot {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--jk-racing-red), #ff4652);
+    background: #021541;
     flex-shrink: 0;
     margin-top: 3px;
-    border: 2px solid rgba(4, 21, 98, 0.8);
-    box-shadow: 0 0 0 2px rgba(214, 0, 28, 0.32);
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 2px rgba(2, 21, 65, 0.2);
   }
 
   &__content {
@@ -177,17 +176,17 @@
   &__position {
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--jk-text-primary);
+    color: #021541;
   }
 
   &__company {
     font-size: 0.825rem;
-    color: var(--jk-text-secondary);
+    color: #45464f;
   }
 
   &__period {
     font-size: 0.775rem;
-    color: var(--jk-text-muted);
+    color: #757680;
   }
 }
 
@@ -205,12 +204,12 @@
   gap: 0.65rem;
   padding: 2.5rem 1rem;
   border-radius: 30px;
-  color: var(--jk-text-muted);
+  color: #757680;
 
   h3 {
     margin: 0;
     font-size: 1.1rem;
-    color: var(--jk-text-primary);
+    color: #021541;
   }
   p {
     margin: 0;
@@ -220,5 +219,5 @@
 
 .profile__empty-icon {
   font-size: 3rem;
-  color: var(--jk-border);
+  color: #c5c6d0;
 }

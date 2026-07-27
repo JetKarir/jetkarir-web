@@ -1,27 +1,28 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import {
+  fluentDocumentEdit,
+  fluentLocation,
+  fluentSend,
+  fluentTaskListSquareLtr,
+  fluentEdit,
+  fluentChat,
+  fluentStar,
+  fluentCheckmarkCircle,
+  fluentDismissCircle,
+  fluentCircle,
+} from '@ng-icons/fluent-ui';
 import { CandidateService } from '../../../core/services/main/candidate/candidate.service';
 import { Application } from '../../../core/models/interface/application.interface';
 import { TagModule } from 'primeng/tag';
 import { SkeletonModule } from 'primeng/skeleton';
 import { TimelineModule } from 'primeng/timeline';
-import {
-  LucideDynamicIcon,
-  LucideFilePenLine,
-  LucideMapPin,
-  LucideSend,
-  LucideFileCheck,
-  LucidePencil,
-  LucideMessagesSquare,
-  LucideStar,
-  LucideCircleCheckBig,
-  LucideCircleX,
-  LucideCircle,
-} from '@lucide/angular';
 
 @Component({
   selector: 'app-applications',
-  imports: [DatePipe, TagModule, SkeletonModule, TimelineModule, LucideDynamicIcon],
+  imports: [DatePipe, TagModule, SkeletonModule, TimelineModule, NgIcon],
+  providers: [provideIcons({ fluentDocumentEdit, fluentLocation, fluentSend, fluentTaskListSquareLtr, fluentEdit, fluentChat, fluentStar, fluentCheckmarkCircle, fluentDismissCircle, fluentCircle })],
   templateUrl: './applications.html',
   styleUrl: './applications.scss',
 })
@@ -76,21 +77,20 @@ export class ApplicationsPage implements OnInit {
     return map[status] ?? status;
   }
 
-  emptyApplicationIcon = LucideFilePenLine;
-  mapPinIcon = LucideMapPin;
+  emptyApplicationIcon = 'fluentDocumentEdit';
+  mapPinIcon = 'fluentLocation';
 
-  stageIcon(stageName: string) {
-    const map = {
-      APPLIED: LucideSend,
-      SCREENING: LucideFileCheck,
-      ASSESSMENT: LucidePencil,
-      INTERVIEW: LucideMessagesSquare,
-      OFFERED: LucideStar,
-      HIRED: LucideCircleCheckBig,
-      REJECTED: LucideCircleX,
+  stageIcon(stageName: string): string {
+    const map: Record<string, string> = {
+      APPLIED: 'fluentSend',
+      SCREENING: 'fluentTaskListSquareLtr',
+      ASSESSMENT: 'fluentEdit',
+      INTERVIEW: 'fluentChat',
+      OFFERED: 'fluentStar',
+      HIRED: 'fluentCheckmarkCircle',
+      REJECTED: 'fluentDismissCircle',
     };
-    const key = stageName.toUpperCase() as keyof typeof map;
-    return map[key] ?? LucideCircle;
+    return map[stageName.toUpperCase()] ?? 'fluentCircle';
   }
 
   skeletons = Array(4).fill(0);

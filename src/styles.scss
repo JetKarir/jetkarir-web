@@ -2,31 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
 
 :root {
-  --jk-night: #041562;
-  --jk-royal: #11468f;
-  --jk-racing-red: #d6001c;
-  --jk-cloud: #eeeeee;
-  --jk-ink: #020b2f;
-  --jk-ink-soft: #14306b;
-  --jk-surface: rgba(255, 255, 255, 0.08);
-  --jk-surface-strong: rgba(255, 255, 255, 0.14);
-  --jk-surface-solid: #f3f5fb;
-  --jk-border: rgba(255, 255, 255, 0.14);
-  --jk-border-strong: rgba(196, 30, 30, 0.28);
-  --jk-text-primary: #f5f7ff;
-  --jk-text-secondary: rgba(238, 238, 238, 0.78);
-  --jk-text-muted: rgba(238, 238, 238, 0.58);
-  --jk-shadow-sm: 0 8px 24px rgba(1, 7, 30, 0.14);
-  --jk-shadow-md: 0 18px 48px rgba(1, 7, 30, 0.22);
-  --jk-shadow-lg: 0 28px 84px rgba(1, 7, 30, 0.3);
-  --jk-glass-blur: blur(18px);
-  --jk-radius-sm: 10px;
-  --jk-radius-md: 16px;
-  --jk-radius-lg: 24px;
-  --jk-radius-xl: 32px;
-  --jk-radius-full: 9999px;
   --jk-nav-height: 78px;
-  --jk-grid-line: rgba(255, 255, 255, 0.04);
+  --jk-shadow-sm: 0 4px 12px rgba(2, 21, 65, 0.08);
+  --jk-shadow-md: 0 8px 24px rgba(2, 21, 65, 0.1);
+  --jk-shadow-lg: 0 16px 48px rgba(2, 21, 65, 0.12);
 }
 
 *,
@@ -44,18 +23,13 @@ html {
 
 body {
   font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
-  background:
-    radial-gradient(circle at 15% 20%, rgba(196, 30, 30, 0.22), transparent 0 24%),
-    radial-gradient(circle at 85% 0%, rgba(17, 70, 143, 0.5), transparent 0 28%),
-    linear-gradient(145deg, #020b2f 0%, #041562 38%, #11468f 100%);
-  background-attachment: fixed;
-  color: var(--jk-text-primary);
+  background: #f8f9ff;
+  color: #0b1c30;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
-
 
 h1,
 h2,
@@ -66,29 +40,27 @@ h6 {
   font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
   font-weight: 700;
   line-height: 1.12;
-  color: var(--jk-text-primary);
+  color: #021541;
   letter-spacing: -0.03em;
 }
 
 h1 {
   font-size: clamp(2.25rem, 4vw, 4.5rem);
 }
-
 h2 {
   font-size: clamp(1.7rem, 3vw, 3rem);
 }
-
 h3 {
   font-size: clamp(1.05rem, 1.6vw, 1.35rem);
 }
 
 p {
-  color: var(--jk-text-secondary);
+  color: #45464f;
   font-size: clamp(0.95rem, 1vw, 1rem);
 }
 
 a {
-  color: var(--jk-cloud);
+  color: #021541;
   text-decoration: none;
 }
 
@@ -97,7 +69,7 @@ a:hover {
 }
 
 .p-button {
-  border-radius: var(--jk-radius-md) !important;
+  border-radius: 12px;
   font-weight: 700 !important;
   font-size: 0.92rem !important;
   letter-spacing: 0.01em;
@@ -112,60 +84,22 @@ a:hover {
   transform: translateY(-2px);
 }
 
-.p-button-primary,
-.p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-secondary):not(
-    .p-button-danger
-  ):not(.p-button-warning):not(.p-button-info):not(.p-button-success):not(.p-button-help) {
-  background: linear-gradient(135deg, var(--jk-racing-red), #ff4d52) !important;
-  border-color: rgba(255, 255, 255, 0.18) !important;
-  color: white !important;
-}
-
 .p-button-outlined {
-  background: rgba(255, 255, 255, 0.04) !important;
-  border-color: rgba(255, 255, 255, 0.18) !important;
-  color: var(--jk-text-primary) !important;
-}
-
-.p-inputtext,
-.p-password-input,
-.p-select,
-.p-multiselect {
-  border-radius: var(--jk-radius-md) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  background: rgba(255, 255, 255, 0.05) !important;
-  color: var(--jk-text-primary) !important;
-  backdrop-filter: var(--jk-glass-blur);
-}
-
-.p-inputtext::placeholder,
-.p-password-input::placeholder {
-  color: rgba(238, 238, 238, 0.48) !important;
-}
-
-.p-inputtext:focus,
-.p-password-input:focus,
-.p-select.p-focus,
-.p-multiselect.p-focus {
-  border-color: rgba(196, 30, 30, 0.5) !important;
-  box-shadow: 0 0 0 4px rgba(196, 30, 30, 0.14) !important;
+  background: #ffffff !important;
+  border-color: rgba(197, 198, 208, 0.6) !important;
+  color: #021541 !important;
 }
 
 .p-card {
-  border-radius: var(--jk-radius-lg) !important;
-  border: 1px solid var(--jk-border) !important;
+  border-radius: 20px;
+  border: 1px solid rgba(197, 198, 208, 0.3) !important;
   box-shadow: var(--jk-shadow-md) !important;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.12),
-    rgba(255, 255, 255, 0.04)
-  ) !important;
-  backdrop-filter: var(--jk-glass-blur);
+  background: #ffffff !important;
 }
 
 .p-card-content,
 .p-toast {
-  color: var(--jk-text-primary) !important;
+  color: #0b1c30 !important;
 }
 
 .jk-container {
@@ -176,11 +110,10 @@ a:hover {
 
 .jk-surface,
 .jk-glass {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.05));
-  border: 1px solid var(--jk-border);
-  border-radius: var(--jk-radius-lg);
+  background: #ffffff;
+  border: 1px solid rgba(197, 198, 208, 0.3);
+  border-radius: 24px;
   box-shadow: var(--jk-shadow-md);
-  backdrop-filter: var(--jk-glass-blur);
 }
 
 .jk-surface {
@@ -192,19 +125,19 @@ a:hover {
   align-items: center;
   gap: 0.45rem;
   padding: 0.45rem 0.9rem;
-  border-radius: var(--jk-radius-full);
+  border-radius: 9999px;
   font-size: 0.76rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--jk-cloud);
+  border: 1px solid rgba(197, 198, 208, 0.4);
+  background: #eff4ff;
+  color: #021541;
 }
 
 .jk-divider {
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(197, 198, 208, 0.5);
   margin: 1rem 0;
 }
 
@@ -220,7 +153,7 @@ a:hover {
   width: 20rem;
   height: 20rem;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(196, 30, 30, 0.24), transparent 68%);
+  background: radial-gradient(circle, rgba(2, 21, 65, 0.06), transparent 68%);
   z-index: -1;
   filter: blur(20px);
 }
@@ -243,7 +176,7 @@ a:hover {
   position: absolute;
   inset: 0;
   transform: translateX(-120%);
-  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  background: linear-gradient(100deg, transparent, rgba(2, 21, 65, 0.04), transparent);
   animation: jkShimmer 4s linear infinite;
 }
 
@@ -284,8 +217,12 @@ a:hover {
   }
 }
 
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+md-icon {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
   vertical-align: middle;
   line-height: 1;
   user-select: none;

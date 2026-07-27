@@ -2,7 +2,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: transparent;
+  background: #f8f9ff;
 
   &__content {
     flex: 1;
@@ -23,9 +23,9 @@
   right: 0;
   z-index: 100;
   height: var(--jk-nav-height);
-  background: rgba(4, 21, 98, 0.45);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border-bottom: 1px solid rgba(197, 198, 208, 0.4);
+  box-shadow: 0 2px 8px rgba(2, 21, 65, 0.06);
 
   &__inner {
     height: 100%;
@@ -42,11 +42,7 @@
     font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
     font-size: 1.15rem;
     font-weight: 700;
-    color: var(--jk-text-primary);
-
-    svg {
-      filter: drop-shadow(0 10px 20px rgba(236, 29, 35, 0.22));
-    }
+    color: #021541;
   }
 
   &__links {
@@ -68,18 +64,18 @@
     border-radius: 999px;
     font-size: 0.84rem;
     font-weight: 700;
-    color: var(--jk-text-secondary);
+    color: #45464f;
     transition: all 0.18s ease;
 
     &:hover,
     &.active {
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--jk-text-primary);
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+      background: #eff4ff;
+      color: #021541;
     }
 
     &.active {
-      background: linear-gradient(135deg, rgba(236, 29, 35, 0.18), rgba(255, 255, 255, 0.06));
+      background: #e5eeff;
+      color: #021541;
     }
   }
 
@@ -91,12 +87,6 @@
     min-width: 0;
   }
 
-  &__icon-btn,
-  &__user,
-  &__login-btn {
-    backdrop-filter: blur(16px);
-  }
-
   &__icon-btn {
     display: flex;
     align-items: center;
@@ -104,16 +94,16 @@
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--jk-text-primary);
+    background: #f8f9ff;
+    border: 1px solid rgba(197, 198, 208, 0.5);
+    color: #021541;
     transition:
       transform 160ms ease,
       background 160ms ease;
 
     &:hover {
       transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.12);
+      background: #e5eeff;
     }
   }
 
@@ -123,8 +113,8 @@
     gap: 0.7rem;
     padding: 0.35rem 0.7rem 0.35rem 0.4rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #f8f9ff;
+    border: 1px solid rgba(197, 198, 208, 0.5);
     max-width: 18rem;
 
     @media (min-width: 769px) {
@@ -136,20 +126,21 @@
     width: 34px !important;
     height: 34px !important;
     font-size: 0.75rem !important;
-    background: linear-gradient(135deg, var(--jk-racing-red), #ff4d52) !important;
+    background: linear-gradient(135deg, #021541, #1a2b56) !important;
     color: #fff !important;
   }
 
   &__user-name {
     font-size: 0.8rem;
     font-weight: 700;
+    color: #021541;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
   &__user-email {
-    color: var(--jk-text-muted);
+    color: #757680;
     font-size: 0.72rem;
     white-space: nowrap;
     overflow: hidden;
@@ -158,14 +149,14 @@
   }
 
   &__logout {
-    color: var(--jk-text-muted);
+    color: #757680;
     flex-shrink: 0;
   }
 
   &__login-btn {
     padding: 0.7rem 1.15rem;
     border-radius: 999px;
-    background: linear-gradient(135deg, var(--jk-racing-red), #ff4d52);
+    background: #021541;
     color: #fff;
     font-size: 0.875rem;
     font-weight: 700;
@@ -185,9 +176,8 @@
   max-width: 32rem;
   margin: 0 auto;
   border-radius: 999px;
-  background: rgba(4, 21, 98, 0.62);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(22px);
+  background: #ffffff;
+  border: 1px solid rgba(197, 198, 208, 0.4);
   box-shadow: var(--jk-shadow-md);
 
   @media (min-width: 769px) {
@@ -202,14 +192,14 @@
     gap: 4px;
     padding: 0.45rem 0;
     border-radius: 999px;
-    color: var(--jk-text-muted);
+    color: #757680;
     font-size: 0.66rem;
     font-weight: 700;
     transition: all 0.18s ease;
 
     &.active {
-      background: linear-gradient(135deg, rgba(236, 29, 35, 0.22), rgba(255, 255, 255, 0.08));
-      color: var(--jk-text-primary);
+      background: #e5eeff;
+      color: #021541;
     }
   }
 }
