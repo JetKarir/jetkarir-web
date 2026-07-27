@@ -130,17 +130,12 @@
 
     <!-- Terms -->
     <div class="form-field form-field--checkbox">
-      <input
-        type="checkbox"
-        id="acceptTerms"
-        formControlName="acceptTerms"
-        class="form-checkbox"
-      />
+      <input type="checkbox" id="acceptTerms" formControlName="acceptTerms" class="form-checkbox" />
       <label for="acceptTerms" class="form-label-check">
         I accept the
-        <a href="#" class="form-link">Terms of Service</a>
+        <a routerLink="/terms" class="form-link">Terms of Service</a>
         and
-        <a href="#" class="form-link">Privacy Policy</a>
+        <a routerLink="/privacy" class="form-link">Privacy Policy</a>
       </label>
     </div>
     @if (acceptTermsCtrl.invalid && acceptTermsCtrl.touched) {

@@ -1,0 +1,61 @@
+<div class="otp">
+  <!-- Header -->
+  <div class="otp__header">
+    <div class="otp__brand">
+      <img src="images/logo_text_jetkarir.png" alt="JetKarir" class="otp__brand-img" />
+    </div>
+    <h1 class="otp__title">Verify Your Email</h1>
+    <p class="otp__subtitle">
+      We've sent a 6-digit code to your email. Please enter it below to verify your account.
+    </p>
+  </div>
+
+  @if (verified()) {
+    <div class="otp__success">
+      Email verified successfully!
+    </div>
+  } @else {
+    <form (ngSubmit)="submit()" class="otp__form" novalidate>
+      <!-- OTP Boxes -->
+      <div class="otp__inputs">
+        @for (digit of digits; track $index) {
+          <input
+            #otpInput
+            type="text"
+            inputmode="numeric"
+            maxlength="1"
+            class="otp__box"
+            [value]="digit"
+            (input)="onInput($event, $index)"
+            (keydown)="onKeydown($event, $index)"
+            (paste)="onPaste($event, $index)"
+            [attr.aria-label]="'Digit ' + ($index + 1)"
+          />
+        }
+      </div>
+
+      <!-- Submit -->
+      <button
+        type="submit"
+        class="otp__submit"
+        [disabled]="loading() || otpValue.length < 6"
+      >
+        {{ loading() ? 'Verifying…' : 'Verify Code' }}
+      </button>
+
+      <!-- Resend -->
+      <p class="otp__resend">
+        Didn't receive the code?
+        <button type="button" class="otp__resend-btn" (click)="resend()">Resend Code</button>
+      </p>
+    </form>
+  }
+
+  <!-- Back link -->
+  <div class="otp__back">
+    <a routerLink="/auth/login" class="otp__back-link">
+      <ng-icon name="fluentArrowLeft" size="18px" />
+      Back to Sign In
+    </a>
+  </div>
+</div>

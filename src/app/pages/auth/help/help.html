@@ -1,0 +1,92 @@
+<div class="help">
+  <!-- Header -->
+  <div class="help__header">
+    <div class="help__brand">
+      <img src="images/logo_text_jetkarir.png" alt="JetKarir" class="help__brand-img" />
+    </div>
+    <h1 class="help__title">Help Center</h1>
+  </div>
+
+  <!-- FAQ Section -->
+  <section class="help__section">
+    <h2 class="help__section-title">
+      <ng-icon name="fluentQuestionCircle" size="22px" class="help__section-icon" />
+      Frequently Asked Questions
+    </h2>
+
+    <div class="help__faq-list">
+      <details class="help__faq-item">
+        <summary class="help__faq-summary">
+          Account Settings &amp; Security
+          <ng-icon name="fluentChevronDown" size="20px" class="help__faq-chevron" />
+        </summary>
+        <div class="help__faq-body">
+          Manage your profile visibility, password updates, and two-factor authentication from your
+          dashboard. Our security protocols ensure your professional data remains encrypted and
+          private.
+        </div>
+      </details>
+
+      <details class="help__faq-item">
+        <summary class="help__faq-summary">
+          CV Builder Performance
+          <ng-icon name="fluentChevronDown" size="20px" class="help__faq-chevron" />
+        </summary>
+        <div class="help__faq-body">
+          Our CV Builder uses AI-driven templates that are ATS-friendly. If you encounter rendering
+          issues, ensure all images are under 2MB and fonts are set to standard variants.
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Contact Support Section -->
+  <section class="help__section">
+    <h2 class="help__section-title">
+      <ng-icon name="fluentPersonSupport" size="22px" class="help__section-icon" />
+      Contact Support
+    </h2>
+
+    <div class="help__contact-grid">
+      <div class="help__contact-card">
+        <ng-icon name="fluentMail" size="24px" class="help__contact-icon" />
+        <h3 class="help__contact-name">Email Support</h3>
+        <p class="help__contact-desc">Response time within 24 hours.</p>
+        <span class="help__contact-action">support&#64;jetkarir.com</span>
+      </div>
+
+      <div class="help__contact-card">
+        <ng-icon name="fluentChat" size="24px" class="help__contact-icon" />
+        <h3 class="help__contact-name">Live Chat</h3>
+        <p class="help__contact-desc">Available Mon-Fri, 9am - 5pm EST.</p>
+        <span class="help__contact-action">Start Chat Now</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources Section -->
+  <section class="help__section">
+    <h2 class="help__section-title">
+      <ng-icon name="fluentBookOpen" size="22px" class="help__section-icon" />
+      Resources
+    </h2>
+
+    <a href="#" class="help__resource-item">
+      <div class="help__resource-left">
+        <div class="help__resource-icon-wrap">
+          <ng-icon name="fluentPlayCircle" size="20px" />
+        </div>
+        <div>
+          <p class="help__resource-name">Video Tutorials</p>
+          <p class="help__resource-desc">Master the platform in minutes.</p>
+        </div>
+      </div>
+      <ng-icon name="fluentArrowRight" size="20px" class="help__resource-arrow" />
+    </a>
+  </section>
+
+  <!-- Action -->
+  <div class="help__footer">
+    <button type="button" class="help__btn" (click)="location.back()">Leave This Page</button>
+  </div>
+</div>
