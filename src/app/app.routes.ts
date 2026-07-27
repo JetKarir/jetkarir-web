@@ -45,6 +45,33 @@ export const routes: Routes = [
         path: 'register',
         loadComponent: () => import('./pages/auth/register/register').then((m) => m.RegisterPage),
       },
+      {
+        path: 'forgot-password',
+        loadComponent: () =>
+          import('./pages/auth/forgot-password/forgot-password').then((m) => m.ForgotPasswordPage),
+      },
+      {
+        path: 'verify-email',
+        loadComponent: () =>
+          import('./pages/auth/verify-email/verify-email').then((m) => m.VerifyEmailPage),
+      },
+      {
+        path: 'reset-password',
+        loadComponent: () =>
+          import('./pages/auth/reset-password/reset-password').then((m) => m.ResetPasswordPage),
+      },
+      {
+        path: 'terms',
+        loadComponent: () => import('./pages/auth/terms/terms').then((m) => m.TermsPage),
+      },
+      {
+        path: 'privacy',
+        loadComponent: () => import('./pages/auth/privacy/privacy').then((m) => m.PrivacyPage),
+      },
+      {
+        path: 'help',
+        loadComponent: () => import('./pages/auth/help/help').then((m) => m.HelpPage),
+      },
     ],
   },
 
