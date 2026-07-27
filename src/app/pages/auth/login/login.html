@@ -1,35 +1,39 @@
 <p-toast />
 
-<div class="login auth-panel">
-  <div class="login__header auth-panel__header">
-    <h1 class="login__title auth-panel__title">Sign in</h1>
-    <p class="login__subtitle auth-panel__subtitle">
-      Access your JetKarir account and continue your career journey.
-    </p>
+<div class="login">
+  <!-- Header -->
+  <div class="login__header">
+    <div class="login__brand">
+      <img src="images/logo_text_jetkarir.png" alt="JetKarir" class="login__brand-img" />
+    </div>
+    <h1 class="login__title">Welcome Back</h1>
+    <p class="login__subtitle">Log in to continue your career journey.</p>
   </div>
 
   @if (errorMessage()) {
-    <div class="login__error auth-panel__alert">
-      <svg [lucideIcon]="alertIcon" [size]="18"></svg>
+    <div class="login__error">
+      <ng-icon name="fluentErrorCircle" size="18px" />
       {{ errorMessage() }}
     </div>
   }
 
-  <form [formGroup]="form" (ngSubmit)="submit()" class="login__form auth-panel__form" novalidate>
-    <div class="form-field auth-panel__field">
-      <label for="email" class="form-label auth-panel__label">Email</label>
-      <input
-        pInputText
-        id="email"
-        type="email"
-        formControlName="email"
-        placeholder="name@email.com"
-        class="form-input auth-panel__input"
-        autocomplete="email"
-        fluid
-      />
+  <form [formGroup]="form" (ngSubmit)="submit()" class="login__form" novalidate>
+    <!-- Email -->
+    <div class="form-field">
+      <label for="email" class="form-label">Email Address</label>
+      <div class="input-wrapper">
+        <ng-icon name="fluentMail" size="20px" class="input-icon" />
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="you@example.com"
+          class="form-input"
+          autocomplete="email"
+        />
+      </div>
       @if (emailCtrl.invalid && emailCtrl.touched) {
-        <span class="form-error auth-panel__error-text">
+        <span class="form-error">
           @if (emailCtrl.errors?.['required']) {
             Email is required.
           } @else if (emailCtrl.errors?.['email']) {
@@ -39,22 +43,34 @@
       }
     </div>
 
-    <div class="form-field auth-panel__field">
-      <div class="form-label-row auth-panel__label-row">
-        <label for="password" class="form-label auth-panel__label">Password</label>
-        <a href="#" class="form-link auth-panel__text-link">Forgot password?</a>
+    <!-- Password -->
+    <div class="form-field">
+      <div class="form-label-row">
+        <label for="password" class="form-label">Password</label>
+        <a href="#" class="form-link">Forgot?</a>
       </div>
-      <p-password
-        inputId="password"
-        formControlName="password"
-        placeholder="Enter your password"
-        [feedback]="false"
-        [toggleMask]="true"
-        fluid
-        autocomplete="current-password"
-      />
+      <div class="input-wrapper">
+        <ng-icon name="fluentLockClosed" size="20px" class="input-icon" />
+        <input
+          id="password"
+          [type]="showPassword() ? 'text' : 'password'"
+          formControlName="password"
+          placeholder="••••••••"
+          class="form-input"
+          autocomplete="current-password"
+        />
+        <button
+          type="button"
+          class="input-toggle"
+          (click)="showPassword.set(!showPassword())"
+          tabindex="-1"
+          aria-label="Toggle password visibility"
+        >
+          <ng-icon [name]="showPassword() ? 'fluentEye' : 'fluentEyeOff'" size="20px" />
+        </button>
+      </div>
       @if (passwordCtrl.invalid && passwordCtrl.touched) {
-        <span class="form-error auth-panel__error-text">
+        <span class="form-error">
           @if (passwordCtrl.errors?.['required']) {
             Password is required.
           } @else if (passwordCtrl.errors?.['minlength']) {
@@ -64,51 +80,58 @@
       }
     </div>
 
-    <p-button
-      type="submit"
-      label="Sign In"
-      [loading]="loading()"
-      [disabled]="loading()"
-      styleClass="auth-panel__submit auth-panel__action"
-      fluid
-    />
+    <!-- Submit -->
+    <button type="submit" class="login__submit" [disabled]="loading()">
+      {{ loading() ? 'Signing In…' : 'Sign In' }}
+    </button>
 
-    <div class="auth-panel__divider">
-      <span>or continue with</span>
+    <!-- Divider -->
+    <div class="login__divider">
+      <div class="login__divider-line"></div>
+      <span class="login__divider-text">OR</span>
+      <div class="login__divider-line"></div>
     </div>
 
+    <!-- Google -->
     <button
       type="button"
-      class="login__social-btn auth-panel__social-btn auth-panel__action"
+      class="login__social-btn"
       [disabled]="loading()"
       (click)="loginWithGoogle()"
     >
-      <span class="login__social-icon auth-panel__social-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" focusable="false">
-          <path
-            fill="#EA4335"
-            d="M12 10.2v3.9h5.4c-.2 1.3-.8 2.4-1.7 3.1l3 2.3c1.8-1.6 2.8-4.1 2.8-7 0-.7-.1-1.5-.2-2.2H12z"
-          />
-          <path
-            fill="#34A853"
-            d="M12 21c2.4 0 4.5-.8 6-2.2l-3-2.3c-.8.6-1.8 1-3 1-2.3 0-4.2-1.5-4.9-3.6l-3.1 2.4C5.4 18.9 8.4 21 12 21z"
-          />
-          <path
-            fill="#4A90E2"
-            d="M7.1 13.9c-.2-.6-.3-1.2-.3-1.9s.1-1.3.3-1.9L4 7.7C3.4 8.9 3 10.4 3 12s.4 3.1 1 4.3l3.1-2.4z"
-          />
-          <path
-            fill="#FBBC05"
-            d="M12 6.5c1.3 0 2.5.5 3.4 1.3l2.6-2.6C16.5 3.8 14.4 3 12 3 8.4 3 5.4 5.1 4 7.7l3.1 2.4C7.8 8 9.7 6.5 12 6.5z"
-          />
-        </svg>
-      </span>
-      <span>Sign in with Google</span>
+      <svg class="login__social-icon" viewBox="0 0 24 24">
+        <path
+          d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+          fill="#4285F4"
+        />
+        <path
+          d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+          fill="#34A853"
+        />
+        <path
+          d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
+          fill="#FBBC05"
+        />
+        <path
+          d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+          fill="#EA4335"
+        />
+      </svg>
+      Google
     </button>
   </form>
 
-  <p class="login__footer auth-panel__footer">
-    Don’t have an account?
-    <a routerLink="/auth/register" class="form-link auth-panel__text-link">Sign up now</a>
-  </p>
+  <!-- Footer -->
+  <div class="login__footer">
+    <p class="login__footer-text">
+      Don't have an account?
+      <a routerLink="/auth/register" class="form-link font-bold">Register now</a>
+    </p>
+    <div class="login__back">
+      <a routerLink="/" class="login__back-link">
+        <ng-icon name="fluentArrowLeft" size="18px" />
+        Explore JetKarir home page
+      </a>
+    </div>
+  </div>
 </div>

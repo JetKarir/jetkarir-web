@@ -12,11 +12,7 @@
       @for (f of candidateFeatures; track f.title) {
         <div class="lp-feature-card lp-feature-card--candidate">
           <div class="lp-feature-card__icon">
-            <span
-              class="material-symbols-outlined"
-              style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24"
-              aria-hidden="true"
-            >{{ f.icon }}</span>
+            <ng-icon [name]="f.icon" size="28px" />
           </div>
           <h3 class="lp-feature-card__title">{{ f.title }}</h3>
           <p class="lp-feature-card__desc">{{ f.desc }}</p>
@@ -39,11 +35,7 @@
       @for (f of enterpriseFeatures; track f.title) {
         <div class="lp-feature-card lp-feature-card--enterprise">
           <div class="lp-feature-card__icon lp-feature-card__icon--secondary">
-            <span
-              class="material-symbols-outlined"
-              style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24"
-              aria-hidden="true"
-            >{{ f.icon }}</span>
+            <ng-icon [name]="f.icon" size="28px" />
           </div>
           <h3 class="lp-feature-card__title">{{ f.title }}</h3>
           <p class="lp-feature-card__desc">{{ f.desc }}</p>

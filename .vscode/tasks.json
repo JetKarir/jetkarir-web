@@ -15,14 +15,32 @@
             "regexp": "(.*?)"
           },
           "endsPattern": {
-            "regexp": "Application bundle generation complete\\."
+            "regexp": "Application bundle generation complete"
           }
         }
       }
     },
     {
       "type": "npm",
-      "script": "test",
+      "script": "start:prod",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "typescript",
+        "pattern": "$tsc",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": {
+            "regexp": "(.*?)"
+          },
+          "endsPattern": {
+            "regexp": "Application bundle generation complete"
+          }
+        }
+      }
+    },
+    {
+      "type": "npm",
+      "script": "test:watch",
       "isBackground": true,
       "problemMatcher": {
         "owner": "typescript",

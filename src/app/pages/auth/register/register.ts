@@ -1,14 +1,16 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import {
+  fluentErrorCircle,
+  fluentEye,
+  fluentEyeOff,
+  fluentArrowLeft,
+} from '@ng-icons/fluent-ui';
 import { RegisterService } from '../../../core/services/auth/register/register-service';
 import { MessageService } from 'primeng/api';
-import { InputTextModule } from 'primeng/inputtext';
-import { PasswordModule } from 'primeng/password';
-import { ButtonModule } from 'primeng/button';
-import { CheckboxModule } from 'primeng/checkbox';
 import { ToastModule } from 'primeng/toast';
-import { LucideDynamicIcon, LucideCircleAlert } from '@lucide/angular';
 
 function passwordMatchValidator(control: AbstractControl) {
   const password = control.get('password');
@@ -19,23 +21,15 @@ function passwordMatchValidator(control: AbstractControl) {
 
 @Component({
   selector: 'app-register',
-  imports: [
-    ReactiveFormsModule,
-    RouterLink,
-    InputTextModule,
-    PasswordModule,
-    ButtonModule,
-    CheckboxModule,
-    ToastModule,
-    LucideDynamicIcon,
+  imports: [ReactiveFormsModule, RouterLink, ToastModule, NgIcon],
+  providers: [
+    MessageService,
+    provideIcons({ fluentErrorCircle, fluentEye, fluentEyeOff, fluentArrowLeft }),
   ],
-  providers: [MessageService],
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
 export class RegisterPage {
-  protected readonly alertIcon = LucideCircleAlert;
-
   fb = inject(FormBuilder);
   router = inject(Router);
   registerService = inject(RegisterService);
@@ -43,6 +37,8 @@ export class RegisterPage {
 
   loading = signal(false);
   errorMessage = signal<string | null>(null);
+  showPassword = signal(false);
+  showConfirmPassword = signal(false);
 
   form = this.fb.group(
     {
@@ -55,21 +51,11 @@ export class RegisterPage {
     { validators: passwordMatchValidator },
   );
 
-  get fullNameCtrl() {
-    return this.form.controls.fullName;
-  }
-  get emailCtrl() {
-    return this.form.controls.email;
-  }
-  get passwordCtrl() {
-    return this.form.controls.password;
-  }
-  get confirmPasswordCtrl() {
-    return this.form.controls.confirmPassword;
-  }
-  get acceptTermsCtrl() {
-    return this.form.controls.acceptTerms;
-  }
+  get fullNameCtrl() { return this.form.controls.fullName; }
+  get emailCtrl() { return this.form.controls.email; }
+  get passwordCtrl() { return this.form.controls.password; }
+  get confirmPasswordCtrl() { return this.form.controls.confirmPassword; }
+  get acceptTermsCtrl() { return this.form.controls.acceptTerms; }
 
   submit() {
     if (this.form.invalid) {
@@ -105,5 +91,11 @@ export class RegisterPage {
           this.errorMessage.set(msg);
         },
       });
+  }
+
+  registerWithGoogle() {
+    this.errorMessage.set(
+      'Google Sign-In is not configured on the frontend yet. Generate an idToken first, then call /api/auth/google.',
+    );
   }
 }

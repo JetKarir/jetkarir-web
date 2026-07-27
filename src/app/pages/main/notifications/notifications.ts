@@ -1,24 +1,25 @@
 import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import {
+  fluentCheckmarkCircle,
+  fluentAlertOff,
+  fluentTaskListSquareLtr,
+  fluentChat,
+  fluentStar,
+  fluentDismissCircle,
+  fluentInfo,
+  fluentAlert,
+} from '@ng-icons/fluent-ui';
 import { CandidateService } from '../../../core/services/main/candidate/candidate.service';
 import { NotificationItem } from '../../../core/models/interface/application.interface';
 import { ButtonModule } from 'primeng/button';
 import { SkeletonModule } from 'primeng/skeleton';
-import {
-  LucideDynamicIcon,
-  LucideCircleCheckBig,
-  LucideFileCheck,
-  LucideMessagesSquare,
-  LucideStar,
-  LucideCircleX,
-  LucideInfo,
-  LucideBell,
-  LucideBellOff,
-} from '@lucide/angular';
 
 @Component({
   selector: 'app-notifications',
-  imports: [DatePipe, ButtonModule, SkeletonModule, LucideDynamicIcon],
+  imports: [DatePipe, ButtonModule, SkeletonModule, NgIcon],
+  providers: [provideIcons({ fluentCheckmarkCircle, fluentAlertOff, fluentTaskListSquareLtr, fluentChat, fluentStar, fluentDismissCircle, fluentInfo, fluentAlert })],
   templateUrl: './notifications.html',
   styleUrl: './notifications.scss',
 })
@@ -58,18 +59,18 @@ export class NotificationsPage implements OnInit {
     });
   }
 
-  markAllReadIcon = LucideCircleCheckBig;
-  emptyBellIcon = LucideBellOff;
+  markAllReadIcon = 'fluentCheckmarkCircle';
+  emptyBellIcon = 'fluentAlertOff';
 
-  typeIcon(type: string) {
-    const map = {
-      APPLICATION_UPDATE: LucideFileCheck,
-      INTERVIEW_INVITATION: LucideMessagesSquare,
-      OFFER: LucideStar,
-      REJECTION: LucideCircleX,
-      SYSTEM: LucideInfo,
+  typeIcon(type: string): string {
+    const map: Record<string, string> = {
+      APPLICATION_UPDATE: 'fluentTaskListSquareLtr',
+      INTERVIEW_INVITATION: 'fluentChat',
+      OFFER: 'fluentStar',
+      REJECTION: 'fluentDismissCircle',
+      SYSTEM: 'fluentInfo',
     };
-    return map[type as keyof typeof map] ?? LucideBell;
+    return map[type] ?? 'fluentAlert';
   }
 
   skeletons = Array(5).fill(0);

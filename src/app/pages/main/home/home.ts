@@ -1,6 +1,8 @@
 import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { fluentSearch, fluentDocumentEdit, fluentBriefcase } from '@ng-icons/fluent-ui';
 import { AuthService } from '../../../core/services/auth/auth-service';
 import { JobService } from '../../../core/services/main/job/job.service';
 import { CandidateService } from '../../../core/services/main/candidate/candidate.service';
@@ -10,12 +12,6 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
 import { SkeletonModule } from 'primeng/skeleton';
-import {
-  LucideDynamicIcon,
-  LucideSearch,
-  LucideFilePenLine,
-  LucideBriefcase,
-} from '@lucide/angular';
 
 @Component({
   selector: 'app-home',
@@ -26,8 +22,9 @@ import {
     CardModule,
     TagModule,
     SkeletonModule,
-    LucideDynamicIcon,
+    NgIcon,
   ],
+  providers: [provideIcons({ fluentSearch, fluentDocumentEdit, fluentBriefcase })],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -44,9 +41,9 @@ export class HomePage implements OnInit {
   loadingJobs = signal(true);
   loadingApps = signal(true);
 
-  searchIcon = LucideSearch;
-  applicationIcon = LucideFilePenLine;
-  briefcaseIcon = LucideBriefcase;
+  searchIcon = 'fluentSearch';
+  applicationIcon = 'fluentDocumentEdit';
+  briefcaseIcon = 'fluentBriefcase';
 
   appliedCount = computed(
     () => this.applications().filter((application) => application.status === 'APPLIED').length,

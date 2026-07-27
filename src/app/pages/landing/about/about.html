@@ -1,0 +1,79 @@
+<main class="about">
+  <!-- Hero -->
+  <section class="about-hero">
+    <div class="lp-container about-hero__inner">
+      <div class="about-hero__logo">
+        <img src="images/logo_only_jetkarir.png" alt="JetKarir" class="about-hero__logo-img" />
+      </div>
+      <h1 class="about-hero__title">About JetKarir</h1>
+      <p class="about-hero__sub">
+        JetKarir is a platform that builds the future by maximizing every individual's potential to
+        reach their career peak through AI innovation and global connectivity.
+      </p>
+    </div>
+  </section>
+
+  <!-- Vision -->
+  <section class="about-vision">
+    <div class="lp-container about-vision__inner">
+      <h2 class="lp-section-title about-vision__title">Our Vision</h2>
+      <div class="about-vision__divider"></div>
+      <p class="lp-section-sub about-vision__body">
+        We envision a world where talent seamlessly meets opportunity without friction. By
+        leveraging advanced kinetic AI, we bridge the gap between human potential and enterprise
+        needs, ensuring that every professional can navigate their career trajectory with clarity
+        and purpose.
+      </p>
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section class="about-values">
+    <div class="lp-container">
+      <div class="about-values__header lp-section-header">
+        <h2 class="lp-section-title">Core Values</h2>
+        <p class="lp-section-sub">The pillars that drive our kinetic motion.</p>
+      </div>
+      <div class="about-values__grid">
+        @for (value of coreValues; track value.title) {
+          <div class="about-value-card">
+            <div class="about-value-card__icon">
+              <ng-icon [name]="value.icon" size="28px" />
+            </div>
+            <h3 class="about-value-card__title">{{ value.title }}</h3>
+            <p class="about-value-card__desc">{{ value.desc }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Who Are We -->
+  <section class="about-who">
+    <div class="lp-container about-who__inner">
+      <h2 class="lp-section-title about-who__title">Who Are We?</h2>
+      <div class="about-vision__divider"></div>
+      <p class="lp-section-sub about-who__body">
+        Founded in 2021, JetKarir was born from a vision to remove friction in global hiring. We've
+        grown from a small tech team into a global force of 150+ experts, driven by the belief that
+        AI should empower, not just automate. Today, we bridge the gap between world-class talent
+        and enterprise opportunities through kinetic innovation.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="about-cta">
+    <div class="lp-container">
+      <div class="about-cta__box">
+        <div class="about-cta__orb about-cta__orb--tl" aria-hidden="true"></div>
+        <div class="about-cta__orb about-cta__orb--br" aria-hidden="true"></div>
+        <h2 class="about-cta__title">Join the Movement</h2>
+        <p class="about-cta__sub">
+          Accelerate your career trajectory or scale your enterprise with our kinetic AI platform.
+        </p>
+        <a routerLink="/auth/register" class="about-cta__btn">Get Started</a>
+      </div>
+    </div>
+  </section>
+</main>

@@ -10,7 +10,7 @@
           </p>
           <div class="home__hero-actions">
             <a routerLink="/jobs" class="jk-btn-primary">
-              <svg [lucideIcon]="searchIcon" [size]="18"></svg>
+              <ng-icon [name]="searchIcon" />
               Find Jobs
             </a>
             <a routerLink="/profile" class="jk-btn-outline"> Complete Profile </a>
@@ -59,7 +59,7 @@
         </div>
       } @else if (applications().length === 0) {
         <div class="empty-state">
-          <svg [lucideIcon]="applicationIcon" [size]="42" class="empty-state__icon"></svg>
+          <ng-icon [name]="applicationIcon" class="empty-state__icon" />
           <p>No applications yet. Start applying now!</p>
           <a routerLink="/jobs" class="jk-btn-primary">Find Jobs</a>
         </div>
@@ -97,7 +97,7 @@
         </div>
       } @else if (jobs().length === 0) {
         <div class="empty-state">
-          <svg [lucideIcon]="briefcaseIcon" [size]="42" class="empty-state__icon"></svg>
+          <ng-icon [name]="briefcaseIcon" class="empty-state__icon" />
           <p>No job recommendations yet.</p>
         </div>
       } @else {

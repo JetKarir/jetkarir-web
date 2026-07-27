@@ -4,7 +4,7 @@
     <div class="navbar__inner jk-container">
       <!-- Logo -->
       <a routerLink="/home" class="navbar__logo">
-<img src="images/logo_text_jetkarir.png" alt="JetKarir" height="22" />
+        <img src="images/logo_text_jetkarir.png" alt="JetKarir" height="22" />
       </a>
 
       <!-- Nav links (desktop) -->
@@ -12,7 +12,7 @@
         @for (item of navItems; track item.route) {
           <li>
             <a [routerLink]="item.route" routerLinkActive="active" class="navbar__link">
-              <svg [lucideIcon]="item.icon" [size]="18"></svg>
+              <ng-icon [name]="item.icon" />
               {{ item.label }}
             </a>
           </li>
@@ -22,7 +22,7 @@
       <!-- Right actions -->
       <div class="navbar__actions">
         <a routerLink="/notifications" class="navbar__icon-btn" title="Notifications">
-          <svg [lucideIcon]="notificationIcon" [size]="18"></svg>
+          <ng-icon [name]="notificationIcon" />
         </a>
 
         @if (user()) {
@@ -33,7 +33,7 @@
               <span class="navbar__user-email">{{ user()?.email }}</span>
             </div>
             <button class="navbar__logout" (click)="logout()" title="Sign Out">
-              <svg [lucideIcon]="logoutIcon" [size]="18"></svg>
+              <ng-icon [name]="logoutIcon" />
             </button>
           </div>
         } @else {
@@ -47,7 +47,7 @@
   <nav class="bottom-nav">
     @for (item of navItems; track item.route) {
       <a [routerLink]="item.route" routerLinkActive="active" class="bottom-nav__item">
-        <svg [lucideIcon]="item.icon" [size]="18"></svg>
+        <ng-icon [name]="item.icon" />
         <span>{{ item.label }}</span>
       </a>
     }

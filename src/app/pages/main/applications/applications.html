@@ -20,7 +20,7 @@
       </div>
     } @else if (applications().length === 0) {
       <div class="apps__empty">
-        <svg [lucideIcon]="emptyApplicationIcon" [size]="44" class="apps__empty-icon"></svg>
+        <ng-icon [name]="emptyApplicationIcon" class="apps__empty-icon" />
         <h3>No applications yet</h3>
         <p>Start applying for your dream job now!</p>
       </div>
@@ -43,7 +43,7 @@
               <span class="app-item__company">{{ app.companyName }}</span>
               @if (app.city) {
                 <span class="app-item__loc">
-                  <svg [lucideIcon]="mapPinIcon" [size]="15"></svg>
+                  <ng-icon [name]="mapPinIcon" />
                   {{ app.city }}
                 </span>
               }
@@ -68,7 +68,7 @@
                     [class.timeline-marker--done]="stage.status === 'COMPLETED'"
                     [class.timeline-marker--active]="stage.status === 'STARTED'"
                   >
-                    <svg [lucideIcon]="stageIcon(stage.name)" [size]="16"></svg>
+                    <ng-icon [name]="stageIcon(stage.name)" />
                   </div>
                 </ng-template>
                 <ng-template #content let-stage>

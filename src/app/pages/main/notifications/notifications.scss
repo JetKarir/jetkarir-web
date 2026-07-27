@@ -19,7 +19,7 @@
 
 .notifs__title,
 .notifs__empty h3 {
-  color: white;
+  color: #021541;
 }
 
 .notifs__badge {
@@ -29,7 +29,7 @@
   min-width: 24px;
   height: 24px;
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--jk-racing-red), #ff4652);
+  background: #021541;
   color: white;
   font-size: 0.72rem;
   font-weight: 700;
@@ -43,12 +43,11 @@
   min-height: 40px;
   padding: 0.6rem 0.95rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.06);
-  color: white !important;
+  border: 1px solid rgba(197, 198, 208, 0.5);
+  background: #ffffff;
+  color: #021541 !important;
   font-size: 0.84rem;
   font-weight: 700;
-  backdrop-filter: blur(16px);
 }
 
 .notifs__list {
@@ -59,10 +58,9 @@
 
 .notif-item,
 .notifs__empty {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #ffffff;
+  border: 1px solid rgba(197, 198, 208, 0.35);
   box-shadow: var(--jk-shadow-sm);
-  backdrop-filter: blur(18px);
 }
 
 .notif-item {
@@ -78,7 +76,7 @@
 
   &:hover,
   &--unread {
-    border-color: rgba(214, 0, 28, 0.2);
+    border-color: rgba(2, 21, 65, 0.15);
     box-shadow: var(--jk-shadow-md);
   }
 
@@ -93,35 +91,36 @@
     width: 2.35rem;
     height: 2.35rem;
     border-radius: 14px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
+    background: #f8f9ff;
+    border: 1px solid rgba(197, 198, 208, 0.4);
+    color: #021541;
     flex-shrink: 0;
 
     &--unread {
-      background: linear-gradient(135deg, rgba(17, 70, 143, 0.7), rgba(214, 0, 28, 0.56));
+      background: #e5eeff;
+      border-color: rgba(2, 21, 65, 0.1);
     }
   }
 
   &__title {
-    color: white;
+    color: #021541;
     font-weight: 700;
   }
 
   &__message,
   &__time,
   .notifs__empty p {
-    color: var(--jk-text-secondary);
+    color: #45464f;
   }
 
   &__dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--jk-racing-red);
+    background: #021541;
     flex-shrink: 0;
     margin-top: 0.95rem;
-    box-shadow: 0 0 0 4px rgba(214, 0, 28, 0.14);
+    box-shadow: 0 0 0 4px rgba(2, 21, 65, 0.1);
   }
 }
 

@@ -1,20 +1,20 @@
 import { Component, inject, computed } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import {
+  fluentHome,
+  fluentSearch,
+  fluentDocumentText,
+  fluentPerson,
+  fluentAlert,
+  fluentSignOut,
+} from '@ng-icons/fluent-ui';
 import { AuthService } from '../../../core/services/auth/auth-service';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
 import { BadgeModule } from 'primeng/badge';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import {
-  LucideDynamicIcon,
-  LucideHome,
-  LucideSearch,
-  LucideFileText,
-  LucideUser,
-  LucideBell,
-  LucideLogOut,
-} from '@lucide/angular';
 
 @Component({
   selector: 'app-main-layout',
@@ -26,9 +26,12 @@ import {
     AvatarModule,
     BadgeModule,
     ToastModule,
-    LucideDynamicIcon,
+    NgIcon,
   ],
-  providers: [MessageService],
+  providers: [
+    MessageService,
+    provideIcons({ fluentHome, fluentSearch, fluentDocumentText, fluentPerson, fluentAlert, fluentSignOut }),
+  ],
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.scss',
 })
@@ -48,14 +51,14 @@ export class MainLayout {
   });
 
   navItems = [
-    { label: 'Home', icon: LucideHome, route: '/home' },
-    { label: 'Jobs', icon: LucideSearch, route: '/jobs' },
-    { label: 'Applications', icon: LucideFileText, route: '/applications' },
-    { label: 'Profile', icon: LucideUser, route: '/profile' },
+    { label: 'Home', icon: 'fluentHome', route: '/home' },
+    { label: 'Jobs', icon: 'fluentSearch', route: '/jobs' },
+    { label: 'Applications', icon: 'fluentDocumentText', route: '/applications' },
+    { label: 'Profile', icon: 'fluentPerson', route: '/profile' },
   ];
 
-  notificationIcon = LucideBell;
-  logoutIcon = LucideLogOut;
+  notificationIcon = 'fluentAlert';
+  logoutIcon = 'fluentSignOut';
 
   logout() {
     this.authService.logout();

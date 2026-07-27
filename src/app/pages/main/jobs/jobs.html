@@ -3,7 +3,7 @@
   <div class="jobs__search-bar">
     <div class="jk-container jobs__search-inner">
       <div class="jobs__search-field">
-        <svg [lucideIcon]="searchIcon" [size]="18" class="jobs__search-icon"></svg>
+        <ng-icon [name]="searchIcon" class="jobs__search-icon" />
         <input
           pInputText
           type="search"
@@ -14,7 +14,7 @@
         />
       </div>
       <button type="button" class="jobs__search-btn jk-btn-primary" (click)="search()">
-        <svg [lucideIcon]="searchIcon" [size]="18"></svg>
+        <ng-icon [name]="searchIcon" />
         Search
       </button>
     </div>
@@ -58,7 +58,7 @@
       </div>
     } @else if (jobs().length === 0) {
       <div class="jobs__empty">
-        <svg [lucideIcon]="briefcaseIcon" [size]="44" class="jobs__empty-icon"></svg>
+        <ng-icon [name]="briefcaseIcon" class="jobs__empty-icon" />
         <h3>No jobs found</h3>
         <p>Try changing your search keyword or filters.</p>
       </div>
@@ -79,7 +79,7 @@
                 <span class="job-card__company">{{ job.company?.name ?? job.companyName }}</span>
                 @if (job.city) {
                   <span class="job-card__location">
-                    <svg [lucideIcon]="mapPinIcon" [size]="15"></svg>
+                    <ng-icon [name]="mapPinIcon" />
                     {{ job.city }}{{ job.province ? ', ' + job.province : '' }}
                   </span>
                 }
@@ -113,7 +113,7 @@
             [disabled]="page() === 1"
             (click)="goToPage(page() - 1)"
           >
-            <svg [lucideIcon]="chevronLeftIcon" [size]="18"></svg>
+            <ng-icon [name]="chevronLeftIcon" />
           </button>
           <span class="jobs__page-info">Page {{ page() }} of {{ totalPages() }}</span>
           <button
@@ -122,7 +122,7 @@
             [disabled]="page() === totalPages()"
             (click)="goToPage(page() + 1)"
           >
-            <svg [lucideIcon]="chevronRightIcon" [size]="18"></svg>
+            <ng-icon [name]="chevronRightIcon" />
           </button>
         </div>
       }
@@ -162,7 +162,7 @@
           <p class="job-detail__company">{{ job.company?.name ?? job.companyName }}</p>
           @if (job.city) {
             <p class="job-detail__location">
-              <svg [lucideIcon]="mapPinIcon" [size]="16"></svg>
+              <ng-icon [name]="mapPinIcon" />
               {{ job.city }}{{ job.province ? ', ' + job.province : '' }}
             </p>
           }
@@ -214,7 +214,7 @@
 
       <div class="job-detail__actions">
         <button type="button" class="job-detail__apply-btn jk-btn-primary" (click)="applyJob()">
-          <svg [lucideIcon]="sendIcon" [size]="18"></svg>
+          <ng-icon [name]="sendIcon" />
           Apply Now
         </button>
       </div>

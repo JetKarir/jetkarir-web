@@ -9,7 +9,7 @@
       </div>
       @if (unreadCount() > 0) {
         <button type="button" class="notifs__mark-all" (click)="markAllRead()">
-          <svg [lucideIcon]="markAllReadIcon" [size]="18"></svg>
+          <ng-icon [name]="markAllReadIcon" />
           Mark all as read
         </button>
       }
@@ -30,7 +30,7 @@
       </div>
     } @else if (notifications().length === 0) {
       <div class="notifs__empty">
-        <svg [lucideIcon]="emptyBellIcon" [size]="44" class="notifs__empty-icon"></svg>
+        <ng-icon [name]="emptyBellIcon" class="notifs__empty-icon" />
         <h3>No notifications</h3>
         <p>You will receive notifications here.</p>
       </div>
@@ -43,7 +43,7 @@
             (click)="markRead(notif.id)"
           >
             <div class="notif-item__icon" [class.notif-item__icon--unread]="!notif.isRead">
-              <svg [lucideIcon]="typeIcon(notif.type)" [size]="18"></svg>
+              <ng-icon [name]="typeIcon(notif.type)" />
             </div>
             <div class="notif-item__body">
               <span class="notif-item__title">{{ notif.title }}</span>
