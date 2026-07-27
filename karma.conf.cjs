@@ -1,11 +1,11 @@
 module.exports = function (config) {
-  const browsers = [process.env.CI ? 'ChromeHeadlessNoSandbox' : 'ChromeHeadless'];
+  const browsers = [process.env.CI ? 'EdgeHeadlessNoSandbox' : 'EdgeHeadless'];
 
   config.set({
     browsers,
     customLaunchers: {
-      ChromeHeadlessNoSandbox: {
-        base: 'ChromeHeadless',
+      EdgeHeadlessNoSandbox: {
+        base: 'EdgeHeadless',
         flags: ['--no-sandbox', '--disable-dev-shm-usage'],
       },
     },
