@@ -133,9 +133,9 @@
       <input type="checkbox" id="acceptTerms" formControlName="acceptTerms" class="form-checkbox" />
       <label for="acceptTerms" class="form-label-check">
         I accept the
-        <a routerLink="/terms" class="form-link">Terms of Service</a>
+        <a routerLink="/auth/terms" class="form-link">Terms of Service</a>
         and
-        <a routerLink="/privacy" class="form-link">Privacy Policy</a>
+        <a routerLink="/auth/privacy" class="form-link">Privacy Policy</a>
       </label>
     </div>
     @if (acceptTermsCtrl.invalid && acceptTermsCtrl.touched) {
