@@ -1,59 +1,62 @@
-# JetkarirWeb
+# Jetkarir Web
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.17.
+This project is the frontend application for JetKarir, built with [Angular](https://angular.dev/).
 
-## Development server
+## Getting Started
 
-To start a local development server, run:
+Follow these steps to set up and run the project locally after cloning the repository.
+
+### Prerequisites
+
+Make sure you have the following installed on your machine:
+
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- npm (comes with Node.js)
+
+### Installation & Setup
+
+1. Clone the repository (if you haven't already):
+
+   ```bash
+   git clone <repository-url>
+   cd jetkarir-web
+   ```
+
+2. Install the project dependencies:
+   ```bash
+   npm install
+   ```
+
+## Development Server
+
+To start the local development server, run:
 
 ```bash
-ng serve
+npm start
 ```
+
+_(Alternatively, you can use `ng serve`)_
 
 Once the server is running, open your browser and navigate to `http://localhost:4205/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+## Building for Production
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+To build the project for production deployment, run:
 
 ```bash
-ng generate --help
+npm run build
 ```
 
-## Building
+_(Alternatively, you can use `ng build`)_
 
-To build the project run:
+This will compile your project and store the build artifacts in the `dist/` directory. The production build optimizes your application for performance and speed.
+
+## Running Tests
+
+To execute unit tests, use the following command:
 
 ```bash
-ng build
+npm run test:watch
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+_(Alternatively, you can use `ng test`)_
