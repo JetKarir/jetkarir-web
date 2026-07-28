@@ -31,12 +31,11 @@ export const routes: Routes = [
 
   /* ── Auth (centered card, no navbar) ── */
   {
-    path: 'auth',
+    path: '',
     loadComponent: () =>
       import('./shared/layouts/auth-layout/auth-layout').then((m) => m.AuthLayout),
     canActivate: [publicGuard],
     children: [
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
       {
         path: 'login',
         loadComponent: () => import('./pages/auth/login/login').then((m) => m.LoginPage),
@@ -45,6 +44,20 @@ export const routes: Routes = [
         path: 'register',
         loadComponent: () => import('./pages/auth/register/register').then((m) => m.RegisterPage),
       },
+      {
+        path: 'admin',
+        loadComponent: () =>
+          import('./pages/auth/admin-login/admin-login').then((m) => m.AdminLoginPage),
+      },
+    ],
+  },
+  {
+    path: 'auth',
+    loadComponent: () =>
+      import('./shared/layouts/auth-layout/auth-layout').then((m) => m.AuthLayout),
+    canActivate: [publicGuard],
+    children: [
+      { path: '', redirectTo: '/login', pathMatch: 'full' },
       {
         path: 'forgot-password',
         loadComponent: () =>

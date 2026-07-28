@@ -35,8 +35,12 @@ export class ResetPasswordPage {
     { validators: passwordMatchValidator },
   );
 
-  get passwordCtrl() { return this.form.controls.password; }
-  get confirmPasswordCtrl() { return this.form.controls.confirmPassword; }
+  get passwordCtrl() {
+    return this.form.controls.password;
+  }
+  get confirmPasswordCtrl() {
+    return this.form.controls.confirmPassword;
+  }
 
   submit() {
     if (this.form.invalid) {
@@ -48,7 +52,7 @@ export class ResetPasswordPage {
     setTimeout(() => {
       this.loading.set(false);
       this.done.set(true);
-      setTimeout(() => this.router.navigate(['/auth/login']), 2000);
+      setTimeout(() => this.router.navigate(['/login']), 2000);
     }, 1500);
   }
 }

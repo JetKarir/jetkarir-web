@@ -1,0 +1,84 @@
+<div class="admin-login">
+  <!-- Header -->
+  <div class="admin-login__header">
+    <a routerLink="/" class="admin-login__brand">
+      <img src="images/logo_text_jetkarir.png" alt="JetKarir" class="admin-login__brand-img" />
+    </a>
+    <h1 class="admin-login__title">System Access</h1>
+    <p class="admin-login__subtitle">Authorized personnel only.</p>
+  </div>
+
+  @if (errorMessage()) {
+    <div class="admin-login__error">
+      {{ errorMessage() }}
+    </div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="admin-login__form" novalidate>
+    <!-- Administrator ID -->
+    <div class="form-field">
+      <label for="adminId" class="form-label">Administrator ID</label>
+      <div class="input-wrapper">
+        <ng-icon name="fluentPerson" size="20px" class="input-icon" />
+        <input
+          id="adminId"
+          type="text"
+          formControlName="adminId"
+          placeholder="Enter your ID"
+          class="form-input"
+          autocomplete="username"
+        />
+      </div>
+      @if (adminIdCtrl.invalid && adminIdCtrl.touched) {
+        <span class="form-error">Administrator ID is required.</span>
+      }
+    </div>
+
+    <!-- Secure Passkey -->
+    <div class="form-field">
+      <label for="password" class="form-label">Secure Passkey</label>
+      <div class="input-wrapper">
+        <ng-icon name="fluentLockClosed" size="20px" class="input-icon" />
+        <input
+          id="password"
+          [type]="showPassword() ? 'text' : 'password'"
+          formControlName="password"
+          placeholder="••••••••"
+          class="form-input"
+          autocomplete="current-password"
+        />
+        <button
+          type="button"
+          class="input-toggle"
+          (click)="showPassword.set(!showPassword())"
+          tabindex="-1"
+          aria-label="Toggle passkey visibility"
+        >
+          <ng-icon [name]="showPassword() ? 'fluentEye' : 'fluentEyeOff'" size="20px" />
+        </button>
+      </div>
+      @if (passwordCtrl.invalid && passwordCtrl.touched) {
+        <span class="form-error">Passkey is required.</span>
+      }
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" class="admin-login__submit" [disabled]="loading()">
+      {{ loading() ? 'Authenticating…' : 'Authenticate' }}
+    </button>
+  </form>
+
+  <!-- Footer links -->
+  <div class="admin-login__info">
+    <p class="admin-login__secops">
+      Protected by JetKarir SecOps.
+      <a href="#" class="admin-login__report">Report an issue</a>
+    </p>
+    <div class="admin-login__back">
+      <a routerLink="/" class="admin-login__back-link">
+        <ng-icon name="fluentArrowLeft" size="18px" />
+        Explore JetKarir home page
+      </a>
+    </div>
+  </div>
+</div>
