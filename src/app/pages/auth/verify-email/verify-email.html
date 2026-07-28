@@ -1,9 +1,9 @@
 <div class="otp">
   <!-- Header -->
   <div class="otp__header">
-    <div class="otp__brand">
+    <a routerLink="/" class="otp__brand">
       <img src="images/logo_text_jetkarir.png" alt="JetKarir" class="otp__brand-img" />
-    </div>
+    </a>
     <h1 class="otp__title">Verify Your Email</h1>
     <p class="otp__subtitle">
       We've sent a 6-digit code to your email. Please enter it below to verify your account.
@@ -11,9 +11,7 @@
   </div>
 
   @if (verified()) {
-    <div class="otp__success">
-      Email verified successfully!
-    </div>
+    <div class="otp__success">Email verified successfully!</div>
   } @else {
     <form (ngSubmit)="submit()" class="otp__form" novalidate>
       <!-- OTP Boxes -->
@@ -35,11 +33,7 @@
       </div>
 
       <!-- Submit -->
-      <button
-        type="submit"
-        class="otp__submit"
-        [disabled]="loading() || otpValue.length < 6"
-      >
+      <button type="submit" class="otp__submit" [disabled]="loading() || otpValue.length < 6">
         {{ loading() ? 'Verifying…' : 'Verify Code' }}
       </button>
 
@@ -53,7 +47,7 @@
 
   <!-- Back link -->
   <div class="otp__back">
-    <a routerLink="/auth/login" class="otp__back-link">
+    <a routerLink="/login" class="otp__back-link">
       <ng-icon name="fluentArrowLeft" size="18px" />
       Back to Sign In
     </a>

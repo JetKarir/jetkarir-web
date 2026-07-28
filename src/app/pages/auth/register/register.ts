@@ -2,12 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import {
-  fluentErrorCircle,
-  fluentEye,
-  fluentEyeOff,
-  fluentArrowLeft,
-} from '@ng-icons/fluent-ui';
+import { fluentErrorCircle, fluentEye, fluentEyeOff, fluentArrowLeft } from '@ng-icons/fluent-ui';
 import { RegisterService } from '../../../core/services/auth/register/register-service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
@@ -51,11 +46,21 @@ export class RegisterPage {
     { validators: passwordMatchValidator },
   );
 
-  get fullNameCtrl() { return this.form.controls.fullName; }
-  get emailCtrl() { return this.form.controls.email; }
-  get passwordCtrl() { return this.form.controls.password; }
-  get confirmPasswordCtrl() { return this.form.controls.confirmPassword; }
-  get acceptTermsCtrl() { return this.form.controls.acceptTerms; }
+  get fullNameCtrl() {
+    return this.form.controls.fullName;
+  }
+  get emailCtrl() {
+    return this.form.controls.email;
+  }
+  get passwordCtrl() {
+    return this.form.controls.password;
+  }
+  get confirmPasswordCtrl() {
+    return this.form.controls.confirmPassword;
+  }
+  get acceptTermsCtrl() {
+    return this.form.controls.acceptTerms;
+  }
 
   submit() {
     if (this.form.invalid) {
@@ -83,7 +88,7 @@ export class RegisterPage {
             summary: 'Success',
             detail: 'Account created successfully. Please sign in.',
           });
-          setTimeout(() => this.router.navigate(['/auth/login']), 1500);
+          setTimeout(() => this.router.navigate(['/login']), 1500);
         },
         error: (err) => {
           this.loading.set(false);

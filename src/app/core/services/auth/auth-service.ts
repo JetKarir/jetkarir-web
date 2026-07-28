@@ -45,7 +45,7 @@ export class AuthService {
       localStorage.removeItem('jk_user');
     }
     this.currentUser.set(null);
-    this.router.navigate(['/auth/login']);
+    this.router.navigate(['/login']);
   }
 
   getMe() {
