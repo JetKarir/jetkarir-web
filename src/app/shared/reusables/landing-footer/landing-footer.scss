@@ -30,6 +30,11 @@
     justify-content: center;
     align-items: center;
     gap: 0.75rem;
+
+    @media (max-width: 599px) {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
   }
 
   &__link {
@@ -47,6 +52,10 @@
 
   &__sep {
     color: rgba(131, 147, 197, 0.5);
+
+    @media (max-width: 599px) {
+      display: none;
+    }
   }
 
   &__bottom {

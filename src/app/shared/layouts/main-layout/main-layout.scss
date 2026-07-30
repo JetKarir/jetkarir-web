@@ -4,7 +4,7 @@
   flex-direction: column;
   background: var(--jk-color-bg);
 
-  @media (min-width: 1024px) {
+  @media (min-width: 900px) {
     flex-direction: row;
     max-width: 1200px;
     margin: 0 auto;
@@ -20,7 +20,7 @@
       padding-bottom: 3rem;
     }
 
-    @media (min-width: 1024px) {
+    @media (min-width: 900px) {
       padding-top: 0;
       padding-bottom: 0;
     }
@@ -43,7 +43,7 @@
   border-bottom: 1px solid rgba(197, 198, 208, 0.4);
   box-shadow: 0 2px 8px rgba(2, 21, 65, 0.06);
 
-  @media (min-width: 1024px) {
+  @media (min-width: 900px) {
     display: none;
   }
 
@@ -100,7 +100,7 @@
   border: 1px solid rgba(197, 198, 208, 0.4);
   box-shadow: var(--jk-shadow-md);
 
-  @media (min-width: 1024px) {
+  @media (min-width: 900px) {
     display: none;
   }
 
