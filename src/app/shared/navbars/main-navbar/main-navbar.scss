@@ -1,7 +1,7 @@
 .main-navbar {
   display: none;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 900px) {
     display: flex;
     flex-direction: column;
     width: 350px;
