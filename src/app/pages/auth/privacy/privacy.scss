@@ -28,7 +28,7 @@
   &__date {
     font-family: 'Inter', sans-serif;
     font-size: 0.875rem;
-    color: #45464f;
+    color: var(--jk-color-gray);
     font-style: italic;
     margin: 0;
   }
@@ -71,7 +71,7 @@
   &__section-text {
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
-    color: #45464f;
+    color: var(--jk-color-gray);
     line-height: 1.7;
     margin: 0;
   }
@@ -85,7 +85,7 @@
   &__btn {
     width: 100%;
     padding: 0.75rem 1rem;
-    background: #021541;
+    background: var(--jk-color-primary);
     color: #ffffff;
     border: none;
     border-radius: 0.5rem;

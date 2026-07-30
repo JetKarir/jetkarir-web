@@ -64,7 +64,7 @@
   &__section-text {
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
-    color: #45464f;
+    color: var(--jk-color-gray);
     line-height: 1.7;
     margin: 0;
 
@@ -76,7 +76,7 @@
   &__list {
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
-    color: #45464f;
+    color: var(--jk-color-gray);
     line-height: 1.7;
     padding-left: 1.5rem;
     margin: 0.5rem 0 0;
@@ -86,7 +86,7 @@
   }
 
   &__link {
-    color: #021541;
+    color: var(--jk-color-primary);
     font-weight: 700;
     text-decoration: none;
 
@@ -104,7 +104,7 @@
   &__btn {
     width: 100%;
     padding: 0.75rem 1rem;
-    background: #021541;
+    background: var(--jk-color-primary);
     color: #ffffff;
     border: none;
     border-radius: 0.5rem;

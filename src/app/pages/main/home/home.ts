@@ -2,71 +2,64 @@ import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { fluentSearch, fluentDocumentEdit, fluentBriefcase } from '@ng-icons/fluent-ui';
+import {
+  fluentSearch,
+  fluentBriefcase,
+  fluentDismiss,
+  fluentBookmark,
+  fluentCheckmark,
+  fluentFilter,
+} from '@ng-icons/fluent-ui';
 import { AuthService } from '../../../core/services/auth/auth-service';
 import { JobService } from '../../../core/services/main/job/job.service';
-import { CandidateService } from '../../../core/services/main/candidate/candidate.service';
 import { JobListItem } from '../../../core/models/interface/job.interface';
-import { Application } from '../../../core/models/interface/application.interface';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import { TagModule } from 'primeng/tag';
 import { SkeletonModule } from 'primeng/skeleton';
+import { MainWidget } from '../../../shared/reusables/main-widget/main-widget';
 
 @Component({
   selector: 'app-home',
-  imports: [
-    DecimalPipe,
-    RouterLink,
-    ButtonModule,
-    CardModule,
-    TagModule,
-    SkeletonModule,
-    NgIcon,
+  imports: [DecimalPipe, RouterLink, SkeletonModule, NgIcon, MainWidget],
+  providers: [
+    provideIcons({
+      fluentSearch,
+      fluentBriefcase,
+      fluentDismiss,
+      fluentBookmark,
+      fluentCheckmark,
+      fluentFilter,
+    }),
   ],
-  providers: [provideIcons({ fluentSearch, fluentDocumentEdit, fluentBriefcase })],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class HomePage implements OnInit {
+  private jobService = inject(JobService);
   authService = inject(AuthService);
-  jobService = inject(JobService);
-  candidateService = inject(CandidateService);
 
   user = this.authService.currentUser;
-  firstName = computed(() => this.user()?.fullName?.split(' ')[0] ?? 'User');
 
   jobs = signal<JobListItem[]>([]);
-  applications = signal<Application[]>([]);
   loadingJobs = signal(true);
-  loadingApps = signal(true);
 
-  searchIcon = 'fluentSearch';
-  applicationIcon = 'fluentDocumentEdit';
-  briefcaseIcon = 'fluentBriefcase';
+  currentIndex = signal(0);
+  searchQuery = signal('');
 
-  appliedCount = computed(
-    () => this.applications().filter((application) => application.status === 'APPLIED').length,
-  );
-  savedCount = computed(() => Math.min(this.jobs().length, 3));
-  inProgressCount = computed(
-    () =>
-      this.applications().filter((application) =>
-        ['PROCESSING', 'SCREENING', 'ASSESSMENT', 'INTERVIEW'].includes(application.status),
-      ).length,
-  );
-  acceptedCount = computed(
-    () =>
-      this.applications().filter((application) => ['OFFERED', 'HIRED'].includes(application.status))
-        .length,
-  );
+  currentJob = computed(() => this.jobs()[this.currentIndex()] ?? null);
+  matchPercent = computed(() => {
+    if (!this.currentJob()) return null;
+    return [98, 94, 87, 92, 89, 95][this.currentIndex() % 6];
+  });
 
-  get greeting() {
-    const hour = new Date().getHours();
-    if (hour < 12) return 'Good Morning';
-    if (hour < 15) return 'Good Afternoon';
-    if (hour < 18) return 'Good Evening';
-    return 'Good Night';
+  discardJob() {
+    if (this.currentJob()) this.currentIndex.update((i) => i + 1);
+  }
+
+  saveJob() {
+    if (this.currentJob()) this.currentIndex.update((i) => i + 1);
+  }
+
+  applyJob() {
+    if (this.currentJob()) this.currentIndex.update((i) => i + 1);
   }
 
   ngOnInit() {
@@ -77,43 +70,5 @@ export class HomePage implements OnInit {
       },
       error: () => this.loadingJobs.set(false),
     });
-
-    this.candidateService.getApplications().subscribe({
-      next: (res) => {
-        this.applications.set((res.data ?? []).slice(0, 3));
-        this.loadingApps.set(false);
-      },
-      error: () => this.loadingApps.set(false),
-    });
-  }
-
-  statusSeverity(status: string): 'success' | 'info' | 'warn' | 'danger' | 'secondary' {
-    const map: Record<string, 'success' | 'info' | 'warn' | 'danger' | 'secondary'> = {
-      APPLIED: 'info',
-      PROCESSING: 'info',
-      SCREENING: 'warn',
-      ASSESSMENT: 'warn',
-      INTERVIEW: 'warn',
-      OFFERED: 'success',
-      HIRED: 'success',
-      REJECTED: 'danger',
-      WITHDRAWN: 'secondary',
-    };
-    return map[status] ?? 'secondary';
-  }
-
-  statusLabel(status: string) {
-    const map: Record<string, string> = {
-      APPLIED: 'Applied',
-      PROCESSING: 'Processing',
-      SCREENING: 'Screening',
-      ASSESSMENT: 'Assessment',
-      INTERVIEW: 'Interview',
-      OFFERED: 'Offered',
-      HIRED: 'Hired',
-      REJECTED: 'Rejected',
-      WITHDRAWN: 'Withdrawn',
-    };
-    return map[status] ?? status;
   }
 }

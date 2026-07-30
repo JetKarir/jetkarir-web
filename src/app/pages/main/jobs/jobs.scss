@@ -42,8 +42,8 @@
 }
 
 .jobs__search-btn {
-  background: #021541 !important;
-  border-color: #021541 !important;
+  background: var(--jk-color-primary) !important;
+  border-color: var(--jk-color-primary) !important;
 }
 
 /* ── Body ── */
@@ -118,14 +118,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #021541;
+    color: var(--jk-color-primary);
     font-weight: 700;
     overflow: hidden;
   }
 
   &__title,
   .job-detail__title {
-    color: #021541;
+    color: var(--jk-color-primary);
     font-weight: 700;
   }
 
@@ -133,18 +133,18 @@
   .job-detail__company,
   .job-detail__text,
   .jobs__empty p {
-    color: #45464f;
+    color: var(--jk-color-gray);
   }
 
   &__location,
   .job-detail__location {
     color: #757680;
-    background: #f8f9ff;
+    background: var(--jk-color-bg);
   }
 
   &__salary,
   .job-detail__salary {
-    color: #785900;
+    color: var(--jk-color-yellow-dark);
     font-weight: 700;
   }
 }
@@ -163,7 +163,7 @@
 
 .jobs__empty h3,
 .job-detail__section h4 {
-  color: #021541;
+  color: var(--jk-color-primary);
 }
 
 /* ── Pagination ── */
@@ -209,7 +209,7 @@
     overflow: hidden;
     font-size: 1.25rem;
     font-weight: 700;
-    color: #021541;
+    color: var(--jk-color-primary);
 
     img {
       width: 100%;
@@ -221,13 +221,13 @@
   &__title {
     font-size: 1.1rem;
     font-weight: 700;
-    color: #021541;
+    color: var(--jk-color-primary);
     margin: 0 0 0.25rem;
   }
 
   &__company {
     font-size: 0.9rem;
-    color: #45464f;
+    color: var(--jk-color-gray);
     margin: 0 0 0.2rem;
   }
 
@@ -240,7 +240,7 @@
     gap: 0.4rem;
     padding: 0.3rem 0.65rem;
     border-radius: 9999px;
-    background: #f8f9ff;
+    background: var(--jk-color-bg);
     border: 1px solid rgba(197, 198, 208, 0.3);
     width: fit-content;
 
@@ -259,7 +259,7 @@
   &__salary {
     font-size: 1rem;
     font-weight: 600;
-    color: #785900;
+    color: var(--jk-color-yellow-dark);
     margin: 0;
   }
 
@@ -267,7 +267,7 @@
     h4 {
       font-size: 0.875rem;
       font-weight: 600;
-      color: #021541;
+      color: var(--jk-color-primary);
       margin: 0 0 0.5rem;
       text-transform: uppercase;
       letter-spacing: 0.04em;
@@ -276,7 +276,7 @@
 
   &__text {
     font-size: 0.875rem;
-    color: #45464f;
+    color: var(--jk-color-gray);
     line-height: 1.6;
     margin: 0;
     white-space: pre-line;
@@ -289,8 +289,8 @@
 
   &__apply-btn {
     width: 100%;
-    background: #021541 !important;
-    border-color: #021541 !important;
+    background: var(--jk-color-primary) !important;
+    border-color: var(--jk-color-primary) !important;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -314,7 +314,7 @@
   border-radius: 9999px;
   border: 1px solid rgba(197, 198, 208, 0.4);
   background: #ffffff;
-  color: #021541;
+  color: var(--jk-color-primary);
   cursor: pointer;
   transition:
     background-color 0.18s ease,

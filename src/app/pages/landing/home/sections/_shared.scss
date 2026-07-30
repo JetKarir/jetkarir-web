@@ -1,14 +1,14 @@
 /* Stitch design tokens — imported by each section component */
-$lp-primary: #021541;
+$lp-primary: var(--jk-color-primary);
 $lp-on-primary: #ffffff;
-$lp-secondary: #785900;
-$lp-secondary-container: #fdc003;
+$lp-secondary: var(--jk-color-yellow-dark);
+$lp-secondary-container: var(--jk-color-yellow);
 $lp-on-secondary-container: #6c5000;
-$lp-background: #f8f9ff;
-$lp-surface: #f8f9ff;
+$lp-background: var(--jk-color-bg);
+$lp-surface: var(--jk-color-bg);
 $lp-surface-container: #e5eeff;
 $lp-on-surface: #0b1c30;
-$lp-on-surface-variant: #45464f;
+$lp-on-surface-variant: var(--jk-color-gray);
 $lp-outline-variant: #c5c6d0;
 $lp-on-primary-container: #8393c5;
 $lp-secondary-fixed: #ffdf9e;

@@ -30,7 +30,7 @@
   &__subtitle {
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
-    color: #45464f;
+    color: var(--jk-color-gray);
     line-height: 1.6;
     margin: 0;
   }
@@ -64,7 +64,7 @@
   &__submit {
     width: 100%;
     padding: 0.75rem 1rem;
-    background: #021541;
+    background: var(--jk-color-primary);
     color: #ffffff;
     border: none;
     border-radius: 0.5rem;
@@ -114,7 +114,7 @@
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: #45464f;
+    color: var(--jk-color-gray);
   }
 
   &__social-btn {
@@ -162,7 +162,7 @@
   &__footer-text {
     font-family: 'Inter', sans-serif;
     font-size: 0.875rem;
-    color: #45464f;
+    color: var(--jk-color-gray);
     margin: 0;
   }
 
@@ -181,7 +181,7 @@
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: #021541;
+    color: var(--jk-color-primary);
     text-decoration: none;
     transition: color 0.2s ease;
 
@@ -199,7 +199,7 @@
   }
 }
 
-// ── Input wrapper with toggle ────────────────────────────────────────────────
+// Input wrapper with toggle
 
 .input-wrapper {
   position: relative;
@@ -220,12 +220,12 @@
     transition: color 0.2s ease;
 
     &:hover {
-      color: #021541;
+      color: var(--jk-color-primary);
     }
   }
 }
 
-// ── Shared form primitives ───────────────────────────────────────────────────
+// Shared form primitives
 
 .form-field {
   display: flex;
@@ -252,7 +252,7 @@
 .form-label-check {
   font-family: 'Inter', sans-serif;
   font-size: 0.875rem;
-  color: #45464f;
+  color: var(--jk-color-gray);
   line-height: 1.55;
   cursor: pointer;
 }
@@ -276,7 +276,7 @@
   }
 
   &:focus {
-    border-color: #021541;
+    border-color: var(--jk-color-primary);
     box-shadow: 0 0 0 2px rgba(2, 21, 65, 0.1);
   }
 
@@ -289,7 +289,7 @@
   width: 1rem;
   height: 1rem;
   margin-top: 0.125rem;
-  accent-color: #021541;
+  accent-color: var(--jk-color-primary);
   flex-shrink: 0;
   cursor: pointer;
 }
@@ -298,7 +298,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #021541;
+  color: var(--jk-color-primary);
   text-decoration: none;
 
   &.font-bold {
@@ -313,5 +313,5 @@
 .form-error {
   font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
-  color: #ba1a1a;
+  color: var(--jk-color-red);
 }

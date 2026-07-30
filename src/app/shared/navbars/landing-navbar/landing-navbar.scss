@@ -28,7 +28,7 @@
     font-family: 'Hanken Grotesk', 'Segoe UI', sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
-    color: #021541;
+    color: var(--jk-color-primary);
     text-decoration: none;
     flex-shrink: 0;
     margin-right: 2rem;
@@ -49,20 +49,20 @@
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
     font-weight: 400;
-    color: #45464f;
+    color: var(--jk-color-gray);
     text-decoration: none;
     padding-bottom: 2px;
     transition: color 0.2s ease;
 
     &:hover {
-      color: #021541;
+      color: var(--jk-color-primary);
       font-weight: 700;
     }
 
     &--active {
-      color: #021541;
+      color: var(--jk-color-primary);
       font-weight: 700;
-      border-bottom: 2px solid #fdc003;
+      border-bottom: 2px solid var(--jk-color-yellow);
     }
   }
 
@@ -88,7 +88,7 @@
     white-space: nowrap;
 
     &--primary {
-      background: #021541;
+      background: var(--jk-color-primary);
       color: #ffffff;
 
       &:hover {

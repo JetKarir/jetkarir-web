@@ -1,11 +1,14 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, AfterViewInit, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { fluentErrorCircle, fluentEye, fluentEyeOff, fluentArrowLeft } from '@ng-icons/fluent-ui';
 import { RegisterService } from '../../../core/services/auth/register/register-service';
+import { LoginService } from '../../../core/services/auth/login/login-service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { environment } from '../../../../environments/environment';
 
 function passwordMatchValidator(control: AbstractControl) {
   const password = control.get('password');
@@ -24,11 +27,13 @@ function passwordMatchValidator(control: AbstractControl) {
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
-export class RegisterPage {
-  fb = inject(FormBuilder);
-  router = inject(Router);
-  registerService = inject(RegisterService);
-  messageService = inject(MessageService);
+export class RegisterPage implements AfterViewInit {
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
+  private registerService = inject(RegisterService);
+  private loginService = inject(LoginService);
+  private messageService = inject(MessageService);
+  private platformId = inject(PLATFORM_ID);
 
   loading = signal(false);
   errorMessage = signal<string | null>(null);
@@ -62,6 +67,44 @@ export class RegisterPage {
     return this.form.controls.acceptTerms;
   }
 
+  ngAfterViewInit() {
+    if (!isPlatformBrowser(this.platformId) || !environment.OAUTH_GOOGLE_CLIENT_ID) return;
+    this.loadGsiScript().then(() => {
+      (window as any).google.accounts.id.initialize({
+        client_id: environment.OAUTH_GOOGLE_CLIENT_ID,
+        callback: (res: { credential: string }) => this.handleGoogleCredential(res.credential),
+      });
+    });
+  }
+
+  private loadGsiScript(): Promise<void> {
+    return new Promise((resolve) => {
+      if ((window as any).google?.accounts) {
+        resolve();
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = 'https://accounts.google.com/gsi/client';
+      script.onload = () => resolve();
+      document.head.appendChild(script);
+    });
+  }
+
+  private handleGoogleCredential(idToken: string) {
+    this.loading.set(true);
+    this.errorMessage.set(null);
+    this.loginService.loginWithGoogle({ idToken }).subscribe({
+      next: () => {
+        this.loading.set(false);
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        this.loading.set(false);
+        this.errorMessage.set(err?.error?.message ?? 'Google sign-in failed. Please try again.');
+      },
+    });
+  }
+
   submit() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
@@ -81,26 +124,30 @@ export class RegisterPage {
         acceptTerms: acceptTerms!,
       })
       .subscribe({
-        next: () => {
+        next: (res) => {
           this.loading.set(false);
           this.messageService.add({
             severity: 'success',
-            summary: 'Success',
-            detail: 'Account created successfully. Please sign in.',
+            summary: 'Registration Successful',
+            detail: res.message,
+            life: 3000,
           });
-          setTimeout(() => this.router.navigate(['/login']), 1500);
+          setTimeout(() => this.router.navigate(['/login']), 3000);
         },
         error: (err) => {
           this.loading.set(false);
-          const msg = err?.error?.message ?? 'Registration failed. Please try again.';
-          this.errorMessage.set(msg);
+          this.errorMessage.set(err?.error?.message ?? 'Registration failed. Please try again.');
         },
       });
   }
 
   registerWithGoogle() {
-    this.errorMessage.set(
-      'Google Sign-In is not configured on the frontend yet. Generate an idToken first, then call /api/auth/google.',
-    );
+    if (!environment.OAUTH_GOOGLE_CLIENT_ID) {
+      this.errorMessage.set(
+        'Google Sign-In belum dikonfigurasi. Isi GOOGLE_CLIENT_ID di environment.',
+      );
+      return;
+    }
+    (window as any).google?.accounts.id.prompt();
   }
 }

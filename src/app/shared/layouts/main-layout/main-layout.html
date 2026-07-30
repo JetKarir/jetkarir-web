@@ -1,62 +1,36 @@
 <div class="main-layout">
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="navbar__inner jk-container">
-      <!-- Logo -->
-      <a routerLink="/home" class="navbar__logo">
-        <img src="images/logo_text_jetkarir.png" alt="JetKarir" height="22" />
+  <!-- Desktop Sidebar -->
+  <app-main-navbar />
+
+  <!-- Mobile Top Bar -->
+  <header class="top-bar">
+    <a routerLink="/home" class="top-bar__logo">
+      <img src="images/logo_text_jetkarir.png" alt="JetKarir" height="20" />
+    </a>
+    <div class="top-bar__actions">
+      <a routerLink="/notifications" class="top-bar__icon-btn" title="Notifications">
+        <ng-icon name="fluentAlert" />
       </a>
-
-      <!-- Nav links (desktop) -->
-      <ul class="navbar__links">
-        @for (item of navItems; track item.route) {
-          <li>
-            <a [routerLink]="item.route" routerLinkActive="active" class="navbar__link">
-              <ng-icon [name]="item.icon" />
-              {{ item.label }}
-            </a>
-          </li>
-        }
-      </ul>
-
-      <!-- Right actions -->
-      <div class="navbar__actions">
-        <a routerLink="/notifications" class="navbar__icon-btn" title="Notifications">
-          <ng-icon [name]="notificationIcon" />
-        </a>
-
-        @if (user()) {
-          <div class="navbar__user">
-            <p-avatar [label]="userInitials()" shape="circle" class="navbar__avatar" />
-            <div class="navbar__user-info">
-              <span class="navbar__user-name">{{ user()?.fullName }}</span>
-              <span class="navbar__user-email">{{ user()?.email }}</span>
-            </div>
-            <button class="navbar__logout" (click)="logout()" title="Sign Out">
-              <ng-icon [name]="logoutIcon" />
-            </button>
-          </div>
-        } @else {
-          <a routerLink="/login" class="navbar__login-btn"> Sign In </a>
-        }
-      </div>
+      @if (user()) {
+        <p-avatar [label]="userInitials()" shape="circle" class="top-bar__avatar" />
+      }
     </div>
-  </nav>
+  </header>
 
-  <!-- Bottom nav (mobile) -->
+  <!-- Page content -->
+  <main class="main-layout__content">
+    <router-outlet />
+  </main>
+
+  <!-- Mobile Bottom Nav -->
   <nav class="bottom-nav">
-    @for (item of navItems; track item.route) {
+    @for (item of bottomNavItems; track item.route) {
       <a [routerLink]="item.route" routerLinkActive="active" class="bottom-nav__item">
         <ng-icon [name]="item.icon" />
         <span>{{ item.label }}</span>
       </a>
     }
   </nav>
-
-  <!-- Page content -->
-  <main class="main-layout__content">
-    <router-outlet />
-  </main>
 
   <p-toast />
 </div>

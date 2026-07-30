@@ -6,6 +6,14 @@
   --jk-shadow-sm: 0 4px 12px rgba(2, 21, 65, 0.08);
   --jk-shadow-md: 0 8px 24px rgba(2, 21, 65, 0.1);
   --jk-shadow-lg: 0 16px 48px rgba(2, 21, 65, 0.12);
+  --jk-color-bg: #F8F9FF;
+  --jk-color-gray: #45464F;
+  --jk-color-yellow-pale: #FFF2CD;
+  --jk-color-yellow: #FDC003;
+  --jk-color-yellow-dark: #785900;
+  --jk-color-blue-light: #DCE9FF;
+  --jk-color-primary: #021541;
+  --jk-color-red: #BA1A1A;
 }
 
 *,
@@ -23,7 +31,7 @@ html {
 
 body {
   font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
-  background: #f8f9ff;
+  background: var(--jk-color-bg);
   color: #0b1c30;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -40,7 +48,7 @@ h6 {
   font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
   font-weight: 700;
   line-height: 1.12;
-  color: #021541;
+  color: var(--jk-color-primary);
   letter-spacing: -0.03em;
 }
 
@@ -55,12 +63,12 @@ h3 {
 }
 
 p {
-  color: #45464f;
+  color: var(--jk-color-gray);
   font-size: clamp(0.95rem, 1vw, 1rem);
 }
 
 a {
-  color: #021541;
+  color: var(--jk-color-primary);
   text-decoration: none;
 }
 
@@ -87,7 +95,7 @@ a:hover {
 .p-button-outlined {
   background: #ffffff !important;
   border-color: rgba(197, 198, 208, 0.6) !important;
-  color: #021541 !important;
+  color: var(--jk-color-primary) !important;
 }
 
 .p-card {
@@ -132,7 +140,7 @@ a:hover {
   letter-spacing: 0.08em;
   border: 1px solid rgba(197, 198, 208, 0.4);
   background: #eff4ff;
-  color: #021541;
+  color: var(--jk-color-primary);
 }
 
 .jk-divider {

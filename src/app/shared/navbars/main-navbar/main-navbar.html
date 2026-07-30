@@ -1,0 +1,41 @@
+<aside class="main-navbar">
+  <div class="main-navbar__brand">
+    <a routerLink="/home">
+      <img src="images/logo_text_jetkarir.png" alt="JetKarir" class="main-navbar__logo" />
+    </a>
+  </div>
+
+  <nav class="main-navbar__nav">
+    @for (item of navItems; track item.label) {
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="main-navbar__link"
+      >
+        <ng-icon [name]="item.icon" size="22px" />
+        {{ item.label }}
+      </a>
+    }
+  </nav>
+
+  <div class="main-navbar__footer">
+    <button class="main-navbar__post-btn">
+      <ng-icon name="fluentAddCircle" size="20px" />
+      Post a Job
+    </button>
+
+    @if (user()) {
+      <div class="main-navbar__user">
+        <p-avatar [label]="userInitials()" shape="circle" class="main-navbar__avatar" />
+        <div class="main-navbar__user-info">
+          <span class="main-navbar__user-name">{{ user()?.fullName }}</span>
+          <span class="main-navbar__user-handle">{{ userHandle() }}</span>
+        </div>
+        <button class="main-navbar__logout" (click)="logout()" title="Sign Out">
+          <ng-icon name="fluentMoreCircle" size="24px" />
+        </button>
+      </div>
+    }
+  </div>
+</aside>
