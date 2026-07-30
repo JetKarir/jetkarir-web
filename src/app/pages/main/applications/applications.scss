@@ -11,7 +11,7 @@
 
 .apps__title {
   font-size: 1.35rem;
-  color: #021541;
+  color: var(--jk-color-primary);
 }
 
 .apps__count {
@@ -59,20 +59,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #021541;
+    color: var(--jk-color-primary);
     font-weight: 700;
     overflow: hidden;
   }
 
   &__job {
-    color: #021541;
+    color: var(--jk-color-primary);
     font-weight: 700;
   }
 
   &__company,
   &__date,
   &__loc {
-    color: #45464f;
+    color: var(--jk-color-gray);
   }
 }
 
@@ -90,25 +90,25 @@
   align-items: center;
   justify-content: center;
   color: #757680;
-  background: #f8f9ff;
+  background: var(--jk-color-bg);
   border: 1px solid rgba(197, 198, 208, 0.4);
 
   &--done,
   &--active {
     color: white;
-    background: #021541;
-    border-color: #021541;
+    background: var(--jk-color-primary);
+    border-color: var(--jk-color-primary);
   }
 }
 
 .timeline-content__name {
-  color: #021541;
+  color: var(--jk-color-primary);
 }
 
 .timeline-content__date,
 .timeline-content__decision,
 .apps__empty p {
-  color: #45464f;
+  color: var(--jk-color-gray);
 }
 
 .apps__empty {
@@ -121,5 +121,5 @@
 }
 
 .apps__empty h3 {
-  color: #021541;
+  color: var(--jk-color-primary);
 }

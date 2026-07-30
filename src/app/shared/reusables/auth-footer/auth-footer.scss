@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.625rem;
-  background: #f8f9ff;
+  background: var(--jk-color-bg);
 
   &__nav {
     display: flex;
@@ -15,7 +15,7 @@
   }
 
   &__dot {
-    color: #45464f;
+    color: var(--jk-color-gray);
     font-size: 0.75rem;
   }
 
@@ -23,19 +23,19 @@
     font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
-    color: #45464f;
+    color: var(--jk-color-gray);
     text-decoration: none;
     transition: color 0.2s ease;
 
     &:hover {
-      color: #021541;
+      color: var(--jk-color-primary);
     }
   }
 
   &__copy {
     font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
-    color: #45464f;
+    color: var(--jk-color-gray);
     text-align: center;
     margin: 0;
   }

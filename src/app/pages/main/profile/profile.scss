@@ -31,7 +31,7 @@
   width: 84px;
   height: 84px;
   border-radius: 24px;
-  background: linear-gradient(135deg, #021541, #1a2b56);
+  background: linear-gradient(135deg, var(--jk-color-primary), #1a2b56);
   color: white;
   display: flex;
   align-items: center;
@@ -52,7 +52,7 @@
 .profile__section-title,
 .exp-item__position,
 .profile__empty h3 {
-  color: #021541;
+  color: var(--jk-color-primary);
 }
 
 .profile__headline,
@@ -61,7 +61,7 @@
 .exp-item__company,
 .exp-item__period,
 .profile__empty p {
-  color: #45464f;
+  color: var(--jk-color-gray);
 }
 
 .profile__skills {
@@ -97,7 +97,7 @@
 
   &__fill {
     fill: none;
-    stroke: #021541;
+    stroke: var(--jk-color-primary);
     stroke-width: 3.5;
     stroke-linecap: round;
     transition: stroke-dasharray 0.5s ease;
@@ -105,7 +105,7 @@
 
   &__label,
   &__text {
-    color: #021541;
+    color: var(--jk-color-primary);
   }
 }
 
@@ -121,12 +121,12 @@
 }
 
 .completion-ring__fill {
-  stroke: #021541;
+  stroke: var(--jk-color-primary);
 }
 
 .completion-ring__label,
 .completion-ring__text {
-  color: #021541;
+  color: var(--jk-color-primary);
 }
 
 /* ── Experience / Education ── */
@@ -160,7 +160,7 @@
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #021541;
+    background: var(--jk-color-primary);
     flex-shrink: 0;
     margin-top: 3px;
     border: 2px solid #ffffff;
@@ -176,12 +176,12 @@
   &__position {
     font-size: 0.9rem;
     font-weight: 600;
-    color: #021541;
+    color: var(--jk-color-primary);
   }
 
   &__company {
     font-size: 0.825rem;
-    color: #45464f;
+    color: var(--jk-color-gray);
   }
 
   &__period {
@@ -209,7 +209,7 @@
   h3 {
     margin: 0;
     font-size: 1.1rem;
-    color: #021541;
+    color: var(--jk-color-primary);
   }
   p {
     margin: 0;

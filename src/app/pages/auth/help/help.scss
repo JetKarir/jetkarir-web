@@ -41,7 +41,7 @@
   }
 
   &__section-icon {
-    color: #021541;
+    color: var(--jk-color-primary);
     flex-shrink: 0;
   }
 
@@ -61,7 +61,7 @@
     transition: border-color 0.2s ease;
 
     &:hover {
-      border-color: #021541;
+      border-color: var(--jk-color-primary);
     }
 
     &[open] .help__faq-chevron {
@@ -87,7 +87,7 @@
 
   &__faq-chevron {
     flex-shrink: 0;
-    color: #45464f;
+    color: var(--jk-color-gray);
     transition: transform 0.2s ease;
   }
 
@@ -95,7 +95,7 @@
     margin-top: 0.75rem;
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
-    color: #45464f;
+    color: var(--jk-color-gray);
     line-height: 1.7;
   }
 
@@ -121,7 +121,7 @@
   }
 
   &__contact-icon {
-    color: #021541;
+    color: var(--jk-color-primary);
     margin-bottom: 0.5rem;
     display: block;
   }
@@ -137,7 +137,7 @@
   &__contact-desc {
     font-family: 'Inter', sans-serif;
     font-size: 0.875rem;
-    color: #45464f;
+    color: var(--jk-color-gray);
     margin: 0;
   }
 
@@ -149,7 +149,7 @@
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: #021541;
+    color: var(--jk-color-primary);
   }
 
   // ── Resources ────────────────────────────────────────────────────────────
@@ -166,7 +166,7 @@
     transition: border-color 0.2s ease;
 
     &:hover {
-      border-color: #021541;
+      border-color: var(--jk-color-primary);
 
       .help__resource-arrow {
         transform: translateX(4px);
@@ -203,12 +203,12 @@
   &__resource-desc {
     font-family: 'Inter', sans-serif;
     font-size: 0.875rem;
-    color: #45464f;
+    color: var(--jk-color-gray);
     margin: 0;
   }
 
   &__resource-arrow {
-    color: #45464f;
+    color: var(--jk-color-gray);
     flex-shrink: 0;
     transition: transform 0.2s ease;
   }
@@ -224,7 +224,7 @@
   &__btn {
     width: 100%;
     padding: 0.75rem 1rem;
-    background: #021541;
+    background: var(--jk-color-primary);
     color: #ffffff;
     border: none;
     border-radius: 0.5rem;

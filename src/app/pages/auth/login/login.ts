@@ -1,4 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, AfterViewInit, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
   fluentErrorCircle,
@@ -13,22 +14,30 @@ import { Router, RouterLink } from '@angular/router';
 import { LoginService } from '../../../core/services/auth/login/login-service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-login',
   imports: [ReactiveFormsModule, RouterLink, ToastModule, NgIcon],
   providers: [
     MessageService,
-    provideIcons({ fluentErrorCircle, fluentMail, fluentLockClosed, fluentEye, fluentEyeOff, fluentArrowLeft }),
+    provideIcons({
+      fluentErrorCircle,
+      fluentMail,
+      fluentLockClosed,
+      fluentEye,
+      fluentEyeOff,
+      fluentArrowLeft,
+    }),
   ],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
-export class LoginPage {
-  fb = inject(FormBuilder);
-  router = inject(Router);
-  loginService = inject(LoginService);
-  messageService = inject(MessageService);
+export class LoginPage implements AfterViewInit {
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
+  private loginService = inject(LoginService);
+  private platformId = inject(PLATFORM_ID);
 
   loading = signal(false);
   errorMessage = signal<string | null>(null);
@@ -44,6 +53,44 @@ export class LoginPage {
   }
   get passwordCtrl() {
     return this.form.controls.password;
+  }
+
+  ngAfterViewInit() {
+    if (!isPlatformBrowser(this.platformId) || !environment.OAUTH_GOOGLE_CLIENT_ID) return;
+    this.loadGsiScript().then(() => {
+      (window as any).google.accounts.id.initialize({
+        client_id: environment.OAUTH_GOOGLE_CLIENT_ID,
+        callback: (res: { credential: string }) => this.handleGoogleCredential(res.credential),
+      });
+    });
+  }
+
+  private loadGsiScript(): Promise<void> {
+    return new Promise((resolve) => {
+      if ((window as any).google?.accounts) {
+        resolve();
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = 'https://accounts.google.com/gsi/client';
+      script.onload = () => resolve();
+      document.head.appendChild(script);
+    });
+  }
+
+  private handleGoogleCredential(idToken: string) {
+    this.loading.set(true);
+    this.errorMessage.set(null);
+    this.loginService.loginWithGoogle({ idToken }).subscribe({
+      next: () => {
+        this.loading.set(false);
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        this.loading.set(false);
+        this.errorMessage.set(err?.error?.message ?? 'Google sign-in failed. Please try again.');
+      },
+    });
   }
 
   submit() {
@@ -64,15 +111,20 @@ export class LoginPage {
       },
       error: (err) => {
         this.loading.set(false);
-        const msg = err?.error?.message ?? 'Login failed. Please check your email and password.';
-        this.errorMessage.set(msg);
+        this.errorMessage.set(
+          err?.error?.message ?? 'Login failed. Please check your email and password.',
+        );
       },
     });
   }
 
   loginWithGoogle() {
-    this.errorMessage.set(
-      'Google Sign-In is not configured on the frontend yet. Generate an idToken first, then call /api/auth/google.',
-    );
+    if (!environment.OAUTH_GOOGLE_CLIENT_ID) {
+      this.errorMessage.set(
+        'Google Sign-In belum dikonfigurasi. Isi GOOGLE_CLIENT_ID di environment.',
+      );
+      return;
+    }
+    (window as any).google?.accounts.id.prompt();
   }
 }

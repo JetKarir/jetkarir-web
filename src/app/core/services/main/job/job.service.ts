@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
-import { environment } from '../../../../../environments/environment.development';
+import { environment } from '../../../../../environments/environment';
 import { ApiResponse } from '../../../models/interface/api-response.interface';
 import { JobListItem, JobDetail, JobSearchParams } from '../../../models/interface/job.interface';
 import { ApplyRequest } from '../../../models/interface/application.interface';

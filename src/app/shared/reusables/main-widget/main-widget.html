@@ -1,0 +1,72 @@
+<aside class="main-widget">
+  <!-- Career Trends -->
+  <div class="widget">
+    <div class="widget__header">
+      <h3 class="widget__title">Career Trends</h3>
+      <button class="widget__link">View All</button>
+    </div>
+    <div class="widget__list">
+      @for (trend of careerTrends; track trend.title) {
+        <div class="trend-item">
+          <span class="trend-item__name">{{ trend.title }}</span>
+          <span class="trend-item__count">{{ trend.count }} Applied</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Recent Activity -->
+  <div class="widget">
+    <div class="widget__header">
+      <h3 class="widget__title">Recent Activity</h3>
+      <a routerLink="/applications" class="widget__link">View All</a>
+    </div>
+    <div class="widget__list">
+      @if (loadingApps()) {
+        @for (i of [1, 2]; track i) {
+          <div class="activity-item">
+            <p-skeleton shape="circle" size="2rem" />
+            <div style="flex: 1">
+              <p-skeleton height="0.8rem" width="80%" />
+              <p-skeleton height="0.7rem" width="50%" class="mt-1" />
+            </div>
+          </div>
+        }
+      } @else if (applications().length === 0) {
+        <p class="widget__empty">No recent activity.</p>
+      } @else {
+        @for (app of applications(); track app.id) {
+          <div class="activity-item">
+            <div class="activity-item__icon">
+              <ng-icon name="fluentDocumentEdit" />
+            </div>
+            <div class="activity-item__info">
+              <p class="activity-item__text">Applied to <strong>{{ app.jobTitle }}</strong></p>
+              <p class="activity-item__company">{{ app.companyName }}</p>
+            </div>
+          </div>
+        }
+      }
+    </div>
+  </div>
+
+  <!-- Recommended Companies -->
+  <div class="widget">
+    <div class="widget__header">
+      <h3 class="widget__title">Recommended</h3>
+      <button class="widget__link">View All</button>
+    </div>
+    <div class="widget__list">
+      @for (co of recommendedCompanies; track co.name) {
+        <div class="company-item">
+          <div class="company-item__logo">{{ co.name[0] }}</div>
+          <div class="company-item__info">
+            <span class="company-item__name">{{ co.name }}</span>
+            <span class="company-item__sector">{{ co.sector }}</span>
+          </div>
+          <button class="company-item__follow">Follow</button>
+        </div>
+      }
+    </div>
+  </div>
+</aside>

@@ -2,7 +2,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #f8f9ff;
+  background: var(--jk-color-bg);
 
   &__main {
     flex: 1;
@@ -24,6 +24,6 @@
 
   &__card-bar {
     height: 8px;
-    background: #021541;
+    background: var(--jk-color-primary);
   }
 }

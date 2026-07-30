@@ -19,7 +19,7 @@
 
 .notifs__title,
 .notifs__empty h3 {
-  color: #021541;
+  color: var(--jk-color-primary);
 }
 
 .notifs__badge {
@@ -29,7 +29,7 @@
   min-width: 24px;
   height: 24px;
   border-radius: 12px;
-  background: #021541;
+  background: var(--jk-color-primary);
   color: white;
   font-size: 0.72rem;
   font-weight: 700;
@@ -45,7 +45,7 @@
   border-radius: 999px;
   border: 1px solid rgba(197, 198, 208, 0.5);
   background: #ffffff;
-  color: #021541 !important;
+  color: var(--jk-color-primary) !important;
   font-size: 0.84rem;
   font-weight: 700;
 }
@@ -91,9 +91,9 @@
     width: 2.35rem;
     height: 2.35rem;
     border-radius: 14px;
-    background: #f8f9ff;
+    background: var(--jk-color-bg);
     border: 1px solid rgba(197, 198, 208, 0.4);
-    color: #021541;
+    color: var(--jk-color-primary);
     flex-shrink: 0;
 
     &--unread {
@@ -103,21 +103,21 @@
   }
 
   &__title {
-    color: #021541;
+    color: var(--jk-color-primary);
     font-weight: 700;
   }
 
   &__message,
   &__time,
   .notifs__empty p {
-    color: #45464f;
+    color: var(--jk-color-gray);
   }
 
   &__dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #021541;
+    background: var(--jk-color-primary);
     flex-shrink: 0;
     margin-top: 0.95rem;
     box-shadow: 0 0 0 4px rgba(2, 21, 65, 0.1);

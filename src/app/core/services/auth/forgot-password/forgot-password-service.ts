@@ -3,15 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 import { ApiResponse } from '../../../models/interface/api-response.interface';
-import { RegisterRequest, RegisterResponse } from '../../../models/interface/auth.interface';
 
 @Injectable({ providedIn: 'root' })
-export class RegisterService {
+export class ForgotPasswordService {
   private http = inject(HttpClient);
 
-  register(body: RegisterRequest) {
+  forgotPassword(email: string) {
     return this.http
-      .post<ApiResponse<RegisterResponse>>(`${environment.API_URL}api/auth/register`, body)
+      .post<ApiResponse<null>>(`${environment.API_URL}api/auth/forgot-password`, { email })
       .pipe(catchError((err) => throwError(() => err)));
   }
 }
