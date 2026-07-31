@@ -72,7 +72,7 @@
   &__company,
   &__date,
   &__loc {
-    color: var(--jk-color-gray);
+    color: var(--jk-color-black);
   }
 }
 
@@ -90,7 +90,7 @@
   align-items: center;
   justify-content: center;
   color: #757680;
-  background: var(--jk-color-bg);
+  background: var(--jk-color-gray-light);
   border: 1px solid rgba(197, 198, 208, 0.4);
 
   &--done,
@@ -108,7 +108,7 @@
 .timeline-content__date,
 .timeline-content__decision,
 .apps__empty p {
-  color: var(--jk-color-gray);
+  color: var(--jk-color-black);
 }
 
 .apps__empty {

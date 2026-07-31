@@ -2,7 +2,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: var(--jk-color-bg);
+  background: var(--jk-color-gray-light);
 
   @media (min-width: 900px) {
     flex-direction: row;
@@ -15,10 +15,6 @@
     min-width: 0;
     padding-top: calc(var(--jk-nav-height) + 0.75rem);
     padding-bottom: 7rem;
-
-    @media (min-width: 769px) {
-      padding-bottom: 3rem;
-    }
 
     @media (min-width: 900px) {
       padding-top: 0;

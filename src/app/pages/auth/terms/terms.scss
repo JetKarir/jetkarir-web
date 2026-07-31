@@ -17,7 +17,7 @@
   }
 
   &__title {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 2rem;
     font-weight: 600;
     color: #0b1c30;
@@ -53,7 +53,7 @@
   }
 
   &__section-title {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #0b1c30;
@@ -62,9 +62,9 @@
   }
 
   &__section-text {
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
-    color: var(--jk-color-gray);
+    color: var(--jk-color-black);
     line-height: 1.7;
     margin: 0;
 
@@ -74,9 +74,9 @@
   }
 
   &__list {
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
-    color: var(--jk-color-gray);
+    color: var(--jk-color-black);
     line-height: 1.7;
     padding-left: 1.5rem;
     margin: 0.5rem 0 0;
@@ -108,7 +108,7 @@
     color: #ffffff;
     border: none;
     border-radius: 0.5rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.05em;

@@ -4,11 +4,11 @@ $lp-on-primary: #ffffff;
 $lp-secondary: var(--jk-color-yellow-dark);
 $lp-secondary-container: var(--jk-color-yellow);
 $lp-on-secondary-container: #6c5000;
-$lp-background: var(--jk-color-bg);
-$lp-surface: var(--jk-color-bg);
+$lp-background: var(--jk-color-gray-light);
+$lp-surface: var(--jk-color-gray-light);
 $lp-surface-container: #e5eeff;
 $lp-on-surface: #0b1c30;
-$lp-on-surface-variant: var(--jk-color-gray);
+$lp-on-surface-variant: var(--jk-color-black);
 $lp-outline-variant: #c5c6d0;
 $lp-on-primary-container: #8393c5;
 $lp-secondary-fixed: #ffdf9e;
@@ -24,7 +24,7 @@ $lp-secondary-fixed: #ffdf9e;
 }
 
 .lp-section-title {
-  font-family: 'Hanken Grotesk', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: clamp(1.75rem, 3vw, 2rem);
   font-weight: 600;
   color: $lp-primary;
@@ -34,7 +34,7 @@ $lp-secondary-fixed: #ffdf9e;
 }
 
 .lp-section-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.125rem;
   color: $lp-on-surface-variant;
   line-height: 1.75;

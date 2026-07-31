@@ -19,7 +19,7 @@
   }
 
   &__title {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 2rem;
     font-weight: 600;
     color: #0b1c30;
@@ -28,9 +28,9 @@
   }
 
   &__subtitle {
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
-    color: var(--jk-color-gray);
+    color: var(--jk-color-black);
     line-height: 1.6;
     margin: 0;
   }
@@ -51,11 +51,11 @@
     width: 44px;
     height: 52px;
     text-align: center;
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 1.5rem;
     font-weight: 600;
     color: #0b1c30;
-    background: var(--jk-color-bg);
+    background: var(--jk-color-gray-light);
     border: 1px solid #c5c6d0;
     border-radius: 0.5rem;
     outline: none;
@@ -83,7 +83,7 @@
     background: #d4edda;
     border: 1px solid rgba(25, 135, 84, 0.2);
     color: #155724;
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.875rem;
     text-align: center;
   }
@@ -95,7 +95,7 @@
     color: #ffffff;
     border: none;
     border-radius: 0.5rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.05em;
@@ -124,9 +124,9 @@
 
   &__resend {
     text-align: center;
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.875rem;
-    color: var(--jk-color-gray);
+    color: var(--jk-color-black);
     margin: 0;
   }
 
@@ -134,7 +134,7 @@
     background: none;
     border: none;
     padding: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.05em;
@@ -160,7 +160,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.875rem;
     font-weight: 400;
     color: var(--jk-color-primary);
