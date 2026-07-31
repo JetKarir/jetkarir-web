@@ -91,7 +91,7 @@
     width: 2.35rem;
     height: 2.35rem;
     border-radius: 14px;
-    background: var(--jk-color-bg);
+    background: var(--jk-color-gray-light);
     border: 1px solid rgba(197, 198, 208, 0.4);
     color: var(--jk-color-primary);
     flex-shrink: 0;
@@ -110,7 +110,7 @@
   &__message,
   &__time,
   .notifs__empty p {
-    color: var(--jk-color-gray);
+    color: var(--jk-color-black);
   }
 
   &__dot {

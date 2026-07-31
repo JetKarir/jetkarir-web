@@ -61,7 +61,7 @@
 .exp-item__company,
 .exp-item__period,
 .profile__empty p {
-  color: var(--jk-color-gray);
+  color: var(--jk-color-black);
 }
 
 .profile__skills {
@@ -181,7 +181,7 @@
 
   &__company {
     font-size: 0.825rem;
-    color: var(--jk-color-gray);
+    color: var(--jk-color-black);
   }
 
   &__period {

@@ -133,13 +133,13 @@
   .job-detail__company,
   .job-detail__text,
   .jobs__empty p {
-    color: var(--jk-color-gray);
+    color: var(--jk-color-black);
   }
 
   &__location,
   .job-detail__location {
     color: #757680;
-    background: var(--jk-color-bg);
+    background: var(--jk-color-gray-light);
   }
 
   &__salary,
@@ -227,7 +227,7 @@
 
   &__company {
     font-size: 0.9rem;
-    color: var(--jk-color-gray);
+    color: var(--jk-color-black);
     margin: 0 0 0.2rem;
   }
 
@@ -240,7 +240,7 @@
     gap: 0.4rem;
     padding: 0.3rem 0.65rem;
     border-radius: 9999px;
-    background: var(--jk-color-bg);
+    background: var(--jk-color-gray-light);
     border: 1px solid rgba(197, 198, 208, 0.3);
     width: fit-content;
 
@@ -276,7 +276,7 @@
 
   &__text {
     font-size: 0.875rem;
-    color: var(--jk-color-gray);
+    color: var(--jk-color-black);
     line-height: 1.6;
     margin: 0;
     white-space: pre-line;

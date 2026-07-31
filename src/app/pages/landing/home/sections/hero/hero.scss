@@ -21,7 +21,7 @@
   }
 
   &__title {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: clamp(2.25rem, 4vw, 3rem);
     font-weight: 700;
     color: $lp-primary;
@@ -31,7 +31,7 @@
   }
 
   &__subtitle {
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 1.125rem;
     color: $lp-on-surface-variant;
     line-height: 1.75;
@@ -50,7 +50,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.875rem 2rem;
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     background: $lp-primary;
@@ -106,7 +106,7 @@
   }
 
   &__chip-label {
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
     color: $lp-on-surface-variant;
@@ -116,7 +116,7 @@
   }
 
   &__chip-value {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: $lp-primary;

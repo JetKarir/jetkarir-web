@@ -17,7 +17,7 @@
   }
 
   &__title {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 2rem;
     font-weight: 600;
     color: #0b1c30;
@@ -30,7 +30,7 @@
   }
 
   &__section-title {
-    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
     color: #0b1c30;
@@ -75,7 +75,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #0b1c30;
@@ -87,15 +87,15 @@
 
   &__faq-chevron {
     flex-shrink: 0;
-    color: var(--jk-color-gray);
+    color: var(--jk-color-black);
     transition: transform 0.2s ease;
   }
 
   &__faq-body {
     margin-top: 0.75rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
-    color: var(--jk-color-gray);
+    color: var(--jk-color-black);
     line-height: 1.7;
   }
 
@@ -108,7 +108,7 @@
   }
 
   &__contact-card {
-    background: #eff4ff;
+    background: var(--jk-color-gray);
     border: 1px solid #c5c6d0;
     border-radius: 0.5rem;
     padding: 1rem;
@@ -127,7 +127,7 @@
   }
 
   &__contact-name {
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #0b1c30;
@@ -135,16 +135,16 @@
   }
 
   &__contact-desc {
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.875rem;
-    color: var(--jk-color-gray);
+    color: var(--jk-color-black);
     margin: 0;
   }
 
   &__contact-action {
     display: block;
     margin-top: 1rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.05em;
@@ -193,7 +193,7 @@
   }
 
   &__resource-name {
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
     font-weight: 600;
     color: #0b1c30;
@@ -201,14 +201,14 @@
   }
 
   &__resource-desc {
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.875rem;
-    color: var(--jk-color-gray);
+    color: var(--jk-color-black);
     margin: 0;
   }
 
   &__resource-arrow {
-    color: var(--jk-color-gray);
+    color: var(--jk-color-black);
     flex-shrink: 0;
     transition: transform 0.2s ease;
   }
@@ -228,7 +228,7 @@
     color: #ffffff;
     border: none;
     border-radius: 0.5rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.05em;
