@@ -3,19 +3,7 @@
   <app-main-navbar />
 
   <!-- Mobile Top Bar -->
-  <header class="top-bar">
-    <a routerLink="/home" class="top-bar__logo">
-      <img src="images/logo_text_jetkarir.png" alt="JetKarir" height="20" />
-    </a>
-    <div class="top-bar__actions">
-      <a routerLink="/notifications" class="top-bar__icon-btn" title="Notifications">
-        <ng-icon name="fluentAlert" />
-      </a>
-      @if (user()) {
-        <p-avatar [label]="userInitials()" shape="circle" class="top-bar__avatar" />
-      }
-    </div>
-  </header>
+  <app-main-topbar />
 
   <!-- Page content -->
   <main class="main-layout__content">
@@ -23,14 +11,7 @@
   </main>
 
   <!-- Mobile Bottom Nav -->
-  <nav class="bottom-nav">
-    @for (item of bottomNavItems; track item.route) {
-      <a [routerLink]="item.route" routerLinkActive="active" class="bottom-nav__item">
-        <ng-icon [name]="item.icon" />
-        <span>{{ item.label }}</span>
-      </a>
-    }
-  </nav>
+  <app-main-botbar />
 
   <p-toast />
 </div>

@@ -17,8 +17,37 @@
       <a routerLink="/about" routerLinkActive="lp-nav__link--active" class="lp-nav__link">About</a>
     </nav>
     <div class="lp-nav__actions">
-      <a routerLink="/login" class="lp-nav__btn lp-nav__btn--ghost">Login</a>
-      <a routerLink="/register" class="lp-nav__btn lp-nav__btn--primary">Register</a>
+      <a routerLink="/register" class="lp-nav__text-link lp-nav__btn--desktop-only">Register</a>
+      <a routerLink="/login" class="lp-nav__btn lp-nav__btn--primary">Login</a>
+      <button class="lp-nav__hamburger" (click)="openSidebar()" aria-label="Open menu">
+        <ng-icon name="fluentNavigation" size="24px" />
+      </button>
     </div>
   </div>
 </header>
+
+@if (sidebarOpen()) {
+  <div class="lp-sidebar-overlay" (click)="closeSidebar()"></div>
+  <aside class="lp-sidebar">
+    <div class="lp-sidebar__header">
+      <button class="lp-sidebar__close" (click)="closeSidebar()" aria-label="Close menu">
+        <ng-icon name="fluentDismiss" size="26px" />
+      </button>
+    </div>
+    <nav class="lp-sidebar__links">
+      <a
+        routerLink="/"
+        routerLinkActive="lp-sidebar__link--active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="lp-sidebar__link"
+        (click)="closeSidebar()"
+        >Home</a
+      >
+      <a routerLink="/main/jobs" class="lp-sidebar__link" (click)="closeSidebar()">Jobs</a>
+      <a routerLink="/main/people" class="lp-sidebar__link" (click)="closeSidebar()">People</a>
+      <a routerLink="/main/companies" class="lp-sidebar__link" (click)="closeSidebar()">Companies</a>
+      <a routerLink="/about" routerLinkActive="lp-sidebar__link--active" class="lp-sidebar__link" (click)="closeSidebar()">About</a>
+    </nav>
+    <a routerLink="/register" class="lp-nav__btn lp-nav__btn--primary lp-sidebar__register" (click)="closeSidebar()">Register</a>
+  </aside>
+}

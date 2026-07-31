@@ -9,6 +9,8 @@ import {
   fluentBookmark,
   fluentCheckmark,
   fluentFilter,
+  fluentLocation,
+  fluentMoney,
 } from '@ng-icons/fluent-ui';
 import { AuthService } from '../../../core/services/auth/auth-service';
 import { JobService } from '../../../core/services/main/job/job.service';
@@ -27,6 +29,8 @@ import { MainWidget } from '../../../shared/reusables/main-widget/main-widget';
       fluentBookmark,
       fluentCheckmark,
       fluentFilter,
+      fluentLocation,
+      fluentMoney,
     }),
   ],
   templateUrl: './home.html',

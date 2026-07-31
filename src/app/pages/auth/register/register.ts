@@ -1,5 +1,4 @@
-import { Component, inject, signal, AfterViewInit, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, inject, signal, AfterViewInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
@@ -9,6 +8,7 @@ import { LoginService } from '../../../core/services/auth/login/login-service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { environment } from '../../../../environments/environment';
+import { GsiService } from '../../../core/services/auth/gsi-service';
 
 function passwordMatchValidator(control: AbstractControl) {
   const password = control.get('password');
@@ -33,7 +33,7 @@ export class RegisterPage implements AfterViewInit {
   private registerService = inject(RegisterService);
   private loginService = inject(LoginService);
   private messageService = inject(MessageService);
-  private platformId = inject(PLATFORM_ID);
+  private gsi = inject(GsiService);
 
   loading = signal(false);
   errorMessage = signal<string | null>(null);
@@ -51,43 +51,14 @@ export class RegisterPage implements AfterViewInit {
     { validators: passwordMatchValidator },
   );
 
-  get fullNameCtrl() {
-    return this.form.controls.fullName;
-  }
-  get emailCtrl() {
-    return this.form.controls.email;
-  }
-  get passwordCtrl() {
-    return this.form.controls.password;
-  }
-  get confirmPasswordCtrl() {
-    return this.form.controls.confirmPassword;
-  }
-  get acceptTermsCtrl() {
-    return this.form.controls.acceptTerms;
-  }
+  get fullNameCtrl() { return this.form.controls.fullName; }
+  get emailCtrl() { return this.form.controls.email; }
+  get passwordCtrl() { return this.form.controls.password; }
+  get confirmPasswordCtrl() { return this.form.controls.confirmPassword; }
+  get acceptTermsCtrl() { return this.form.controls.acceptTerms; }
 
   ngAfterViewInit() {
-    if (!isPlatformBrowser(this.platformId) || !environment.OAUTH_GOOGLE_CLIENT_ID) return;
-    this.loadGsiScript().then(() => {
-      (window as any).google.accounts.id.initialize({
-        client_id: environment.OAUTH_GOOGLE_CLIENT_ID,
-        callback: (res: { credential: string }) => this.handleGoogleCredential(res.credential),
-      });
-    });
-  }
-
-  private loadGsiScript(): Promise<void> {
-    return new Promise((resolve) => {
-      if ((window as any).google?.accounts) {
-        resolve();
-        return;
-      }
-      const script = document.createElement('script');
-      script.src = 'https://accounts.google.com/gsi/client';
-      script.onload = () => resolve();
-      document.head.appendChild(script);
-    });
+    this.gsi.init((idToken) => this.handleGoogleCredential(idToken));
   }
 
   private handleGoogleCredential(idToken: string) {
@@ -148,6 +119,6 @@ export class RegisterPage implements AfterViewInit {
       );
       return;
     }
-    (window as any).google?.accounts.id.prompt();
+    this.gsi.prompt();
   }
 }

@@ -32,6 +32,7 @@ export interface JobListItem {
   applicationDeadline?: string;
   status: string;
   tags?: string[];
+  responsibilities?: string;
 }
 
 export interface JobDetail extends JobListItem {
