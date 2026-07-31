@@ -60,18 +60,41 @@
             <p class="job-card__company">{{ currentJob()!.company?.name }}</p>
 
             <div class="job-card__tags">
-              @if (currentJob()!.workMode) {
-                <span class="job-card__tag">{{ currentJob()!.workMode }}</span>
-              }
-              @if (currentJob()!.employmentType) {
-                <span class="job-card__tag">{{ currentJob()!.employmentType }}</span>
+              @if (currentJob()!.city) {
+                <span class="job-card__tag">
+                  <ng-icon name="fluentLocation" size="13px" />
+                  {{ currentJob()!.city }}{{ currentJob()!.province ? ', ' + currentJob()!.province : '' }}
+                </span>
               }
               @if (currentJob()!.isSalaryVisible && (currentJob()!.salaryMin || currentJob()!.salaryMax)) {
-                <span class="job-card__tag job-card__tag--salary">
+                <span class="job-card__tag">
+                  <ng-icon name="fluentMoney" size="13px" />
                   Rp {{ currentJob()!.salaryMin | number }} – {{ currentJob()!.salaryMax | number }}
                 </span>
               }
+              @if (currentJob()!.employmentType) {
+                <span class="job-card__tag">
+                  <ng-icon name="fluentBriefcase" size="13px" />
+                  {{ currentJob()!.employmentType }}
+                </span>
+              }
+              @if (currentJob()!.workMode) {
+                <span class="job-card__tag">{{ currentJob()!.workMode }}</span>
+              }
             </div>
+
+            @if (currentJob()!.responsibilities) {
+              <div class="job-card__responsibilities">
+                <p class="job-card__responsibilities-title">KEY RESPONSIBILITIES</p>
+                <ul class="job-card__responsibilities-list">
+                  @for (line of currentJob()!.responsibilities!.split('\n'); track $index) {
+                    @if (line.trim()) {
+                      <li>{{ line.trim() }}</li>
+                    }
+                  }
+                </ul>
+              </div>
+            }
           </div>
         </div>
       } @else {
