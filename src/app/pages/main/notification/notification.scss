@@ -1,0 +1,237 @@
+/* ── Layout (mirrors home) ── */
+.notifs {
+  display: flex;
+  min-height: 100vh;
+
+  @media (max-width: 899px) {
+    min-height: 0;
+    height: calc(100dvh - var(--jk-nav-height) - 0.75rem - 7rem);
+    overflow: hidden;
+  }
+}
+
+.notifs__feed {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1.5rem;
+  border-right: 1px solid rgba(197, 198, 208, 0.3);
+
+  @media (max-width: 899px) {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 1rem 1.5rem;
+  }
+
+  @media (max-width: 1199px) {
+    border-right: none;
+  }
+
+  @media (min-width: 900px) {
+    flex: 0 0 500px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding-bottom: 1.5rem;
+  }
+
+  @media (min-width: 1200px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* ── Panel ── */
+.notifs__panel {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(197, 198, 208, 0.3);
+  box-shadow: 0 4px 16px rgba(2, 21, 65, 0.06);
+  overflow: hidden;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.notifs__panel-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(197, 198, 208, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.notifs__title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.notifs__title {
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--jk-color-primary);
+  line-height: 1.4;
+}
+
+.notifs__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 0.35rem;
+  border-radius: 12px;
+  background: var(--jk-color-primary);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.notifs__mark-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: 999px;
+  border: 1px solid rgba(197, 198, 208, 0.5);
+  background: #ffffff;
+  color: var(--jk-color-primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  transition: background 0.18s ease;
+
+  &:hover {
+    background: var(--jk-color-gray-light);
+  }
+}
+
+/* ── List ── */
+.notifs__list {
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Notification Item ── */
+.notif-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(197, 198, 208, 0.3);
+  cursor: pointer;
+  transition: background 0.18s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: var(--jk-color-gray-light);
+  }
+
+  &--unread {
+    background: rgba(229, 238, 255, 0.5);
+
+    &:hover {
+      background: rgba(229, 238, 255, 0.8);
+    }
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--jk-color-gray-light);
+    border: 1px solid rgba(197, 198, 208, 0.4);
+    color: var(--jk-color-primary);
+    flex-shrink: 0;
+
+    &--unread {
+      background: #e5eeff;
+      border-color: rgba(2, 21, 65, 0.1);
+    }
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    display: block;
+    color: var(--jk-color-primary);
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  &__message {
+    color: var(--jk-color-black);
+    font-size: 0.82rem;
+    margin-top: 0.2rem;
+    line-height: 1.4;
+  }
+
+  &__time {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--jk-color-black);
+    opacity: 0.55;
+    margin-top: 0.35rem;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--jk-color-primary);
+    flex-shrink: 0;
+    margin-top: 0.95rem;
+    box-shadow: 0 0 0 4px rgba(2, 21, 65, 0.1);
+  }
+}
+
+/* ── Empty State ── */
+.notifs__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  flex: 1;
+
+  h3 {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--jk-color-primary);
+  }
+
+  p {
+    font-size: 0.875rem;
+    color: var(--jk-color-black);
+  }
+}
+
+.notifs__empty-icon {
+  font-size: 3rem;
+  color: #c5c6d0;
+}
