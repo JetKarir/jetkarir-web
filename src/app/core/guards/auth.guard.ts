@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivateFn, CanMatchFn, Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth-service';
 
 export const authGuard: CanActivateFn = () => {
@@ -17,5 +17,15 @@ export const publicGuard: CanActivateFn = () => {
 
   if (!auth.isTokenValid()) return true;
 
-  return router.createUrlTree(['/home']);
+  return router.createUrlTree(['/']);
+};
+
+export const authMatch: CanMatchFn = () => {
+  const auth = inject(AuthService);
+  return auth.isTokenValid();
+};
+
+export const publicMatch: CanMatchFn = () => {
+  const auth = inject(AuthService);
+  return !auth.isTokenValid();
 };

@@ -57,7 +57,7 @@ export class MainNavbar {
   });
 
   navItems = [
-    { label: 'Home', icon: 'fluentHome', route: '/home' },
+    { label: 'Home', icon: 'fluentHome', route: '/' },
     { label: 'Explore', icon: 'fluentCompassNorthwest', route: '/explore' },
     { label: 'Jobs', icon: 'fluentBriefcase', route: '/jobs' },
     { label: 'Notif', icon: 'fluentAlert', route: '/notifications' },

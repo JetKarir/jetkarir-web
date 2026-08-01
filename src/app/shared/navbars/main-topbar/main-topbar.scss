@@ -43,5 +43,11 @@
     &:hover {
       background: var(--jk-color-blue-light);
     }
+
+    &.active {
+      background: var(--jk-color-blue-light);
+      color: var(--jk-color-primary);
+      border-color: rgba(2, 21, 65, 0.15);
+    }
   }
 }

@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /auth/help
+Disallow: /login
+Disallow: /register
+Disallow: /admin
+Disallow: /auth/forgot-password
+Disallow: /auth/verify-email
+Disallow: /auth/reset-password
+Disallow: /home
+Disallow: /jobs
+Disallow: /applications
+Disallow: /profile
+Disallow: /notifications
+
+Sitemap: https://jetkarir.com/sitemap.xml

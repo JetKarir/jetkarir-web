@@ -18,7 +18,7 @@ import {
 })
 export class MainBotbar {
   navItems = [
-    { label: 'Home', icon: 'fluentHome', route: '/home' },
+    { label: 'Home', icon: 'fluentHome', route: '/' },
     { label: 'Explore', icon: 'fluentCompassNorthwest', route: '/explore' },
     { label: 'Post', icon: 'fluentAddCircle', route: '/post' },
     { label: 'Chat', icon: 'fluentChat', route: '/chat' },

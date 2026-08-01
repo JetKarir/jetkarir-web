@@ -15,13 +15,14 @@ import { CandidateService } from '../../../core/services/main/candidate/candidat
 import { NotificationItem } from '../../../core/models/interface/application.interface';
 import { ButtonModule } from 'primeng/button';
 import { SkeletonModule } from 'primeng/skeleton';
+import { MainWidget } from '../../../shared/reusables/main-widget/main-widget';
 
 @Component({
   selector: 'app-notifications',
-  imports: [DatePipe, ButtonModule, SkeletonModule, NgIcon],
+  imports: [DatePipe, ButtonModule, SkeletonModule, NgIcon, MainWidget],
   providers: [provideIcons({ fluentCheckmarkCircle, fluentAlertOff, fluentTaskListSquareLtr, fluentChat, fluentStar, fluentDismissCircle, fluentInfo, fluentAlert })],
-  templateUrl: './notifications.html',
-  styleUrl: './notifications.scss',
+  templateUrl: './notification.html',
+  styleUrl: './notification.scss',
 })
 export class NotificationsPage implements OnInit {
   candidateService = inject(CandidateService);

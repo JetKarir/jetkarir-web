@@ -3,6 +3,7 @@
     <a
       [routerLink]="item.route"
       routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: true}"
       class="bottom-nav__item"
       [attr.aria-label]="item.label"
     >

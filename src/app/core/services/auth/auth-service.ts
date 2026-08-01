@@ -1,4 +1,4 @@
-import { Injectable, inject, signal, PLATFORM_ID } from '@angular/core';
+import { Injectable, inject, signal, PLATFORM_ID, REQUEST } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
@@ -15,6 +15,7 @@ export class AuthService {
   private http = inject(HttpClient);
   private router = inject(Router);
   private platformId = inject(PLATFORM_ID);
+  private request = inject(REQUEST, { optional: true });
 
   currentUser = signal<AuthUser | null>(this.loadUser());
 
@@ -52,9 +53,16 @@ export class AuthService {
     return !!AuthService.getCookie('jk_access_token');
   }
 
+  private getServerCookie(name: string): string | null {
+    const cookieHeader = this.request?.headers.get('cookie') ?? '';
+    const match = cookieHeader.split('; ').find((r) => r.startsWith(`${name}=`));
+    return match ? decodeURIComponent(match.split('=')[1]) : null;
+  }
+
   isTokenValid(): boolean {
-    if (!isPlatformBrowser(this.platformId)) return false;
-    const token = AuthService.getCookie('jk_access_token');
+    const token = isPlatformBrowser(this.platformId)
+      ? AuthService.getCookie('jk_access_token')
+      : this.getServerCookie('jk_access_token');
     if (!token) return false;
     try {
       const b64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');

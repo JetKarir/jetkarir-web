@@ -1,13 +1,50 @@
 import { Routes } from '@angular/router';
-import { authGuard, publicGuard } from './core/guards/auth.guard';
+import { publicGuard, authMatch, publicMatch } from './core/guards/auth.guard';
 
 export const routes: Routes = [
+  /* ── Main App (with app navbar, requires login) ── */
+  {
+    path: '',
+    canMatch: [authMatch],
+    loadComponent: () =>
+      import('./shared/layouts/main-layout/main-layout').then((m) => m.MainLayout),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/main/home/home').then((m) => m.HomePage),
+      },
+      {
+        path: 'home',
+        redirectTo: '',
+        pathMatch: 'full',
+      },
+      {
+        path: 'jobs',
+        loadComponent: () => import('./pages/main/jobs/jobs').then((m) => m.JobsPage),
+      },
+      {
+        path: 'applications',
+        loadComponent: () =>
+          import('./pages/main/applications/applications').then((m) => m.ApplicationsPage),
+      },
+      {
+        path: 'profile',
+        loadComponent: () => import('./pages/main/profile/profile').then((m) => m.ProfilePage),
+      },
+      {
+        path: 'notifications',
+        loadComponent: () =>
+          import('./pages/main/notification/notification').then((m) => m.NotificationsPage),
+      },
+    ],
+  },
+
   /* ── Landing (with landing navbar) ── */
   {
     path: '',
+    canMatch: [publicMatch],
     loadComponent: () =>
       import('./shared/layouts/landing-layout/landing-layout').then((m) => m.LandingLayout),
-    canActivate: [publicGuard],
     children: [
       {
         path: '',
@@ -84,38 +121,6 @@ export const routes: Routes = [
       {
         path: 'help',
         loadComponent: () => import('./pages/auth/help/help').then((m) => m.HelpPage),
-      },
-    ],
-  },
-
-  /* ── Main App (with app navbar, requires login) ── */
-  {
-    path: '',
-    loadComponent: () =>
-      import('./shared/layouts/main-layout/main-layout').then((m) => m.MainLayout),
-    canActivate: [authGuard],
-    children: [
-      {
-        path: 'home',
-        loadComponent: () => import('./pages/main/home/home').then((m) => m.HomePage),
-      },
-      {
-        path: 'jobs',
-        loadComponent: () => import('./pages/main/jobs/jobs').then((m) => m.JobsPage),
-      },
-      {
-        path: 'applications',
-        loadComponent: () =>
-          import('./pages/main/applications/applications').then((m) => m.ApplicationsPage),
-      },
-      {
-        path: 'profile',
-        loadComponent: () => import('./pages/main/profile/profile').then((m) => m.ProfilePage),
-      },
-      {
-        path: 'notifications',
-        loadComponent: () =>
-          import('./pages/main/notifications/notifications').then((m) => m.NotificationsPage),
       },
     ],
   },
