@@ -7,3 +7,9 @@ dist
 .github
 *.md
 build.yml
+.claude
+.continue
+.kombai
+.stitch
+.impeccable
+/docs

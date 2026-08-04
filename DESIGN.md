@@ -37,7 +37,7 @@ Key principles:
 | Token                       | Hex       | Usage                           |
 | --------------------------- | --------- | ------------------------------- |
 | `background`                | `#f8f9ff` | Page background                 |
-| `surface`                   | `#f8f9ff` | Default card/section background |
+| `surface`                   | `#ffffff` | Default card/section background |
 | `surface-container-lowest`  | `#ffffff` | Auth card, input background     |
 | `surface-container-low`     | `#eff4ff` | Hover state on list items       |
 | `surface-container`         | `#e5eeff` | Section background alternate    |
@@ -77,29 +77,29 @@ Key principles:
 
 ## 3. Typography
 
-Two-font system. Headlines → Hanken Grotesk. Body/UI → Inter.
+One-font system. Headlines and Body/UI → DM Sans.
 
 ```html
 <!-- Google Fonts import -->
 <link
-  href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
   rel="stylesheet"
 />
 ```
 
 ### Type Scale
 
-| Name                 | Font           | Size | Line Height | Weight | Tracking          |
-| -------------------- | -------------- | ---- | ----------- | ------ | ----------------- |
-| `display-lg`         | Hanken Grotesk | 48px | 56px        | 700    | −0.02em           |
-| `headline-lg`        | Hanken Grotesk | 32px | 40px        | 600    | —                 |
-| `headline-lg-mobile` | Hanken Grotesk | 28px | 36px        | 700    | —                 |
-| `headline-md`        | Hanken Grotesk | 24px | 32px        | 600    | —                 |
-| `headline-sm`        | Hanken Grotesk | 20px | 28px        | 600    | —                 |
-| `body-lg`            | Inter          | 18px | 28px        | 400    | —                 |
-| `body-md`            | Inter          | 16px | 24px        | 400    | —                 |
-| `body-sm`            | Inter          | 14px | 20px        | 400    | —                 |
-| `label-md`           | Inter          | 12px | 16px        | 600    | 0.05em, UPPERCASE |
+| Name                 | Font    | Size | Line Height | Weight | Tracking          |
+| -------------------- | ------- | ---- | ----------- | ------ | ----------------- |
+| `display-lg`         | DM Sans | 48px | 56px        | 700    | −0.03em           |
+| `headline-lg`        | DM Sans | 32px | 40px        | 700    | −0.03em           |
+| `headline-lg-mobile` | DM Sans | 28px | 36px        | 700    | −0.03em           |
+| `headline-md`        | DM Sans | 24px | 32px        | 700    | −0.03em           |
+| `headline-sm`        | DM Sans | 20px | 28px        | 700    | −0.03em           |
+| `body-lg`            | DM Sans | 18px | 28px        | 400    | —                 |
+| `body-md`            | DM Sans | 16px | 24px        | 400    | —                 |
+| `body-sm`            | DM Sans | 14px | 20px        | 400    | —                 |
+| `label-md`           | DM Sans | 12px | 16px        | 600    | 0.05em, UPPERCASE |
 
 **Usage rules:**
 
@@ -135,9 +135,9 @@ Base unit: **4px**
 | ---------------- | ------ | ------------------------------- |
 | `DEFAULT`        | 4px    | Minimal rounding                |
 | `lg`             | 8px    | Buttons, inputs, standard cards |
-| `xl`             | 12px   | Job cards, modal sections       |
-| `2xl`            | 16px   | Larger panels                   |
-| `3xl` / `[2rem]` | 32px   | CTA banner, hero card           |
+| `xl`             | 12px   | Buttons, inputs                 |
+| `2xl`            | 20px   | Standard cards                  |
+| `3xl` / `[2rem]` | 24px   | Larger panels, surface          |
 | `full`           | 9999px | Pills, avatar, tags             |
 
 ---
@@ -146,12 +146,12 @@ Base unit: **4px**
 
 Shadows use navy-tinted color at low opacity — never black.
 
-| Level | CSS                                                            | Usage           |
-| ----- | -------------------------------------------------------------- | --------------- |
-| 0     | none (border only)                                             | Default card    |
-| 1     | `0 4px 6px rgba(2,21,65,0.04), 0 2px 4px rgba(2,21,65,0.02)`   | Card at rest    |
-| 2     | `0 10px 15px rgba(2,21,65,0.08), 0 4px 6px rgba(2,21,65,0.04)` | Hover / active  |
-| 3     | `0 24px 48px rgba(2,21,65,0.12)`                               | Modal, dropdown |
+| Level | CSS                                 | Usage           |
+| ----- | ----------------------------------- | --------------- |
+| 0     | none (border only)                  | Default card    |
+| 1     | `0 4px 12px rgba(2, 21, 65, 0.08)`  | Card at rest    |
+| 2     | `0 8px 24px rgba(2, 21, 65, 0.1)`   | Hover / active  |
+| 3     | `0 16px 48px rgba(2, 21, 65, 0.12)` | Modal, dropdown |
 
 **Card default:** `border border-outline-variant/30 shadow-level-1`  
 **Card hover:** `shadow-level-2` + optionally `border-primary/20`
@@ -379,7 +379,7 @@ Card hover: background lifts to white + shadow level 2 + scale icon inside (if a
 ```
 
 Focus state: `border-primary` + `ring-2 ring-primary/10` (2px halo).  
-Labels: `label-md` (12px, UPPERCASE, Inter 600, 0.05em tracking).
+Labels: `label-md` (12px, UPPERCASE, DM Sans 600, 0.05em tracking).
 
 ### 8.7 Job Card
 
