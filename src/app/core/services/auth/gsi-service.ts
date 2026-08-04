@@ -1,6 +1,6 @@
 import { Injectable, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../../env/environment';
 
 @Injectable({ providedIn: 'root' })
 export class GsiService {
@@ -29,7 +29,10 @@ export class GsiService {
 
   private loadScript(): Promise<void> {
     return new Promise((resolve) => {
-      if ((window as any).google?.accounts) { resolve(); return; }
+      if ((window as any).google?.accounts) {
+        resolve();
+        return;
+      }
       const script = document.createElement('script');
       script.src = 'https://accounts.google.com/gsi/client';
       script.onload = () => resolve();

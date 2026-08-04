@@ -10,12 +10,17 @@
             <span class="notifs__badge">{{ unreadCount() }}</span>
           }
         </div>
-        @if (unreadCount() > 0) {
-          <button type="button" class="notifs__mark-all" (click)="markAllRead()">
-            <ng-icon [name]="markAllReadIcon" />
-            Mark all as read
+        <div class="notifs__header-actions">
+          @if (unreadCount() > 0) {
+            <button type="button" class="notifs__mark-all" (click)="markAllRead()">
+              <ng-icon [name]="markAllReadIcon" />
+              Mark all as read
+            </button>
+          }
+          <button type="button" class="notifs__setting-btn" title="Settings">
+            <ng-icon name="fluentSettings" />
           </button>
-        }
+        </div>
       </div>
 
       <!-- Notification List -->

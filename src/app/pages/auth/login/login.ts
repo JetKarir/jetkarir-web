@@ -13,7 +13,7 @@ import { Router, RouterLink } from '@angular/router';
 import { LoginService } from '../../../core/services/auth/login/login-service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../../env/environment';
 import { GsiService } from '../../../core/services/auth/gsi-service';
 
 @Component({
@@ -48,8 +48,12 @@ export class LoginPage implements AfterViewInit {
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
-  get emailCtrl() { return this.form.controls.email; }
-  get passwordCtrl() { return this.form.controls.password; }
+  get emailCtrl() {
+    return this.form.controls.email;
+  }
+  get passwordCtrl() {
+    return this.form.controls.password;
+  }
 
   ngAfterViewInit() {
     this.gsi.init((idToken) => this.handleGoogleCredential(idToken));

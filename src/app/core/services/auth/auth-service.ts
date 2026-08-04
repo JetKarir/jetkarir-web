@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../../env/environment';
 import { ApiResponse } from '../../models/interface/api-response.interface';
 import { LoginResponse, AuthUser } from '../../models/interface/auth.interface';
 
