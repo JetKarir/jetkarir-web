@@ -7,7 +7,7 @@ import { RegisterService } from '../../../core/services/auth/register/register-s
 import { LoginService } from '../../../core/services/auth/login/login-service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../../env/environment';
 import { GsiService } from '../../../core/services/auth/gsi-service';
 
 function passwordMatchValidator(control: AbstractControl) {
@@ -51,11 +51,21 @@ export class RegisterPage implements AfterViewInit {
     { validators: passwordMatchValidator },
   );
 
-  get fullNameCtrl() { return this.form.controls.fullName; }
-  get emailCtrl() { return this.form.controls.email; }
-  get passwordCtrl() { return this.form.controls.password; }
-  get confirmPasswordCtrl() { return this.form.controls.confirmPassword; }
-  get acceptTermsCtrl() { return this.form.controls.acceptTerms; }
+  get fullNameCtrl() {
+    return this.form.controls.fullName;
+  }
+  get emailCtrl() {
+    return this.form.controls.email;
+  }
+  get passwordCtrl() {
+    return this.form.controls.password;
+  }
+  get confirmPasswordCtrl() {
+    return this.form.controls.confirmPassword;
+  }
+  get acceptTermsCtrl() {
+    return this.form.controls.acceptTerms;
+  }
 
   ngAfterViewInit() {
     this.gsi.init((idToken) => this.handleGoogleCredential(idToken));

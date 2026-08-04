@@ -10,6 +10,7 @@ import {
   fluentDismissCircle,
   fluentInfo,
   fluentAlert,
+  fluentSettings,
 } from '@ng-icons/fluent-ui';
 import { CandidateService } from '../../../core/services/main/candidate/candidate.service';
 import { NotificationItem } from '../../../core/models/interface/application.interface';
@@ -20,7 +21,19 @@ import { MainWidget } from '../../../shared/reusables/main-widget/main-widget';
 @Component({
   selector: 'app-notifications',
   imports: [DatePipe, ButtonModule, SkeletonModule, NgIcon, MainWidget],
-  providers: [provideIcons({ fluentCheckmarkCircle, fluentAlertOff, fluentTaskListSquareLtr, fluentChat, fluentStar, fluentDismissCircle, fluentInfo, fluentAlert })],
+  providers: [
+    provideIcons({
+      fluentCheckmarkCircle,
+      fluentAlertOff,
+      fluentTaskListSquareLtr,
+      fluentChat,
+      fluentStar,
+      fluentDismissCircle,
+      fluentInfo,
+      fluentAlert,
+      fluentSettings,
+    }),
+  ],
   templateUrl: './notification.html',
   styleUrl: './notification.scss',
 })

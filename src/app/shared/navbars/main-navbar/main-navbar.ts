@@ -11,7 +11,8 @@ import {
   fluentAddCircle,
   fluentMoreCircle,
   fluentCompassNorthwest,
-  fluentBuilding,
+  fluentBuildingRetailMore,
+  fluentStar,
 } from '@ng-icons/fluent-ui';
 import { AuthService } from '../../../core/services/auth/auth-service';
 import { AvatarModule } from 'primeng/avatar';
@@ -30,7 +31,8 @@ import { AvatarModule } from 'primeng/avatar';
       fluentAddCircle,
       fluentMoreCircle,
       fluentCompassNorthwest,
-      fluentBuilding,
+      fluentBuildingRetailMore,
+      fluentStar,
     }),
   ],
   templateUrl: './main-navbar.html',
@@ -63,7 +65,8 @@ export class MainNavbar {
     { label: 'Notif', icon: 'fluentAlert', route: '/notifications' },
     { label: 'Saved', icon: 'fluentBookmark', route: '/saved' },
     { label: 'Chat', icon: 'fluentChat', route: '/chat' },
-    { label: 'Groups', icon: 'fluentBuilding', route: '/groups' },
+    { label: 'Teams', icon: 'fluentBuildingRetailMore', route: '/teams' },
+    { label: 'Premium', icon: 'fluentStar', route: '/premium' },
     { label: 'Setting', icon: 'fluentSettings', route: '/settings' },
   ];
 
