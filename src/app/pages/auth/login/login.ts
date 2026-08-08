@@ -41,6 +41,7 @@ export class LoginPage implements AfterViewInit {
 
   loading = signal(false);
   errorMessage = signal<string | null>(null);
+  alterErrorMessage = signal<string | null>(null);
   showPassword = signal(false);
 
   form = this.fb.group({
@@ -61,15 +62,14 @@ export class LoginPage implements AfterViewInit {
 
   private handleGoogleCredential(idToken: string) {
     this.loading.set(true);
-    this.errorMessage.set(null);
+    this.alterErrorMessage.set(null);
     this.loginService.loginWithGoogle({ idToken }).subscribe({
       next: () => {
-        this.loading.set(false);
         this.router.navigate(['/home']);
       },
       error: (err) => {
         this.loading.set(false);
-        this.errorMessage.set(err?.error?.message ?? 'Google sign-in failed. Please try again.');
+        this.alterErrorMessage.set(err?.error?.message ?? 'Google sign-in failed. Please try again.');
       },
     });
   }
@@ -87,7 +87,6 @@ export class LoginPage implements AfterViewInit {
 
     this.loginService.login({ email: email!, password: password! }).subscribe({
       next: () => {
-        this.loading.set(false);
         this.router.navigate(['/home']);
       },
       error: (err) => {
@@ -101,9 +100,7 @@ export class LoginPage implements AfterViewInit {
 
   loginWithGoogle() {
     if (!environment.OAUTH_GOOGLE_CLIENT_ID) {
-      this.errorMessage.set(
-        'Google Sign-In belum dikonfigurasi. Isi GOOGLE_CLIENT_ID di environment.',
-      );
+      this.alterErrorMessage.set('Google Sign-In belum dikonfigurasi. Isi GOOGLE_CLIENT_ID di environment.');
       return;
     }
     this.gsi.prompt();

@@ -15,28 +15,20 @@ export interface RegisterRequest {
   acceptTerms: boolean;
 }
 
-export interface UserContext {
-  hasCandidateProfile: boolean;
-  companyMemberships: {
-    companyId: string;
-    companyName: string;
-    role: string;
-  }[];
-  isPlatformAdmin: boolean;
-}
-
 export interface AuthUser {
   id: string;
   email: string;
+  username: string;
   fullName: string;
   status: string;
-  contexts: UserContext;
+  createdAt: string;
 }
 
 export interface LoginResponse {
   accessToken: string;
   refreshToken: string;
   expiresIn: number;
+  refreshExpiresIn: number;
   user: AuthUser;
 }
 
