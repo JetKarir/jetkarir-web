@@ -92,6 +92,13 @@
       <div class="login__divider-line"></div>
     </div>
 
+    @if (alterErrorMessage()) {
+      <div class="login__error">
+        <ng-icon name="fluentErrorCircle" size="18px" />
+        {{ alterErrorMessage() }}
+      </div>
+    }
+
     <!-- Google -->
     <button
       type="button"
