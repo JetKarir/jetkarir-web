@@ -21,7 +21,7 @@
           </div>
         }
       } @else {
-        @for (trend of careerTrends; track trend.title) {
+        @for (trend of careerTrends(); track trend.title) {
           <div class="trend-item">
             <span class="trend-item__name">{{ trend.title }}</span>
             <span class="trend-item__count">{{ trend.count }} Applied</span>
@@ -49,7 +49,7 @@
           </div>
         }
       } @else if (applications().length === 0) {
-        @for (activity of recentActivities; track activity.id) {
+        @for (activity of recentActivities(); track activity.id) {
           <div class="activity-item">
             <div class="activity-item__icon">
               <ng-icon name="fluentDocumentEdit" />
@@ -58,7 +58,7 @@
               <p class="activity-item__text">
                 Applied to <strong>{{ activity.jobTitle }}</strong>
               </p>
-              <p class="activity-item__company">{{ activity.companyName }}</p>
+              <p class="activity-item__desc">{{ activity.companyName }}</p>
             </div>
           </div>
         }
@@ -72,7 +72,7 @@
               <p class="activity-item__text">
                 Applied to <strong>{{ app.jobTitle }}</strong>
               </p>
-              <p class="activity-item__company">{{ app.companyName }}</p>
+              <p class="activity-item__desc">{{ app.companyName }}</p>
             </div>
           </div>
         }
@@ -99,7 +99,7 @@
           </div>
         }
       } @else {
-        @for (co of recommendedCompanies; track co.name) {
+        @for (co of recommendedCompanies(); track co.name) {
           <div class="recommend-item">
             <div class="recommend-item__logo">{{ co.name[0] }}</div>
             <div class="recommend-item__info">

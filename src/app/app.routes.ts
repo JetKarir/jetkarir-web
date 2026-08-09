@@ -36,6 +36,11 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/main/notification/notification').then((m) => m.NotificationsPage),
       },
+      {
+        path: '**',
+        loadComponent: () =>
+          import('./pages/main/not-found/not-found').then((m) => m.NotFoundPage),
+      },
     ],
   },
 
@@ -88,6 +93,21 @@ export const routes: Routes = [
       },
     ],
   },
+  /* ── Auth 404 (unauthenticated users on unknown paths) ── */
+  {
+    path: '',
+    canMatch: [publicMatch],
+    loadComponent: () =>
+      import('./shared/layouts/auth-layout/auth-layout').then((m) => m.AuthLayout),
+    children: [
+      {
+        path: '**',
+        loadComponent: () =>
+          import('./pages/auth/not-found/not-found').then((m) => m.AuthNotFoundPage),
+      },
+    ],
+  },
+
   {
     path: 'auth',
     loadComponent: () =>
@@ -125,5 +145,4 @@ export const routes: Routes = [
     ],
   },
 
-  { path: '**', redirectTo: '' },
 ];

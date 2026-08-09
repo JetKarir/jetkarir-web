@@ -1,0 +1,112 @@
+.auth-not-found {
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  &__brand {
+    display: inline-flex;
+  }
+
+  &__brand-img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  &__img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--jk-color-black);
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  &__message {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: var(--jk-color-black);
+    opacity: 0.65;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: 0.25rem;
+  }
+
+  &__btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    transition:
+      background 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
+
+    &--primary {
+      background: var(--jk-color-primary);
+      color: #ffffff;
+      border: none;
+
+      &:hover {
+        background: #1a2b56;
+        box-shadow: 0 8px 24px rgba(2, 21, 65, 0.12);
+        transform: translateY(-2px);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+
+    &--ghost {
+      background: transparent;
+      color: var(--jk-color-primary);
+      border: 1px solid rgba(197, 198, 208, 0.6);
+
+      &:hover {
+        background: var(--jk-color-gray);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+}

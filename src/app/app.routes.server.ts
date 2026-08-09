@@ -7,5 +7,5 @@ export const serverRoutes: ServerRoute[] = [
   { path: 'applications', renderMode: RenderMode.Client },
   { path: 'profile', renderMode: RenderMode.Client },
   { path: 'notifications', renderMode: RenderMode.Client },
-  { path: '**', renderMode: RenderMode.Prerender },
+  { path: '**', renderMode: RenderMode.Client },
 ];
