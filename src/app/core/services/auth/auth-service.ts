@@ -63,18 +63,53 @@ export class AuthService {
     return match ? decodeURIComponent(match.split('=')[1]) : null;
   }
 
+  hasRequiredCookies(): boolean {
+    const getCookie = (name: string) =>
+      isPlatformBrowser(this.platformId)
+        ? AuthService.getCookie(name)
+        : this.getServerCookie(name);
+    const access = getCookie('jk_access_token');
+    const refresh = getCookie('jk_refresh_token');
+    const userRaw = getCookie('jk_user');
+    try {
+      return !!access && !!refresh && !!JSON.parse(userRaw ?? '{}')?.username;
+    } catch {
+      return false;
+    }
+  }
+
+  isRefreshTokenValid(): boolean {
+    const expStr = isPlatformBrowser(this.platformId)
+      ? AuthService.getCookie('jk_refresh_token_exp')
+      : this.getServerCookie('jk_refresh_token_exp');
+    return !!expStr && new Date(expStr) > new Date();
+  }
+
   isTokenValid(): boolean {
-    const token = isPlatformBrowser(this.platformId)
-      ? AuthService.getCookie('jk_access_token')
-      : this.getServerCookie('jk_access_token');
+    const getCookie = (name: string) =>
+      isPlatformBrowser(this.platformId)
+        ? AuthService.getCookie(name)
+        : this.getServerCookie(name);
+
+    const token = getCookie('jk_access_token');
     if (!token) return false;
 
-    const expStr = isPlatformBrowser(this.platformId)
-      ? AuthService.getCookie('jk_access_token_exp')
-      : this.getServerCookie('jk_access_token_exp');
-    if (!expStr) return false;
+    const expStr = getCookie('jk_access_token_exp');
+    if (!expStr || new Date(expStr) <= new Date()) return false;
 
-    return new Date(expStr) > new Date();
+    const refreshToken = getCookie('jk_refresh_token');
+    if (!refreshToken) return false;
+
+    const userRaw = getCookie('jk_user');
+    if (!userRaw) return false;
+    try {
+      const user = JSON.parse(userRaw);
+      if (!user?.username) return false;
+    } catch {
+      return false;
+    }
+
+    return true;
   }
 
   logout() {

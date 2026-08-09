@@ -4,16 +4,16 @@ import { map, catchError, of } from 'rxjs';
 import { AuthService } from '../services/auth/auth-service';
 
 function isAuthenticated(auth: AuthService) {
+  if (!auth.hasRequiredCookies()) return of(false);
+
   if (auth.isTokenValid()) return of(true);
 
-  if (AuthService.getCookie('jk_refresh_token')) {
-    return auth.refreshToken().pipe(
-      map(() => true),
-      catchError(() => of(false)),
-    );
-  }
+  if (!auth.isRefreshTokenValid()) return of(false);
 
-  return of(false);
+  return auth.refreshToken().pipe(
+    map(() => true),
+    catchError(() => of(false)),
+  );
 }
 
 export const authGuard: CanActivateFn = () => {
