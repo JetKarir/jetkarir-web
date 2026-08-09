@@ -32,10 +32,24 @@
           <span class="main-navbar__user-name">{{ user()?.fullName }}</span>
           <span class="main-navbar__user-handle">{{ userHandle() }}</span>
         </div>
-        <button class="main-navbar__logout" (click)="logout()" title="Sign Out">
+        <button #moreBtn class="main-navbar__more-btn" (click)="op.toggle($event)" title="More options">
           <ng-icon name="fluentMoreCircle" size="24px" />
         </button>
       </div>
+
+      <p-popover #op styleClass="navbar-popover" (onShow)="onPopoverShow()">
+        <div class="navbar-menu">
+          <button class="navbar-menu__item" (click)="op.hide()">
+            <ng-icon name="fluentPersonSwap" size="18px" />
+            <span>Switch Account</span>
+          </button>
+          <div class="navbar-menu__divider"></div>
+          <button class="navbar-menu__item navbar-menu__item--danger" (click)="logout(); op.hide()">
+            <ng-icon name="fluentArrowExit" size="18px" />
+            <span>Logout from {{ userHandle() }}</span>
+          </button>
+        </div>
+      </p-popover>
     }
   </div>
 </aside>

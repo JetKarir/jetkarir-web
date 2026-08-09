@@ -41,8 +41,12 @@ export class AuthService {
 
   storeAuthData(res: ApiResponse<LoginResponse>) {
     if (res.success && isPlatformBrowser(this.platformId)) {
+      const accessExpAt = new Date(Date.now() + res.data.expiresIn * 1000).toISOString();
+      const refreshExpAt = new Date(Date.now() + res.data.refreshExpiresIn * 1000).toISOString();
       this.setCookie('jk_access_token', res.data.accessToken, res.data.expiresIn);
+      this.setCookie('jk_access_token_exp', accessExpAt, res.data.expiresIn);
       this.setCookie('jk_refresh_token', res.data.refreshToken, res.data.refreshExpiresIn);
+      this.setCookie('jk_refresh_token_exp', refreshExpAt, res.data.refreshExpiresIn);
       this.setCookie('jk_user', JSON.stringify(res.data.user), res.data.expiresIn);
       this.currentUser.set(res.data.user);
     }
@@ -64,21 +68,22 @@ export class AuthService {
       ? AuthService.getCookie('jk_access_token')
       : this.getServerCookie('jk_access_token');
     if (!token) return false;
-    try {
-      const b64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
-      const payload = JSON.parse(atob(b64));
-      const now = Math.floor(Date.now() / 1000);
-      return payload['exp'] > now && payload['iss'] === 'jetkarir';
-    } catch {
-      return false;
-    }
+
+    const expStr = isPlatformBrowser(this.platformId)
+      ? AuthService.getCookie('jk_access_token_exp')
+      : this.getServerCookie('jk_access_token_exp');
+    if (!expStr) return false;
+
+    return new Date(expStr) > new Date();
   }
 
   logout() {
     if (isPlatformBrowser(this.platformId)) {
       this.http.post(`${BASE}/auth/logout`, {}).subscribe({ error: () => {} });
       this.deleteCookie('jk_access_token');
+      this.deleteCookie('jk_access_token_exp');
       this.deleteCookie('jk_refresh_token');
+      this.deleteCookie('jk_refresh_token_exp');
       this.deleteCookie('jk_user');
     }
     this.currentUser.set(null);
@@ -99,8 +104,12 @@ export class AuthService {
       .pipe(
         tap((res) => {
           if (res.success && isPlatformBrowser(this.platformId)) {
+            const accessExpAt = new Date(Date.now() + res.data.expiresIn * 1000).toISOString();
+            const refreshExpAt = new Date(Date.now() + res.data.refreshExpiresIn * 1000).toISOString();
             this.setCookie('jk_access_token', res.data.accessToken, res.data.expiresIn);
+            this.setCookie('jk_access_token_exp', accessExpAt, res.data.expiresIn);
             this.setCookie('jk_refresh_token', res.data.refreshToken, res.data.refreshExpiresIn);
+            this.setCookie('jk_refresh_token_exp', refreshExpAt, res.data.refreshExpiresIn);
             const user = AuthService.getCookie('jk_user');
             if (user) this.setCookie('jk_user', user, res.data.expiresIn);
           }

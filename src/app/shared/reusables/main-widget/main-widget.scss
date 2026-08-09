@@ -172,6 +172,12 @@
   align-items: flex-start;
   gap: 0.65rem;
   padding: 0.2rem 0rem;
+  cursor: pointer;
+
+  &:hover .activity-item__text,
+  &:hover .activity-item__desc {
+    text-decoration: underline;
+  }
 
   &__icon {
     width: 38px;
@@ -198,7 +204,7 @@
     line-height: 1.4;
   }
 
-  &__company {
+  &__desc {
     font-size: 0.72rem;
     color: #757680;
     margin-top: 0.2rem;
