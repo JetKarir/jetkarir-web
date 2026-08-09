@@ -7,7 +7,10 @@ const dest = path.resolve(__dirname, 'environment.ts');
 if (target === 'example') return;
 
 if (target === 'ci') {
-  const secrets = JSON.parse(process.env.SECRETS_JSON || '{}');
+  const secrets = {
+    API_URL: process.env.API_URL || '',
+    OAUTH_GOOGLE_CLIENT_ID: process.env.OAUTH_GOOGLE_CLIENT_ID || '',
+  };
   const example = path.resolve(__dirname, 'environment.example.ts');
   const content = fs.readFileSync(example, 'utf8');
   const result = content.replace(/(\w+):\s*'[^']*'/g, (_, key) => {
@@ -16,7 +19,7 @@ if (target === 'ci') {
     return `${key}: '${val}'`;
   });
   fs.writeFileSync(dest, result);
-  console.log('env set: ci (from SECRETS_JSON)');
+  console.log('env set: ci (from environment secrets)');
   process.exit(0);
 }
 
