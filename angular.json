@@ -26,7 +26,10 @@
                 "input": "public"
               }
             ],
-            "styles": ["node_modules/primeicons/primeicons.css", "src/styles.scss"],
+            "styles": [
+              "node_modules/primeicons/primeicons.css",
+              "src/styles.scss"
+            ],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "security": {
@@ -50,35 +53,17 @@
                   "maximumError": "20kB"
                 }
               ],
-              "outputHashing": "all",
-              "fileReplacements": [
-                {
-                  "replace": "src/env/environment.ts",
-                  "with": "src/env/environment.production.ts"
-                }
-              ]
+              "outputHashing": "all"
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/env/environment.ts",
-                  "with": "src/env/environment.development.ts"
-                }
-              ]
+              "sourceMap": true
             },
             "testing": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/env/environment.ts",
-                  "with": "src/env/environment.testing.ts"
-                }
-              ]
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "development"
@@ -115,7 +100,9 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss"]
+            "styles": [
+              "src/styles.scss"
+            ]
           }
         }
       }
