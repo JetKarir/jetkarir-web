@@ -15,6 +15,7 @@ env:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    environment: ${{ github.ref_type == 'tag' && 'kpd' || github.ref_name }}
     permissions:
       contents: read
       packages: write
@@ -47,7 +48,8 @@ jobs:
 
       - name: Generate environment.ts
         env:
-          SECRETS_JSON: ${{ toJSON(secrets) }}
+          API_URL: ${{ secrets.API_URL }}
+          OAUTH_GOOGLE_CLIENT_ID: ${{ secrets.OAUTH_GOOGLE_CLIENT_ID }}
         run: node src/env/set-env.js ci
 
       - name: Build image
@@ -91,3 +93,4 @@ jobs:
               "image": "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest",
               "sha": "${{ github.sha }}"
             }
+
