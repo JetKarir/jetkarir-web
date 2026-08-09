@@ -7,7 +7,7 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . .
-RUN npm run build -- --configuration production
+RUN npm run build:ci
 
 # ---- Stage 2: Production ----
 FROM node:20-alpine
