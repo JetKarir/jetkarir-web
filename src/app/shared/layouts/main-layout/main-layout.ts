@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AuthService } from '../../../core/services/auth/auth-service';
 import { ToastModule } from 'primeng/toast';
@@ -14,7 +14,13 @@ import { MainBotbar } from '../../navbars/main-botbar/main-botbar';
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.scss',
 })
-export class MainLayout {
+export class MainLayout implements OnInit {
   authService = inject(AuthService);
   user = this.authService.currentUser;
+
+  ngOnInit() {
+    if (!this.user()) {
+      this.authService.getMe().subscribe({ error: () => {} });
+    }
+  }
 }

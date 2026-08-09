@@ -67,8 +67,7 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    console.log('[DEBUG] jk_refresh_token:', AuthService.getCookie('jk_refresh_token'));
-    this.jobService.searchJobs({ page: 1, limit: 6 }).subscribe({
+this.jobService.searchJobs({ page: 1, limit: 6 }).subscribe({
       next: (res) => {
         this.jobs.set(res.data ?? []);
         this.loadingJobs.set(false);
