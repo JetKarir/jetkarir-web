@@ -17,6 +17,7 @@ export class AuthService {
   private request = inject(REQUEST, { optional: true });
 
   currentUser = signal<AuthUser | null>(this.loadUser());
+  loadingUser = signal(false);
   private refreshing$: Observable<string> | null = null;
 
   private setCookie(name: string, value: string, maxAge: number) {
@@ -47,7 +48,7 @@ export class AuthService {
       this.setCookie('jk_access_token_exp', accessExpAt, res.data.expiresIn);
       this.setCookie('jk_refresh_token', res.data.refreshToken, res.data.refreshExpiresIn);
       this.setCookie('jk_refresh_token_exp', refreshExpAt, res.data.refreshExpiresIn);
-      this.setCookie('jk_user', JSON.stringify(res.data.user), res.data.expiresIn);
+      this.setCookie('jk_user', JSON.stringify(res.data.user), res.data.refreshExpiresIn);
       this.currentUser.set(res.data.user);
     }
   }
@@ -146,10 +147,13 @@ export class AuthService {
             this.setCookie('jk_refresh_token', res.data.refreshToken, res.data.refreshExpiresIn);
             this.setCookie('jk_refresh_token_exp', refreshExpAt, res.data.refreshExpiresIn);
             const user = AuthService.getCookie('jk_user');
-            if (user) this.setCookie('jk_user', user, res.data.expiresIn);
+            if (user) this.setCookie('jk_user', user, res.data.refreshExpiresIn);
           }
         }),
-        map((res) => res.data.accessToken),
+        map((res) => {
+          if (!res.success || !res.data) throw new Error(res.message ?? 'Refresh failed');
+          return res.data.accessToken;
+        }),
         shareReplay(1),
         finalize(() => { this.refreshing$ = null; }),
       );
@@ -158,6 +162,7 @@ export class AuthService {
   }
 
   getMe() {
+    this.loadingUser.set(true);
     return this.http.get<ApiResponse<AuthUser>>(`${BASE}/me`).pipe(
       tap((res) => {
         if (res.success && isPlatformBrowser(this.platformId)) {
@@ -173,6 +178,7 @@ export class AuthService {
           this.setCookie('jk_user', JSON.stringify(res.data), maxAge);
         }
       }),
+      finalize(() => this.loadingUser.set(false)),
     );
   }
 }

@@ -93,26 +93,12 @@ export const routes: Routes = [
       },
     ],
   },
-  /* ── Auth 404 (unauthenticated users on unknown paths) ── */
+  /* ── Auth routes requiring unauthenticated state ── */
   {
-    path: '',
+    path: 'auth',
     canMatch: [publicMatch],
     loadComponent: () =>
       import('./shared/layouts/auth-layout/auth-layout').then((m) => m.AuthLayout),
-    children: [
-      {
-        path: '**',
-        loadComponent: () =>
-          import('./pages/auth/not-found/not-found').then((m) => m.AuthNotFoundPage),
-      },
-    ],
-  },
-
-  {
-    path: 'auth',
-    loadComponent: () =>
-      import('./shared/layouts/auth-layout/auth-layout').then((m) => m.AuthLayout),
-    canActivate: [publicGuard],
     children: [
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       {
@@ -121,14 +107,23 @@ export const routes: Routes = [
           import('./pages/auth/forgot-password/forgot-password').then((m) => m.ForgotPasswordPage),
       },
       {
-        path: 'verify-email',
-        loadComponent: () =>
-          import('./pages/auth/verify-email/verify-email').then((m) => m.VerifyEmailPage),
-      },
-      {
         path: 'reset-password',
         loadComponent: () =>
           import('./pages/auth/reset-password/reset-password').then((m) => m.ResetPasswordPage),
+      },
+    ],
+  },
+
+  /* ── Auth routes accessible to all users ── */
+  {
+    path: 'auth',
+    loadComponent: () =>
+      import('./shared/layouts/auth-layout/auth-layout').then((m) => m.AuthLayout),
+    children: [
+      {
+        path: 'verify-email',
+        loadComponent: () =>
+          import('./pages/auth/verify-email/verify-email').then((m) => m.VerifyEmailPage),
       },
       {
         path: 'terms',
@@ -141,6 +136,21 @@ export const routes: Routes = [
       {
         path: 'help',
         loadComponent: () => import('./pages/auth/help/help').then((m) => m.HelpPage),
+      },
+    ],
+  },
+
+  /* ── Auth 404 (unauthenticated users on unknown paths) ── */
+  {
+    path: '',
+    canMatch: [publicMatch],
+    loadComponent: () =>
+      import('./shared/layouts/auth-layout/auth-layout').then((m) => m.AuthLayout),
+    children: [
+      {
+        path: '**',
+        loadComponent: () =>
+          import('./pages/auth/not-found/not-found').then((m) => m.AuthNotFoundPage),
       },
     ],
   },

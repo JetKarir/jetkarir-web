@@ -1,42 +1,62 @@
 const fs = require('fs');
 const path = require('path');
 
-const target = process.argv[2] || 'development';
+const ARG = process.argv[2] || 'dev';
 const dest = path.resolve(__dirname, 'environment.ts');
 
-if (target === 'example') return;
+const ALIAS = { development: 'dev', production: 'prod', testing: 'test' };
+const target = ALIAS[ARG] ?? ARG;
+
+function parseEnv(content) {
+  const vars = {};
+  for (const line of content.split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const eq = trimmed.indexOf('=');
+    if (eq === -1) continue;
+    const key = trimmed.slice(0, eq).trim();
+    const val = trimmed.slice(eq + 1).trim();
+    vars[key] = val;
+  }
+  return vars;
+}
+
+function generateTs(vars) {
+  const entries = Object.entries(vars)
+    .map(([k, v]) => `  ${k}: '${v.replace(/'/g, "\\'")}'`)
+    .join(',\n');
+  return `export const environment = {\n${entries},\n};\n`;
+}
 
 if (target === 'ci') {
   const secrets = JSON.parse(process.env.SECRETS_JSON || '{}');
-  const example = path.resolve(__dirname, 'environment.example.ts');
-  const content = fs.readFileSync(example, 'utf8');
-  const result = content.replace(/(\w+):\s*'[^']*'/g, (_, key) => {
-    const val = secrets[key] ?? '';
-    if (!val) console.warn(`ci: secret "${key}" not found`);
-    return `${key}: '${val}'`;
-  });
-  fs.writeFileSync(dest, result);
+  const examplePath = path.resolve(__dirname, '.env.example');
+  const keys = parseEnv(fs.readFileSync(examplePath, 'utf8'));
+  const vars = {};
+  for (const key of Object.keys(keys)) {
+    vars[key] = secrets[key] ?? '';
+    if (!vars[key]) console.warn(`ci: secret "${key}" not found`);
+  }
+  fs.writeFileSync(dest, generateTs(vars));
   console.log('env set: ci (from SECRETS_JSON)');
   process.exit(0);
 }
 
-const src = path.resolve(__dirname, `environment.${target}.ts`);
-
-if (!fs.existsSync(dest)) {
-  fs.writeFileSync(dest, '');
-}
+const src = path.resolve(__dirname, `.env.${target}`);
 
 if (!fs.existsSync(src)) {
-  const example = path.resolve(__dirname, 'environment.example.ts');
-  if (fs.existsSync(example)) {
-    fs.copyFileSync(example, dest);
-    console.warn(`env.${target} not found — fallback to environment.example.ts`);
+  const fallback = path.resolve(__dirname, '.env.example');
+  if (fs.existsSync(fallback)) {
+    const vars = parseEnv(fs.readFileSync(fallback, 'utf8'));
+    fs.writeFileSync(dest, generateTs(vars));
+    console.warn(`env.${target} not found — fallback to .env.example`);
   } else {
-    fs.writeFileSync(dest, '');
+    fs.writeFileSync(dest, 'export const environment = {};\n');
     console.warn(`env.${target} not found and no example — environment.ts cleared`);
   }
-  return;
+  process.exit(0);
 }
 
-fs.copyFileSync(src, dest);
-console.log(`env set: ${target}`);
+const vars = parseEnv(fs.readFileSync(src, 'utf8'));
+fs.writeFileSync(dest, generateTs(vars));
+console.log(`env set: ${target} → environment.ts`);

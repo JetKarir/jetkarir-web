@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { CanActivateFn, CanMatchFn, Router } from '@angular/router';
+import { CanMatchFn, Router } from '@angular/router';
 import { map, catchError, of } from 'rxjs';
 import { AuthService } from '../services/auth/auth-service';
 
@@ -16,15 +16,7 @@ function isAuthenticated(auth: AuthService) {
   );
 }
 
-export const authGuard: CanActivateFn = () => {
-  const auth = inject(AuthService);
-  const router = inject(Router);
-  return isAuthenticated(auth).pipe(
-    map((ok) => ok || router.createUrlTree(['/login'])),
-  );
-};
-
-export const publicGuard: CanActivateFn = () => {
+export const publicGuard = () => {
   const auth = inject(AuthService);
   const router = inject(Router);
   return isAuthenticated(auth).pipe(
