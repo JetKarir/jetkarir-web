@@ -25,7 +25,15 @@
       Post a Job
     </button>
 
-    @if (user()) {
+    @if (loadingUser()) {
+      <div class="main-navbar__user">
+        <p-skeleton shape="circle" size="36px" />
+        <div class="main-navbar__user-info">
+          <p-skeleton height="0.8rem" width="70%" />
+          <p-skeleton height="0.7rem" width="50%" style="margin-top:0.25rem" />
+        </div>
+      </div>
+    } @else if (user()) {
       <div class="main-navbar__user">
         <p-avatar [label]="userInitials()" shape="circle" class="main-navbar__avatar" />
         <div class="main-navbar__user-info">

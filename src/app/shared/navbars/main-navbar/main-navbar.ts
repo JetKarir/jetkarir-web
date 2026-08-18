@@ -19,10 +19,11 @@ import {
 import { AuthService } from '../../../core/services/auth/auth-service';
 import { AvatarModule } from 'primeng/avatar';
 import { Popover, PopoverModule } from 'primeng/popover';
+import { SkeletonModule } from 'primeng/skeleton';
 
 @Component({
   selector: 'app-main-navbar',
-  imports: [RouterLink, RouterLinkActive, NgIcon, AvatarModule, PopoverModule],
+  imports: [RouterLink, RouterLinkActive, NgIcon, AvatarModule, PopoverModule, SkeletonModule],
   providers: [
     provideIcons({
       fluentHome,
@@ -50,6 +51,7 @@ export class MainNavbar {
   @ViewChild('moreBtn') moreBtn!: ElementRef<HTMLButtonElement>;
 
   user = this.authService.currentUser;
+  loadingUser = this.authService.loadingUser;
 
   userInitials = computed(() => {
     const name = this.user()?.fullName ?? '';

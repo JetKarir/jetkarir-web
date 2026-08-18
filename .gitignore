@@ -43,8 +43,10 @@ __screenshots__/
 Thumbs.db
 
 # Environment files
-/src/env/*.ts
-!/src/env/environment.example.ts
+/src/env/.env.dev
+/src/env/.env.prod
+/src/env/.env.test
+/src/env/environment.ts
 
 # add-ons
 .claude
