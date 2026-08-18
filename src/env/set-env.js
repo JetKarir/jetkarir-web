@@ -29,16 +29,19 @@ function generateTs(vars) {
 }
 
 if (target === 'ci') {
-  const secrets = JSON.parse(process.env.SECRETS_JSON || '{}');
-  const examplePath = path.resolve(__dirname, '.env.example');
-  const keys = parseEnv(fs.readFileSync(examplePath, 'utf8'));
-  const vars = {};
-  for (const key of Object.keys(keys)) {
-    vars[key] = secrets[key] ?? '';
-    if (!vars[key]) console.warn(`ci: secret "${key}" not found`);
-  }
-  fs.writeFileSync(dest, generateTs(vars));
-  console.log('env set: ci (from SECRETS_JSON)');
+  const secrets = {
+    API_URL: process.env.API_URL || '',
+    OAUTH_GOOGLE_CLIENT_ID: process.env.OAUTH_GOOGLE_CLIENT_ID || '',
+  };
+  const example = path.resolve(__dirname, 'environment.example.ts');
+  const content = fs.readFileSync(example, 'utf8');
+  const result = content.replace(/(\w+):\s*'[^']*'/g, (_, key) => {
+    const val = secrets[key] ?? '';
+    if (!val) console.warn(`ci: secret "${key}" not found`);
+    return `${key}: '${val}'`;
+  });
+  fs.writeFileSync(dest, result);
+  console.log('env set: ci (from environment secrets)');
   process.exit(0);
 }
 
