@@ -1,20 +1,22 @@
-<header class="top-bar" role="banner">
-  <div class="top-bar__inner">
-    <a routerLink="/home" class="top-bar__logo">
-      <img src="images/logo_text_jetkarir.png" alt="JetKarir" height="24" />
-    </a>
-    <div class="top-bar__actions">
-      <a
-        routerLink="/notifications"
-        routerLinkActive="active"
-        class="top-bar__icon-btn"
-        title="Notifications"
-      >
-        <ng-icon name="fluentAlert" />
+@if (!isChat()) {
+  <header class="top-bar" role="banner">
+    <div class="top-bar__inner">
+      <a routerLink="/home" class="top-bar__logo">
+        <img src="images/logo_text_jetkarir.png" alt="JetKarir" height="24" />
       </a>
-      <a routerLink="/applications" class="top-bar__icon-btn" title="Applications">
-        <ng-icon name="fluentBriefcase" />
-      </a>
+      <div class="top-bar__actions">
+        <a
+          routerLink="/notifications"
+          routerLinkActive="active"
+          class="top-bar__icon-btn"
+          title="Notifications"
+        >
+          <ng-icon name="fluentAlert" />
+        </a>
+        <a routerLink="/applications" class="top-bar__icon-btn" title="Applications">
+          <ng-icon name="fluentBriefcase" />
+        </a>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
+}

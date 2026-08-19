@@ -1,0 +1,99 @@
+<div class="chat">
+  <!-- Center: Conversation Feed -->
+  <section class="chat__feed">
+    <div class="chat__panel">
+      @if (activeContact(); as contact) {
+        <!-- Conversation Header -->
+        <div class="chat__conv-header">
+          <div class="chat__conv-user">
+            <div class="chat__conv-avatar-wrap">
+              @if (contact.avatar) {
+                <img [src]="contact.avatar" [alt]="contact.name" class="chat__avatar-img" />
+              } @else {
+                <div class="chat__avatar-placeholder">{{ contact.name[0] }}</div>
+              }
+              @if (!contact.isGroup) {
+                <span
+                  class="chat__status-dot"
+                  [class.chat__status-dot--online]="contact.isOnline"
+                ></span>
+              }
+            </div>
+            <div>
+              <h3 class="chat__conv-name">{{ contact.name }}</h3>
+              <p class="chat__conv-status">
+                {{ contact.isGroup ? 'Group' : (contact.isOnline ? 'Online now' : 'Offline') }}
+              </p>
+            </div>
+          </div>
+          <div class="chat__conv-actions">
+            <button class="chat__icon-btn" title="Video call">
+              <ng-icon name="fluentVideo" size="20px" />
+            </button>
+            <button class="chat__icon-btn" title="Voice call">
+              <ng-icon name="fluentCall" size="20px" />
+            </button>
+            <button class="chat__icon-btn" title="More options">
+              <ng-icon name="fluentMoreCircle" size="20px" />
+            </button>
+          </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="chat__messages" #msgList>
+          @for (msg of activeMessages(); track msg.id) {
+            <div class="chat__msg-group" [class.chat__msg-group--mine]="msg.isMine">
+              @if (msg.image) {
+                <div class="chat__bubble chat__bubble--image" [class.chat__bubble--mine]="msg.isMine">
+                  <img [src]="msg.image" alt="Shared image" class="chat__msg-image" />
+                </div>
+              } @else if (msg.text) {
+                <div class="chat__bubble" [class.chat__bubble--mine]="msg.isMine">
+                  {{ msg.text }}
+                </div>
+              }
+              <span class="chat__msg-time">{{ msg.time }}</span>
+            </div>
+          }
+        </div>
+
+        <!-- Input Bar -->
+        <div class="chat__input-bar">
+          <button class="chat__icon-btn" title="Attach file">
+            <ng-icon name="fluentAttach" size="20px" />
+          </button>
+          <button class="chat__icon-btn" title="Voice message">
+            <ng-icon name="fluentMic" size="20px" />
+          </button>
+          <input
+            type="text"
+            class="chat__input"
+            placeholder="Type a message..."
+            [(ngModel)]="messageInputValue"
+            (keydown)="onKeydown($event)"
+          />
+          <button class="chat__icon-btn" title="Emoji">
+            <ng-icon name="fluentEmoji" size="20px" />
+          </button>
+          <button class="chat__send-btn" (click)="sendMessage()" title="Send">
+            <ng-icon name="fluentSend" size="18px" />
+          </button>
+        </div>
+      } @else {
+        <!-- Empty State -->
+        <div class="chat__empty">
+          <ng-icon name="fluentChat" class="chat__empty-icon" />
+          <h3>Select a conversation</h3>
+          <p>Choose a contact from the list to start chatting.</p>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Right: Contacts Widget -->
+  <app-main-contacts
+    [contacts]="contacts()"
+    [activeId]="activeContact()?.id ?? null"
+    (contactSelected)="onContactSelected($event)"
+  />
+</div>
