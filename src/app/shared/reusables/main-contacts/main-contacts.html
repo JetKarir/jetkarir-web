@@ -1,0 +1,66 @@
+<aside class="main-contacts">
+  <div class="contacts-card">
+    <!-- Header -->
+    <div class="contacts-card__header">
+      <h3 class="contacts-card__title">Chat</h3>
+      <button class="contacts-card__icon-btn" title="New message">
+        <ng-icon name="fluentEdit" size="18px" />
+      </button>
+    </div>
+
+    <!-- Search -->
+    <div class="contacts-card__search">
+      <ng-icon name="fluentSearch" class="contacts-card__search-icon" size="16px" />
+      <input
+        type="text"
+        class="contacts-card__search-input"
+        placeholder="Search messages..."
+        [value]="searchQuery()"
+        (input)="searchQuery.set($any($event.target).value)"
+      />
+    </div>
+
+    <!-- Contact List -->
+    <div class="contacts-card__list">
+      @for (contact of filteredContacts(); track contact.id) {
+        <button
+          class="contact-item"
+          [class.contact-item--active]="activeId() === contact.id"
+          (click)="select(contact)"
+        >
+          <div class="contact-item__avatar">
+            @if (contact.isGroup) {
+              <div class="contact-item__avatar-group">
+                <ng-icon name="fluentPeople" size="18px" />
+              </div>
+            } @else if (contact.avatar) {
+              <img [src]="contact.avatar" [alt]="contact.name" class="contact-item__avatar-img" />
+              <span
+                class="contact-item__dot"
+                [class.contact-item__dot--online]="contact.isOnline"
+              ></span>
+            } @else {
+              <div class="contact-item__avatar-placeholder">{{ contact.name[0] }}</div>
+              <span
+                class="contact-item__dot"
+                [class.contact-item__dot--online]="contact.isOnline"
+              ></span>
+            }
+          </div>
+
+          <div class="contact-item__info">
+            <div class="contact-item__row">
+              <span class="contact-item__name">{{ contact.name }}</span>
+              <span class="contact-item__time">{{ contact.time }}</span>
+            </div>
+            <p class="contact-item__preview">{{ contact.lastMessage }}</p>
+          </div>
+
+          @if (contact.unread) {
+            <span class="contact-item__badge">{{ contact.unread }}</span>
+          }
+        </button>
+      }
+    </div>
+  </div>
+</aside>

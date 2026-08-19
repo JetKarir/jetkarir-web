@@ -20,5 +20,13 @@
       padding-top: 0;
       padding-bottom: 0;
     }
+
+    &--no-topbar {
+      @media (max-width: 899px) {
+        padding-top: 2rem;
+        display: flex;
+        flex-direction: column;
+      }
+    }
   }
 }
