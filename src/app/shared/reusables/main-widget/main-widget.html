@@ -58,7 +58,7 @@
               <p class="activity-item__text">
                 Applied to <strong>{{ activity.jobTitle }}</strong>
               </p>
-              <p class="activity-item__desc">{{ activity.companyName }}</p>
+              <p class="activity-item__desc">{{ activity.timeAgo }}</p>
             </div>
           </div>
         }
@@ -72,7 +72,7 @@
               <p class="activity-item__text">
                 Applied to <strong>{{ app.jobTitle }}</strong>
               </p>
-              <p class="activity-item__desc">{{ app.companyName }}</p>
+              <p class="activity-item__desc">{{ timeAgo(app.appliedAt) }}</p>
             </div>
           </div>
         }

@@ -12,7 +12,7 @@ import {
   fluentLocation,
   fluentMoney,
 } from '@ng-icons/fluent-ui';
-import { AuthService } from '../../../core/services/auth/auth-service';
+import { AuthService } from '../../../core/services/auth/login/login-service';
 import { JobService } from '../../../core/services/main/job/job.service';
 import { JobListItem } from '../../../core/models/interface/job.interface';
 import { SkeletonModule } from 'primeng/skeleton';

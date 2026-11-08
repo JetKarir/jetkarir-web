@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { CanMatchFn, Router } from '@angular/router';
 import { map, catchError, of } from 'rxjs';
-import { AuthService } from '../services/auth/auth-service';
+import { AuthService } from '../services/auth/login/login-service';
 
 function isAuthenticated(auth: AuthService) {
   if (!auth.hasRequiredCookies()) return of(false);

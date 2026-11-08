@@ -8,7 +8,7 @@ import { LoginService } from '../../../core/services/auth/login/login-service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { environment } from '../../../../env/environment';
-import { GsiService } from '../../../core/services/auth/gsi-service';
+import { OtherLoginService } from '../../../core/services/auth/login/login-service';
 
 function passwordMatchValidator(control: AbstractControl) {
   const password = control.get('password');
@@ -33,7 +33,7 @@ export class RegisterPage implements AfterViewInit {
   private registerService = inject(RegisterService);
   private loginService = inject(LoginService);
   private messageService = inject(MessageService);
-  private gsi = inject(GsiService);
+  private gsi = inject(OtherLoginService);
 
   loading = signal(false);
   errorMessage = signal<string | null>(null);

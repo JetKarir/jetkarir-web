@@ -34,8 +34,8 @@ import { MainWidget } from '../../../shared/reusables/main-widget/main-widget';
       fluentSettings,
     }),
   ],
-  templateUrl: './notification.html',
-  styleUrl: './notification.scss',
+  templateUrl: './notif.html',
+  styleUrl: './notif.scss',
 })
 export class NotificationsPage implements OnInit {
   candidateService = inject(CandidateService);

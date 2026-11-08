@@ -2,7 +2,8 @@ import { HttpInterceptorFn, HttpRequest, HttpHandlerFn, HttpErrorResponse } from
 import { inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { catchError, switchMap, throwError } from 'rxjs';
-import { AuthService } from '../services/auth/auth-service';
+import { AuthService } from '../services/auth/login/login-service';
+import { AuthCookieService } from '../services/auth/cookie/cookie-service';
 
 export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
   const platformId = inject(PLATFORM_ID);
@@ -10,7 +11,7 @@ export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, ne
 
   if (!isPlatformBrowser(platformId)) return next(req);
 
-  const token = AuthService.getCookie('jk_access_token');
+  const token = AuthCookieService.get('jk_access_token');
   const authReq = token
     ? req.clone({ setHeaders: { Authorization: `Bearer ${token}` } })
     : req;

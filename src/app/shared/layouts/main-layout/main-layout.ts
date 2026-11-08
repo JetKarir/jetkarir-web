@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
-import { AuthService } from '../../../core/services/auth/auth-service';
+import { AuthService } from '../../../core/services/auth/login/login-service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { MainNavbar } from '../../navbars/main-navbar/main-navbar';
@@ -34,5 +34,6 @@ export class MainLayout implements OnInit {
     if (!this.user()) {
       this.authService.getMe().subscribe({ error: () => {} });
     }
+    this.authService.initProactiveRefresh();
   }
 }

@@ -3,9 +3,17 @@
     <!-- Header -->
     <div class="contacts-card__header">
       <h3 class="contacts-card__title">Chat</h3>
-      <button class="contacts-card__icon-btn" title="New message">
-        <ng-icon name="fluentEdit" size="18px" />
-      </button>
+      <div class="contacts-card__header-actions">
+        <button class="contacts-card__icon-btn" title="Messages">
+          <ng-icon name="fluentChatLock" size="18px" />
+        </button>
+        <button class="contacts-card__icon-btn" title="New message">
+          <ng-icon name="fluentEdit" size="18px" />
+        </button>
+        <button class="contacts-card__icon-btn" title="More options">
+          <ng-icon name="fluentMoreVertical" size="18px" />
+        </button>
+      </div>
     </div>
 
     <!-- Search -->
@@ -18,6 +26,26 @@
         [value]="searchQuery()"
         (input)="searchQuery.set($any($event.target).value)"
       />
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="contacts-card__filters">
+      <button
+        class="contacts-card__filter-btn"
+        [class.contacts-card__filter-btn--active]="activeFilter() === 'all'"
+        (click)="activeFilter.set('all')"
+      >All</button>
+      <button
+        class="contacts-card__filter-btn"
+        [class.contacts-card__filter-btn--active]="activeFilter() === 'unread'"
+        (click)="activeFilter.set('unread')"
+      >Unread</button>
+      <button
+        class="contacts-card__filter-btn"
+        [class.contacts-card__filter-btn--active]="activeFilter() === 'groups'"
+        (click)="activeFilter.set('groups')"
+      >Groups</button>
+      <button class="contacts-card__filter-add" title="Add">+</button>
     </div>
 
     <!-- Contact List -->

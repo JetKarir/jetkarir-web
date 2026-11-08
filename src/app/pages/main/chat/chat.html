@@ -59,22 +59,24 @@
 
         <!-- Input Bar -->
         <div class="chat__input-bar">
-          <button class="chat__icon-btn" title="Attach file">
-            <ng-icon name="fluentAttach" size="20px" />
-          </button>
-          <button class="chat__icon-btn" title="Voice message">
-            <ng-icon name="fluentMic" size="20px" />
-          </button>
-          <input
-            type="text"
-            class="chat__input"
-            placeholder="Type a message..."
-            [(ngModel)]="messageInputValue"
-            (keydown)="onKeydown($event)"
-          />
-          <button class="chat__icon-btn" title="Emoji">
-            <ng-icon name="fluentEmoji" size="20px" />
-          </button>
+          <div class="chat__input-pill">
+            <button class="chat__icon-btn" title="Voice message">
+              <ng-icon name="fluentMic" size="20px" />
+            </button>
+            <input
+              type="text"
+              class="chat__input"
+              placeholder="Type a message..."
+              [(ngModel)]="messageInputValue"
+              (keydown)="onKeydown($event)"
+            />
+            <button class="chat__icon-btn" title="Emoji">
+              <ng-icon name="fluentEmoji" size="20px" />
+            </button>
+            <button class="chat__icon-btn" title="Attach file">
+              <ng-icon name="fluentAttach" size="20px" />
+            </button>
+          </div>
           <button class="chat__send-btn" (click)="sendMessage()" title="Send">
             <ng-icon name="fluentSend" size="18px" />
           </button>

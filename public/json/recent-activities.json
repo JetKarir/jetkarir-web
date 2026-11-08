@@ -1,5 +1,5 @@
 [
-  { "id": 1, "jobTitle": "Frontend Developer", "companyName": "Tokopedia" },
-  { "id": 2, "jobTitle": "UI/UX Designer", "companyName": "Gojek" },
-  { "id": 3, "jobTitle": "Backend Engineer", "companyName": "Traveloka" }
+  { "id": 1, "jobTitle": "Frontend Developer", "companyName": "Tokopedia", "timeAgo": "5 minutes ago" },
+  { "id": 2, "jobTitle": "UI/UX Designer", "companyName": "Gojek", "timeAgo": "2 hours ago" },
+  { "id": 3, "jobTitle": "Backend Engineer", "companyName": "Traveloka", "timeAgo": "Yesterday" }
 ]

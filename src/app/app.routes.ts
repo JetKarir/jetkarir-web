@@ -19,22 +19,9 @@ export const routes: Routes = [
         pathMatch: 'full',
       },
       {
-        path: 'jobs',
-        loadComponent: () => import('./pages/main/jobs/jobs').then((m) => m.JobsPage),
-      },
-      {
-        path: 'applications',
+        path: 'notif',
         loadComponent: () =>
-          import('./pages/main/applications/applications').then((m) => m.ApplicationsPage),
-      },
-      {
-        path: 'profile',
-        loadComponent: () => import('./pages/main/profile/profile').then((m) => m.ProfilePage),
-      },
-      {
-        path: 'notifications',
-        loadComponent: () =>
-          import('./pages/main/notification/notification').then((m) => m.NotificationsPage),
+          import('./pages/main/notif/notif').then((m) => m.NotificationsPage),
       },
       {
         path: 'chat',

@@ -16,7 +16,7 @@ import {
   fluentArrowExit,
   fluentPersonSwap,
 } from '@ng-icons/fluent-ui';
-import { AuthService } from '../../../core/services/auth/auth-service';
+import { AuthService } from '../../../core/services/auth/login/login-service';
 import { AvatarModule } from 'primeng/avatar';
 import { Popover, PopoverModule } from 'primeng/popover';
 import { SkeletonModule } from 'primeng/skeleton';
@@ -64,20 +64,20 @@ export class MainNavbar {
   });
 
   userHandle = computed(() => {
-    const email = this.user()?.email ?? '';
-    return '@' + email.split('@')[0];
+    const username = this.user()?.username ?? '';
+    return '@' + username;
   });
 
   navItems = [
     { label: 'Home', icon: 'fluentHome', route: '/' },
     { label: 'Explore', icon: 'fluentCompassNorthwest', route: '/explore' },
     { label: 'Jobs', icon: 'fluentBriefcase', route: '/jobs' },
-    { label: 'Notif', icon: 'fluentAlert', route: '/notifications' },
+    { label: 'Notif', icon: 'fluentAlert', route: '/notif' },
     { label: 'Saved', icon: 'fluentBookmark', route: '/saved' },
     { label: 'Chat', icon: 'fluentChat', route: '/chat' },
     { label: 'Teams', icon: 'fluentBuildingRetailMore', route: '/teams' },
     { label: 'Premium', icon: 'fluentStar', route: '/premium' },
-    { label: 'Setting', icon: 'fluentSettings', route: '/settings' },
+    { label: 'Setting', icon: 'fluentSettings', route: '/setting' },
   ];
 
   onPopoverShow() {

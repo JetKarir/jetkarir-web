@@ -14,7 +14,7 @@ import { LoginService } from '../../../core/services/auth/login/login-service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { environment } from '../../../../env/environment';
-import { GsiService } from '../../../core/services/auth/gsi-service';
+import { OtherLoginService } from '../../../core/services/auth/login/login-service';
 
 @Component({
   selector: 'app-login',
@@ -37,7 +37,7 @@ export class LoginPage implements AfterViewInit {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private loginService = inject(LoginService);
-  private gsi = inject(GsiService);
+  private gsi = inject(OtherLoginService);
 
   loading = signal(false);
   errorMessage = signal<string | null>(null);

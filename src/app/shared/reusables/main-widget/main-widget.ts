@@ -22,8 +22,22 @@ export class MainWidget implements OnInit {
   loadingApps = signal(true);
 
   careerTrends = signal<{ title: string; count: string }[]>([]);
-  recentActivities = signal<{ id: number; jobTitle: string; companyName: string }[]>([]);
+  recentActivities = signal<{ id: number; jobTitle: string; companyName: string; timeAgo: string }[]>([]);
   recommendedCompanies = signal<{ name: string; sector: string }[]>([]);
+
+  timeAgo(dateStr: string): string {
+    const diff = Date.now() - new Date(dateStr).getTime();
+    const mins = Math.floor(diff / 60000);
+    if (mins < 60) return mins <= 1 ? 'Just now' : `${mins} minutes ago`;
+    const hours = Math.floor(mins / 60);
+    if (hours < 24) return hours === 1 ? '1 hour ago' : `${hours} hours ago`;
+    const days = Math.floor(hours / 24);
+    if (days === 1) return 'Yesterday';
+    if (days < 7) return `${days} days ago`;
+    const weeks = Math.floor(days / 7);
+    if (weeks < 5) return weeks === 1 ? '1 week ago' : `${weeks} weeks ago`;
+    return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
 
   ngOnInit() {
     this.http.get<{ title: string; count: string }[]>('/json/career-trends.json').subscribe({
@@ -31,7 +45,7 @@ export class MainWidget implements OnInit {
       error: () => {},
     });
 
-    this.http.get<{ id: number; jobTitle: string; companyName: string }[]>('/json/recent-activities.json').subscribe({
+    this.http.get<{ id: number; jobTitle: string; companyName: string; timeAgo: string }[]>('/json/recent-activities.json').subscribe({
       next: (data) => this.recentActivities.set(data.slice(0, 2)),
       error: () => {},
     });
