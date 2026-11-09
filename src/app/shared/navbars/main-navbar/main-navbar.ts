@@ -1,5 +1,5 @@
 import { Component, inject, computed, ViewChild, ElementRef } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
   fluentHome,
@@ -15,6 +15,7 @@ import {
   fluentStar,
   fluentArrowExit,
   fluentPersonSwap,
+  fluentPerson,
 } from '@ng-icons/fluent-ui';
 import { AuthService } from '../../../core/services/auth/login/login-service';
 import { AvatarModule } from 'primeng/avatar';
@@ -39,6 +40,7 @@ import { SkeletonModule } from 'primeng/skeleton';
       fluentStar,
       fluentArrowExit,
       fluentPersonSwap,
+      fluentPerson,
     }),
   ],
   templateUrl: './main-navbar.html',
@@ -46,6 +48,12 @@ import { SkeletonModule } from 'primeng/skeleton';
 })
 export class MainNavbar {
   authService = inject(AuthService);
+  private router = inject(Router);
+
+  goToProfile(popover: { hide: () => void }) {
+    popover.hide();
+    this.router.navigate(['/@' + this.user()?.username]);
+  }
 
   @ViewChild('op') op!: Popover;
   @ViewChild('moreBtn') moreBtn!: ElementRef<HTMLButtonElement>;

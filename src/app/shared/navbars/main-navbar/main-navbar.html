@@ -34,12 +34,14 @@
         </div>
       </div>
     } @else if (user()) {
-      <div class="main-navbar__user">
-        <p-avatar [label]="userInitials()" shape="circle" class="main-navbar__avatar" />
-        <div class="main-navbar__user-info">
-          <span class="main-navbar__user-name">{{ user()?.fullName }}</span>
-          <span class="main-navbar__user-handle">{{ userHandle() }}</span>
-        </div>
+      <div class="main-navbar__user" routerLinkActive="main-navbar__user--active">
+        <a [routerLink]="'/@' + user()?.username" class="main-navbar__user-link">
+          <p-avatar [label]="userInitials()" shape="circle" class="main-navbar__avatar" />
+          <div class="main-navbar__user-info">
+            <span class="main-navbar__user-name">{{ user()?.fullName }}</span>
+            <span class="main-navbar__user-handle">{{ userHandle() }}</span>
+          </div>
+        </a>
         <button #moreBtn class="main-navbar__more-btn" (click)="op.toggle($event)" title="More options">
           <ng-icon name="fluentMoreCircle" size="24px" />
         </button>
@@ -47,6 +49,10 @@
 
       <p-popover #op styleClass="navbar-popover" (onShow)="onPopoverShow()">
         <div class="navbar-menu">
+          <button class="navbar-menu__item" (click)="goToProfile(op)">
+            <ng-icon name="fluentPerson" size="18px" />
+            <span>View Profile</span>
+          </button>
           <button class="navbar-menu__item" (click)="op.hide()">
             <ng-icon name="fluentPersonSwap" size="18px" />
             <span>Switch Account</span>

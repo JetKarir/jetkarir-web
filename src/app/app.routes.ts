@@ -1,5 +1,8 @@
-import { Routes } from '@angular/router';
+import { Route, Routes, UrlSegment } from '@angular/router';
 import { publicGuard, authMatch, publicMatch } from './core/guards/auth.guard';
+
+const atUsernameMatch = (_route: Route, segments: UrlSegment[]) =>
+  (segments[0]?.path ?? '').startsWith('@');
 
 export const routes: Routes = [
   /* ── Main App (with app navbar, requires login) ── */
@@ -22,6 +25,11 @@ export const routes: Routes = [
         path: 'notif',
         loadComponent: () =>
           import('./pages/main/notif/notif').then((m) => m.NotificationsPage),
+      },
+      {
+        path: ':username',
+        canMatch: [atUsernameMatch],
+        loadComponent: () => import('./pages/main/profile/profile').then((m) => m.ProfilePage),
       },
       {
         path: 'chat',

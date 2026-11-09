@@ -1,0 +1,223 @@
+<div class="profile-page">
+  <!-- Center Column -->
+  <section class="profile-page__feed">
+    <div class="profile__panel">
+
+    <!-- Cover -->
+    <div class="profile__cover">
+      <div class="profile__cover-img"></div>
+      <div class="profile__cover-overlay"></div>
+    </div>
+
+    <!-- White body -->
+    <div class="profile__body">
+
+      <!-- Avatar + action row -->
+      <div class="profile__top-row">
+        <div class="profile__avatar-wrap">
+          <img
+            class="profile__avatar"
+            src="https://i.pravatar.cc/128"
+            alt="Profile photo"
+          />
+        </div>
+        <div class="profile__actions">
+          <button class="profile__icon-btn" title="More">
+            <ng-icon name="fluentMoreVertical" />
+          </button>
+          <button class="profile__icon-btn" title="Download CV">
+            <ng-icon name="fluentArrowDownload" />
+          </button>
+          <button class="profile__edit-btn">Edit Profile</button>
+        </div>
+      </div>
+
+      <!-- Identity -->
+      <div class="profile__identity">
+        <h2 class="profile__name">Rafi Ananda</h2>
+        <p class="profile__title">Senior Product Designer</p>
+        <p class="profile__handle">&#64;rafiananda</p>
+        <p class="profile__meta">
+          <ng-icon name="fluentLocation" class="profile__meta-icon" />
+          Jakarta, Indonesia &bull;
+          <span class="profile__contact-link">Contact Info</span>
+        </p>
+        <p class="profile__meta">
+          <ng-icon name="fluentGlobe" class="profile__meta-icon" />
+          <a href="#" class="profile__website-link">rafiananda.com</a>
+        </p>
+
+        <div class="profile__stats">
+          <div class="profile__stat">
+            <span class="profile__stat-value">1,284</span>
+            <span class="profile__stat-label">Followers</span>
+          </div>
+          <div class="profile__stat">
+            <span class="profile__stat-value">842</span>
+            <span class="profile__stat-label">Following</span>
+          </div>
+          <div class="profile__stat">
+            <span class="profile__stat-value">12</span>
+            <span class="profile__stat-label">Posting</span>
+          </div>
+          <div class="profile__stat">
+            <span class="profile__stat-value">15</span>
+            <span class="profile__stat-label">Hiring</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="profile__tabs">
+        <button
+          class="profile__tab"
+          [class.profile__tab--active]="activeTab() === 'about'"
+          (click)="activeTab.set('about')"
+        >About</button>
+        <button
+          class="profile__tab"
+          [class.profile__tab--active]="activeTab() === 'posting'"
+          (click)="activeTab.set('posting')"
+        >Posting</button>
+        <button
+          class="profile__tab"
+          [class.profile__tab--active]="activeTab() === 'hiring'"
+          (click)="activeTab.set('hiring')"
+        >Hiring</button>
+      </div>
+
+      <!-- Tab content -->
+      @if (activeTab() === 'about') {
+        <div class="profile__content">
+
+          <!-- About -->
+          <section class="profile__section">
+            <div class="profile__section-header">
+              <h3 class="profile__section-title">About</h3>
+              <button class="profile__edit-icon-btn" title="Edit">
+                <ng-icon name="fluentEdit" />
+              </button>
+            </div>
+            <p class="profile__about-text">
+              Senior Product Designer with 7+ years of experience specializing in design systems
+              and product strategy. I focus on scaling high-growth interfaces and bridging the gap
+              between business objectives and user needs to elevate the professional ecosystem in
+              Southeast Asia.
+            </p>
+          </section>
+
+          <!-- Experience -->
+          <section class="profile__section profile__section--bordered">
+            <div class="profile__section-header">
+              <h3 class="profile__section-title">Experience</h3>
+              <button class="profile__edit-icon-btn" title="Edit">
+                <ng-icon name="fluentEdit" />
+              </button>
+            </div>
+            <div class="profile__timeline">
+
+              <div class="profile__timeline-item">
+                <div class="profile__timeline-icon">
+                  <ng-icon name="fluentBuilding" />
+                </div>
+                <div class="profile__timeline-body">
+                  <div class="profile__timeline-top">
+                    <div>
+                      <h4 class="profile__exp-title">Senior Product Designer</h4>
+                      <p class="profile__exp-company">Gojek &bull; Full-time</p>
+                      <p class="profile__exp-location">Jakarta, Indonesia</p>
+                    </div>
+                    <span class="profile__exp-badge">Present</span>
+                  </div>
+                  <p class="profile__exp-duration">Jan 2021 - Present &bull; 3 yrs 4 mos</p>
+                  <p class="profile__exp-desc">
+                    Leading the Transport &amp; Logistics design team to optimize booking flows
+                    and driver efficiency across 5 markets. Implemented a new design system
+                    component library that reduced developer handoff time by 40%.
+                  </p>
+                </div>
+              </div>
+
+              <div class="profile__timeline-item">
+                <div class="profile__timeline-icon">
+                  <ng-icon name="fluentBuilding" />
+                </div>
+                <div class="profile__timeline-body">
+                  <div class="profile__timeline-top">
+                    <div>
+                      <h4 class="profile__exp-title">Product Designer</h4>
+                      <p class="profile__exp-company">Traveloka &bull; Full-time</p>
+                      <p class="profile__exp-location">Jakarta, Indonesia</p>
+                    </div>
+                  </div>
+                  <p class="profile__exp-duration">Aug 2018 - Dec 2020 &bull; 2 yrs 5 mos</p>
+                  <p class="profile__exp-desc">
+                    Designed end-to-end flight booking experiences for mobile web and native
+                    platforms. Focused on localization and multi-currency accessibility features.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Education -->
+          <section class="profile__section profile__section--bordered">
+            <div class="profile__section-header">
+              <h3 class="profile__section-title">Education</h3>
+              <button class="profile__edit-icon-btn" title="Edit">
+                <ng-icon name="fluentEdit" />
+              </button>
+            </div>
+            <div class="profile__edu">
+              <div class="profile__timeline-icon">
+                <ng-icon name="fluentBook" />
+              </div>
+              <div>
+                <h4 class="profile__exp-title">University of Indonesia</h4>
+                <p class="profile__exp-company">Bachelor of Information Technology</p>
+                <p class="profile__exp-location">Depok, Indonesia</p>
+                <p class="profile__exp-duration">2014 - 2018</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Skills -->
+          <section class="profile__section profile__section--bordered">
+            <div class="profile__section-header">
+              <h3 class="profile__section-title">Skills</h3>
+              <button class="profile__edit-icon-btn" title="Edit">
+                <ng-icon name="fluentEdit" />
+              </button>
+            </div>
+            <div class="profile__skills">
+              @for (skill of ['Figma','Product Strategy','Design Systems','User Research','Prototyping','Data Analysis','Interaction Design','Typography','UX Writing']; track skill) {
+                <span class="profile__skill-tag">{{ skill }}</span>
+              }
+            </div>
+          </section>
+
+        </div>
+      }
+
+      @if (activeTab() === 'posting') {
+        <div class="profile__content profile__content--empty">
+          <ng-icon name="fluentPerson" class="profile__empty-icon" />
+          <p>No posts yet.</p>
+        </div>
+      }
+
+      @if (activeTab() === 'hiring') {
+        <div class="profile__content profile__content--empty">
+          <ng-icon name="fluentPerson" class="profile__empty-icon" />
+          <p>No job listings yet.</p>
+        </div>
+      }
+
+    </div>
+    </div><!-- /profile__panel -->
+  </section>
+
+  <!-- Right Widgets -->
+  <app-main-widget />
+</div>
